@@ -1,0 +1,234 @@
+:root {
+  --vp-c-brand: #00b4ff;
+  --vp-c-brand-light: #4dc8ff;
+  --vp-c-brand-lighter: #86daff;
+  --vp-c-brand-dark: #0090cc;
+  --vp-c-brand-darker: #006b99;
+  --vp-c-bg: #0a0f18;
+  --vp-c-bg-soft: #111927;
+  --vp-c-bg-mute: #1e293b;
+  --vp-c-text: #e2e8f0;
+  --vp-c-text-light: #cbd5e1;
+  --vp-c-text-lighter: #94a3b8;
+  --vp-c-text-dark: #f8fafc;
+  --vp-c-text-darker: #ffffff;
+  --vp-c-divider: rgba(84, 110, 155, 0.2);
+  --vp-c-divider-light: rgba(84, 110, 155, 0.1);
+  --neon-color: #0ff;
+  --glow-color: rgba(0, 200, 255, 0.6);
+}
+
+/* 全局样式 */
+body {
+  background-color: var(--vp-c-bg);
+  color: var(--vp-c-text);
+  font-family: 'JetBrains Mono', monospace, system-ui, sans-serif;
+  background-image: 
+    radial-gradient(circle at 15% 50%, var(--glow-color) 0%, transparent 25%),
+    radial-gradient(circle at 85% 30%, var(--glow-color) 0%, transparent 25%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 动态网格背景 */
+.tech-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(18, 24, 38, 0.8) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 24, 38, 0.8) 1px, transparent 1px);
+  background-size: 30px 30px;
+  z-index: -1;
+  opacity: 0.3;
+  animation: gridMove 150s linear infinite;
+}
+
+@keyframes gridMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1000px 1000px;
+  }
+}
+
+/* 霓虹文本效果 */
+.neon-text {
+  color: #fff;
+  text-shadow: 
+    0 0 5px var(--neon-color),
+    0 0 10px var(--neon-color),
+    0 0 20px var(--neon-color),
+    0 0 40px var(--neon-color);
+  animation: neonFlicker 5s infinite alternate;
+}
+
+@keyframes neonFlicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 
+      0 0 5px var(--neon-color),
+      0 0 10px var(--neon-color),
+      0 0 20px var(--neon-color),
+      0 0 40px var(--neon-color);
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
+
+/* 悬停高亮效果 */
+.tech-hover {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 180, 255, 0.2), transparent);
+  transition: all 0.6s ease;
+}
+
+.tech-hover:hover::before {
+  left: 100%;
+}
+
+.tech-hover:hover {
+  box-shadow: 0 0 15px var(--glow-color);
+  transform: translateY(-2px);
+}
+
+/* 科技卡片 */
+.tech-card {
+  background: linear-gradient(135deg, var(--vp-c-bg-soft) 0%, var(--vp-c-bg-mute) 100%);
+  border: 1px solid rgba(0, 180, 255, 0.3);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 0 20px rgba(0, 180, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--vp-c-brand), var(--vp-c-brand-light));
+}
+
+/* 闪光边框 */
+.glowing-border {
+  position: relative;
+}
+
+.glowing-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  background: linear-gradient(45deg, 
+    #00b4ff, #00f0ff, #00b4ff, #0055ff, 
+    #00b4ff, #00f0ff, #00b4ff, #0055ff);
+  background-size: 400%;
+  border-radius: 10px;
+  animation: glowingBorder 20s linear infinite;
+  filter: blur(6px);
+  opacity: 0.4;
+}
+
+@keyframes glowingBorder {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .tech-background {
+    background-size: 20px 20px;
+  }
+  
+  .tech-section {
+    padding: 0 1rem !important;
+  }
+  
+  h1.neon-text {
+    font-size: 2.5rem !important;
+  }
+  
+  p {
+    font-size: 1.2rem !important;
+  }
+}
+
+/* 移动设备特别优化 */
+@media (max-width: 480px) {
+  .tech-background {
+    background-size: 15px 15px;
+  }
+  
+  h1.neon-text {
+    font-size: 2rem !important;
+  }
+  
+  p {
+    font-size: 1rem !important;
+  }
+  
+  .tech-card {
+    padding: 1.25rem;
+  }
+  
+  .glowing-border::before {
+    filter: blur(4px);
+  }
+  
+  /* 减轻动画效果以提高移动设备性能 */
+  .scanline {
+    animation-duration: 6s;
+  }
+  
+  .tech-hero-glitch {
+    animation-duration: 12s;
+  }
+}
+
+/* 提高全局布局响应性 */
+.VPDoc {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* 优化菜单在移动设备上的显示 */
+.VPNavBar {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* 优化移动设备上的点击区域 */
+.VPNavBarMenuLink,
+.VPNavBarMenuGroup .title {
+  padding: 0.5rem 0.75rem;
+} 
