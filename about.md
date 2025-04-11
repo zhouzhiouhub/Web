@@ -25,17 +25,17 @@ title: 关于我们
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem;">
       <div class="team-member">
         <div class="default-icon" style="margin: 0 auto 1rem auto; width: 80px; height: 80px;"></div>
-        <h3 style="text-align: center; margin-bottom: 0.5rem;">李明宇 / 首席执行官</h3>
+        <h3 style="text-align: center; margin-bottom: 0.5rem;">Doc.Zhou / 首席执行官</h3>
         <p style="text-align: center;">前谷歌AI研究员，卡内基梅隆大学计算机科学博士，拥有15年科技企业管理经验。</p>
       </div>
       <div class="team-member">
         <div class="default-icon" style="margin: 0 auto 1rem auto; width: 80px; height: 80px;"></div>
-        <h3 style="text-align: center; margin-bottom: 0.5rem;">张芳 / 技术总监</h3>
+        <h3 style="text-align: center; margin-bottom: 0.5rem;">Mr.Chen / 技术总监</h3>
         <p style="text-align: center;">量子计算专家，麻省理工学院物理学博士，曾主导多项国际重大科研项目。</p>
       </div>
       <div class="team-member">
         <div class="default-icon" style="margin: 0 auto 1rem auto; width: 80px; height: 80px;"></div>
-        <h3 style="text-align: center; margin-bottom: 0.5rem;">王浩然 / 创意总监</h3>
+        <h3 style="text-align: center; margin-bottom: 0.5rem;">Mr.Wang / 创意总监</h3>
         <p style="text-align: center;">交互设计专家，罗德岛设计学院设计硕士，国际设计大奖获得者。</p>
       </div>
     </div>
