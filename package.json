@@ -46,5 +46,8 @@
     "vite-plugin-eslint": "^1.8.1",
     "vite-svg-loader": "^5.1.0",
     "vue-tsc": "^3.3.7"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "~4.62.2"
   }
 }
