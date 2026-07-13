@@ -8,8 +8,8 @@ import { blogPosts } from '@/data/blog';
 const { t } = useI18n();
 
 useSeo({
-  title: () => t('page.blog.title'),
-  description: () => t('page.blog.description'),
+  title: () => t('blog.title'),
+  description: () => t('blog.description'),
 });
 
 const publishedPosts = blogPosts.filter((p) => p.published);
@@ -18,10 +18,10 @@ const publishedPosts = blogPosts.filter((p) => p.published);
 <template>
   <div class="animate-fade-in mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
     <h1 class="mb-2 text-3xl font-bold text-foreground">
-      {{ t('page.blog.title') }}
+      {{ t('blog.title') }}
     </h1>
     <p class="mb-8 text-muted">
-      {{ t('page.blog.description') }}
+      {{ t('blog.description') }}
     </p>
 
     <div v-if="publishedPosts.length" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -42,11 +42,11 @@ const publishedPosts = blogPosts.filter((p) => p.published);
 
         <div class="flex items-center justify-between text-xs text-muted">
           <span>{{ post.date }}</span>
-          <span>{{ t('page.blog.readingTime', { n: post.readingTime }) }}</span>
+          <span>{{ t('blog.readingTime', { n: post.readingTime }) }}</span>
         </div>
       </NCard>
     </div>
 
-    <NEmpty v-else :description="t('page.blog.empty')" />
+    <NEmpty v-else :description="t('blog.empty')" />
   </div>
 </template>

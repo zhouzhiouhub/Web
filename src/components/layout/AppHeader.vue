@@ -3,7 +3,7 @@ import { computed, ref } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { NButton } from 'naive-ui';
-import { navigation } from '@/data/navigation';
+import { navItems } from '@/data/navigation';
 import ThemeToggle from '@/components/common/ThemeToggle.vue';
 import LocaleSwitcher from '@/components/common/LocaleSwitcher.vue';
 
@@ -36,7 +36,7 @@ function closeMobileMenu() {
       <!-- Desktop Nav -->
       <nav class="hidden items-center gap-1 md:flex">
         <RouterLink
-          v-for="item in navigation"
+          v-for="item in navItems"
           :key="item.to"
           :to="item.to"
           class="rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface-raised hover:text-foreground"
@@ -82,7 +82,7 @@ function closeMobileMenu() {
         class="border-t border-border bg-surface px-4 py-3 md:hidden"
       >
         <RouterLink
-          v-for="item in navigation"
+          v-for="item in navItems"
           :key="item.to"
           :to="item.to"
           class="block rounded-md px-3 py-2.5 text-sm font-medium text-muted transition-colors hover:bg-surface-raised hover:text-foreground"

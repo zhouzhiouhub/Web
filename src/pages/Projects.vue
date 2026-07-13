@@ -10,8 +10,8 @@ import ProjectCard from '@/components/business/ProjectCard.vue';
 const { t } = useI18n();
 
 useSeo({
-  title: () => t('page.projects.title'),
-  description: () => t('page.projects.description'),
+  title: () => t('projects.title'),
+  description: () => t('projects.description'),
 });
 
 const activeCategory = ref<ProjectCategory | 'all'>('all');
@@ -29,10 +29,10 @@ const filteredProjects = computed(() => {
 <template>
   <div class="animate-fade-in mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
     <h1 class="mb-2 text-3xl font-bold text-foreground">
-      {{ t('page.projects.title') }}
+      {{ t('projects.title') }}
     </h1>
     <p class="mb-8 text-muted">
-      {{ t('page.projects.description') }}
+      {{ t('projects.description') }}
     </p>
 
     <!-- Category Tabs -->
@@ -46,7 +46,7 @@ const filteredProjects = computed(() => {
           : 'bg-surface-raised text-muted hover:text-foreground'"
         @click="activeCategory = cat"
       >
-        {{ cat === 'all' ? t('page.projects.all') : t(`project.category.${cat}`) }}
+        {{ cat === 'all' ? t('projects.all') : t(`project.category.${cat}`) }}
       </button>
     </div>
 
@@ -58,6 +58,6 @@ const filteredProjects = computed(() => {
         :project="project"
       />
     </div>
-    <NEmpty v-else :description="t('page.projects.empty')" />
+    <NEmpty v-else :description="t('projects.empty')" />
   </div>
 </template>

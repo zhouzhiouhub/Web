@@ -12,8 +12,8 @@ import SkillBadge from '@/components/business/SkillBadge.vue';
 const { t } = useI18n();
 
 useSeo({
-  title: () => t('page.resume.title'),
-  description: () => t('page.resume.description'),
+  title: () => t('resume.title'),
+  description: () => t('resume.description'),
 });
 
 const skillCategories: SkillCategory[] = ['frontend', 'backend', 'devops', 'design', 'language'];
@@ -29,21 +29,21 @@ const skillsByCategory = computed(() => skillCategories.map((cat) => ({
     <div class="mb-8 flex items-center justify-between">
       <div>
         <h1 class="text-3xl font-bold text-foreground">
-          {{ t('page.resume.title') }}
+          {{ t('resume.title') }}
         </h1>
         <p class="mt-2 text-muted">
-          {{ t('page.resume.description') }}
+          {{ t('resume.description') }}
         </p>
       </div>
       <NButton type="primary" round>
-        {{ t('page.resume.download') }}
+        {{ t('resume.download') }}
       </NButton>
     </div>
 
     <!-- Experience -->
     <section class="mb-16">
       <h2 class="mb-6 text-xl font-bold text-foreground">
-        {{ t('page.resume.experience') }}
+        {{ t('resume.experience') }}
       </h2>
       <div>
         <ExperienceTimeline
@@ -57,7 +57,7 @@ const skillsByCategory = computed(() => skillCategories.map((cat) => ({
     <!-- Skills -->
     <section>
       <h2 class="mb-6 text-xl font-bold text-foreground">
-        {{ t('page.resume.skills') }}
+        {{ t('resume.skills') }}
       </h2>
       <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         <div v-for="group in skillsByCategory" :key="group.category">

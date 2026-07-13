@@ -7,8 +7,8 @@ import { socialLinks } from '@/data/social';
 const { t } = useI18n();
 
 useSeo({
-  title: () => t('page.contact.title'),
-  description: () => t('page.contact.description'),
+  title: () => t('contact.title'),
+  description: () => t('contact.description'),
 });
 
 const socialIcons: Record<string, string> = {
@@ -31,10 +31,10 @@ const socialIcons: Record<string, string> = {
 <template>
   <div class="animate-fade-in mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
     <h1 class="mb-2 text-3xl font-bold text-foreground">
-      {{ t('page.contact.title') }}
+      {{ t('contact.title') }}
     </h1>
     <p class="mb-8 text-muted">
-      {{ t('page.contact.description') }}
+      {{ t('contact.description') }}
     </p>
 
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

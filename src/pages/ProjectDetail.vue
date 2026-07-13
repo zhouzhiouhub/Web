@@ -12,7 +12,7 @@ const { t } = useI18n();
 const project = computed(() => projects.find((p) => p.id === route.params.id));
 
 useSeo({
-  title: () => project.value?.title ?? t('page.projects.title'),
+  title: () => project.value?.title ?? t('projects.title'),
   description: () => project.value?.description ?? '',
 });
 </script>
@@ -61,7 +61,7 @@ useSeo({
       </div>
     </template>
 
-    <NEmpty v-else :description="t('page.notfound.description')">
+    <NEmpty v-else :description="t('notfound.description')">
       <template #extra>
         <RouterLink to="/projects">
           <NButton type="primary">{{ t('common.back') }}</NButton>

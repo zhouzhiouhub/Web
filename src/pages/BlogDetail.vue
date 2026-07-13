@@ -12,7 +12,7 @@ const { t } = useI18n();
 const post = computed(() => blogPosts.find((p) => p.slug === route.params.slug && p.published));
 
 useSeo({
-  title: () => post.value?.title ?? t('page.blog.title'),
+  title: () => post.value?.title ?? t('blog.title'),
   description: () => post.value?.excerpt ?? '',
 });
 </script>
@@ -30,7 +30,7 @@ useSeo({
 
       <div class="mb-8 flex items-center gap-4 text-sm text-muted">
         <span>{{ post.date }}</span>
-        <span>{{ t('page.blog.readingTime', { n: post.readingTime }) }}</span>
+        <span>{{ t('blog.readingTime', { n: post.readingTime }) }}</span>
       </div>
 
       <div class="mb-8 flex flex-wrap gap-2">
@@ -48,12 +48,12 @@ useSeo({
       <article class="prose prose-sm max-w-none text-foreground/90">
         <p class="text-base leading-relaxed">{{ post.excerpt }}</p>
         <p class="mt-4 text-base leading-relaxed text-muted">
-          {{ t('page.blog.description') }}
+          {{ t('blog.description') }}
         </p>
       </article>
     </template>
 
-    <NEmpty v-else :description="t('page.notfound.description')">
+    <NEmpty v-else :description="t('notfound.description')">
       <template #extra>
         <RouterLink to="/blog">
           <NButton type="primary">{{ t('common.back') }}</NButton>

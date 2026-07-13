@@ -11,8 +11,8 @@ import ProjectCard from '@/components/business/ProjectCard.vue';
 const { t } = useI18n();
 
 useSeo({
-  title: () => t('page.home.title'),
-  description: () => t('page.home.intro'),
+  title: () => t('home.title'),
+  description: () => t('home.intro'),
 });
 
 const featuredProjects = computed(() => projects.filter((p) => p.featured).slice(0, 3));
@@ -33,23 +33,23 @@ const topSkills = computed(() => skills.filter(
       <div class="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
         <div class="mx-auto max-w-prose text-center">
           <p class="mb-4 text-sm font-medium tracking-wide text-primary">
-            {{ t('page.home.greeting') }}
+            {{ t('home.greeting') }}
           </p>
           <h1 class="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            {{ t('page.home.role') }}
+            {{ t('home.role') }}
           </h1>
           <p class="mb-10 text-base text-muted sm:text-lg">
-            {{ t('page.home.intro') }}
+            {{ t('home.intro') }}
           </p>
           <div class="flex flex-wrap items-center justify-center gap-4">
             <RouterLink to="/projects">
               <NButton type="primary" size="large" round>
-                {{ t('page.home.cta.projects') }}
+                {{ t('home.cta.projects') }}
               </NButton>
             </RouterLink>
             <RouterLink to="/contact">
               <NButton size="large" round secondary>
-                {{ t('page.home.cta.contact') }}
+                {{ t('home.cta.contact') }}
               </NButton>
             </RouterLink>
           </div>
@@ -61,7 +61,7 @@ const topSkills = computed(() => skills.filter(
     <section class="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
       <div class="mb-8 flex items-center justify-between">
         <h2 class="text-2xl font-bold text-foreground">
-          {{ t('page.projects.featured') }}
+          {{ t('projects.featured') }}
         </h2>
         <RouterLink to="/projects" class="text-sm font-medium text-primary hover:opacity-80">
           {{ t('common.viewAll') }} →
@@ -80,7 +80,7 @@ const topSkills = computed(() => skills.filter(
     <section class="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
       <div class="mb-8">
         <h2 class="text-2xl font-bold text-foreground">
-          {{ t('page.resume.skills') }}
+          {{ t('resume.skills') }}
         </h2>
       </div>
       <div class="flex flex-wrap gap-3">

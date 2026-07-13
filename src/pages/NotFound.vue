@@ -7,8 +7,8 @@ import { useSeo } from '@/hooks/useSeo';
 const { t } = useI18n();
 
 useSeo({
-  title: () => t('page.notfound.title'),
-  description: () => t('page.notfound.description'),
+  title: () => t('notfound.title'),
+  description: () => t('notfound.description'),
 });
 </script>
 
@@ -16,14 +16,14 @@ useSeo({
   <div class="animate-fade-in flex min-h-[60vh] flex-col items-center justify-center px-4 text-center">
     <h1 class="mb-4 text-6xl font-bold text-primary sm:text-8xl">404</h1>
     <h2 class="mb-2 text-xl font-semibold text-foreground">
-      {{ t('page.notfound.title') }}
+      {{ t('notfound.title') }}
     </h2>
     <p class="mb-8 text-muted">
-      {{ t('page.notfound.description') }}
+      {{ t('notfound.description') }}
     </p>
     <RouterLink to="/">
       <NButton type="primary" round size="large">
-        {{ t('page.notfound.back') }}
+        {{ t('notfound.back') }}
       </NButton>
     </RouterLink>
   </div>

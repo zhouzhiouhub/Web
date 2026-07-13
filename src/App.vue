@@ -26,7 +26,7 @@ const themeOverrides = computed(() => (themeStore.isDark ? darkThemeOverrides : 
 const naiveLocale = computed(() => (localeStore.locale === 'zh-CN' ? zhCN : undefined));
 const naiveDateLocale = computed(() => (localeStore.locale === 'zh-CN' ? dateZhCN : undefined));
 
-const pageTitle = computed(() => (t(String(route.meta.titleKey ?? 'page.home.title'))));
+const pageTitle = computed(() => (t(String(route.meta.titleKey ?? 'home.title'))));
 </script>
 
 <template>

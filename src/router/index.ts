@@ -7,7 +7,7 @@ const routes: RouteRecordRaw[] = [
     name: 'home',
     component: () => import('@/pages/Home.vue'),
     meta: {
-      titleKey: 'page.home.title',
+      titleKey: 'home.title',
     },
   },
   {
@@ -15,7 +15,7 @@ const routes: RouteRecordRaw[] = [
     name: 'about',
     component: () => import('@/pages/About.vue'),
     meta: {
-      titleKey: 'page.about.title',
+      titleKey: 'about.title',
     },
   },
   {
@@ -23,7 +23,7 @@ const routes: RouteRecordRaw[] = [
     name: 'projects',
     component: () => import('@/pages/Projects.vue'),
     meta: {
-      titleKey: 'page.projects.title',
+      titleKey: 'projects.title',
     },
   },
   {
@@ -31,7 +31,7 @@ const routes: RouteRecordRaw[] = [
     name: 'project-detail',
     component: () => import('@/pages/ProjectDetail.vue'),
     meta: {
-      titleKey: 'page.projects.title',
+      titleKey: 'projects.title',
     },
   },
   {
@@ -39,7 +39,7 @@ const routes: RouteRecordRaw[] = [
     name: 'blog',
     component: () => import('@/pages/Blog.vue'),
     meta: {
-      titleKey: 'page.blog.title',
+      titleKey: 'blog.title',
     },
   },
   {
@@ -47,7 +47,7 @@ const routes: RouteRecordRaw[] = [
     name: 'blog-detail',
     component: () => import('@/pages/BlogDetail.vue'),
     meta: {
-      titleKey: 'page.blog.title',
+      titleKey: 'blog.title',
     },
   },
   {
@@ -55,7 +55,7 @@ const routes: RouteRecordRaw[] = [
     name: 'playground',
     component: () => import('@/pages/Playground.vue'),
     meta: {
-      titleKey: 'page.playground.title',
+      titleKey: 'playground.title',
     },
   },
   {
@@ -63,7 +63,7 @@ const routes: RouteRecordRaw[] = [
     name: 'opensource',
     component: () => import('@/pages/Opensource.vue'),
     meta: {
-      titleKey: 'page.opensource.title',
+      titleKey: 'opensource.title',
     },
   },
   {
@@ -71,7 +71,7 @@ const routes: RouteRecordRaw[] = [
     name: 'resume',
     component: () => import('@/pages/Resume.vue'),
     meta: {
-      titleKey: 'page.resume.title',
+      titleKey: 'resume.title',
     },
   },
   {
@@ -79,7 +79,7 @@ const routes: RouteRecordRaw[] = [
     name: 'contact',
     component: () => import('@/pages/Contact.vue'),
     meta: {
-      titleKey: 'page.contact.title',
+      titleKey: 'contact.title',
     },
   },
   {
@@ -87,7 +87,7 @@ const routes: RouteRecordRaw[] = [
     name: 'not-found',
     component: () => import('@/pages/NotFound.vue'),
     meta: {
-      titleKey: 'page.notfound.title',
+      titleKey: 'notfound.title',
     },
   },
 ];
