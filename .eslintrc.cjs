@@ -1,0 +1,66 @@
+module.exports = {
+  root: true,
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+  },
+  extends: [
+    'airbnb-base',
+    'plugin:vue/vue3-recommended',
+    'plugin:tailwindcss/recommended',
+    './.eslintrc-auto-import.json',
+  ],
+  parser: 'vue-eslint-parser',
+  parserOptions: {
+    parser: '@typescript-eslint/parser',
+    ecmaVersion: 2021,
+    sourceType: 'module',
+    extraFileExtensions: ['.vue'],
+  },
+  plugins: ['vue', 'tailwindcss', '@typescript-eslint'],
+  rules: {
+    'import/extensions': ['error', 'always', {
+      js: 'always',
+      ts: 'never',
+      vue: 'always',
+    }],
+    'import/no-extraneous-dependencies': [0, { packageDir: './' }],
+    'import/no-unresolved': 'off',
+    'max-len': ['error', {
+      code: 120,
+      ignorePattern: 'class="([\\s\\S]*?)"|d="([\\s\\S]*?)"',
+      ignoreUrls: true,
+    }],
+    'vue/multi-word-component-names': 'off',
+    'vue/max-attributes-per-line': 'off',
+    'vue/singleline-html-element-content-newline': 'off',
+    'vue/html-self-closing': 'off',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'no-undef': 'off',
+    'no-console': ['warn', { allow: ['warn', 'error'] }],
+    'semi': ['error', 'always'],
+    'comma-dangle': ['error', 'always-multiline'],
+    'no-confusing-arrow': 'off',
+    'import/prefer-default-export': 'off',
+    'operator-linebreak': 'off',
+    'object-curly-newline': 'off',
+    'no-use-before-define': 'off',
+    'no-nested-ternary': 'off',
+    'implicit-arrow-linebreak': 'off',
+    'function-paren-newline': ['error', 'consistent'],
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue'],
+        moduleDirectory: ['node_modules', 'src/'],
+      },
+      alias: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue'],
+        map: [['@', './src']],
+      },
+    },
+  },
+};
