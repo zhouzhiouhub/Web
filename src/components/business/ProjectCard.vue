@@ -19,9 +19,9 @@ const linkUrl = computed(() => props.project.repo || props.project.url || null);
     :href="linkUrl ?? undefined"
     :target="linkUrl ? '_blank' : undefined"
     :rel="linkUrl ? 'noopener noreferrer' : undefined"
-    class="block cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+    class="block h-full min-h-[300px] cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
   >
-    <NCard :bordered="true">
+    <NCard :bordered="true" class="h-full">
       <template #header>
         <div class="flex items-center justify-between">
           <h3 class="text-lg font-semibold text-foreground group-hover:text-primary">
@@ -37,21 +37,23 @@ const linkUrl = computed(() => props.project.repo || props.project.url || null);
         </span>
       </template>
 
-      <p class="mb-4 line-clamp-2 text-sm text-muted">
-        {{ project.description }}
-      </p>
+      <div class="flex h-full flex-col">
+        <p class="mb-4 min-h-[2.5rem] line-clamp-2 text-sm text-muted">
+          {{ project.description }}
+        </p>
 
-      <div class="flex flex-wrap gap-1.5">
-        <NTag
-          v-for="tag in project.tags"
-          :key="tag"
-          size="small"
-          :bordered="false"
-          type="primary"
-          round
-        >
-          {{ tag }}
-        </NTag>
+        <div class="mt-auto flex flex-wrap gap-1.5">
+          <NTag
+            v-for="tag in project.tags"
+            :key="tag"
+            size="small"
+            :bordered="false"
+            type="primary"
+            round
+          >
+            {{ tag }}
+          </NTag>
+        </div>
       </div>
 
       <template v-if="project.repo" #action>
@@ -62,3 +64,16 @@ const linkUrl = computed(() => props.project.repo || props.project.url || null);
     </NCard>
   </component>
 </template>
+
+<style scoped>
+:deep(.n-card) {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+:deep(.n-card__content) {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+</style>
