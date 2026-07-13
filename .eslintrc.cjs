@@ -51,6 +51,7 @@ module.exports = {
     'no-use-before-define': 'off',
     'no-nested-ternary': 'off',
     'implicit-arrow-linebreak': 'off',
+    'linebreak-style': 'off',
     'function-paren-newline': ['error', 'consistent'],
   },
   settings: {

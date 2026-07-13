@@ -49,7 +49,7 @@ export const projects: Project[] = [
     description: '微信小程序个人简历应用，支持可视化编辑、分享海报、打印版简历与留言反馈。',
     tags: ['微信小程序', 'JavaScript', 'WXML', 'WXSS'],
     category: 'mobile',
-    featured: false,
+    featured: true,
     year: 2025,
     repo: 'https://github.com/zhouzhiouhub/wechat-resume-app',
     features: [
@@ -70,7 +70,7 @@ export const projects: Project[] = [
     description: 'Three.js 3D 轨道冲刺小游戏，含程序化轨道生成、分块渲染与程序化音乐。',
     tags: ['Three.js', 'WebGL', 'Web Audio', 'JavaScript'],
     category: 'web',
-    featured: false,
+    featured: true,
     year: 2025,
     repo: 'https://github.com/zhouzhiouhub/Sphere',
     features: [
@@ -84,6 +84,16 @@ export const projects: Project[] = [
       '缓存材质和几何体降低内存压力',
       '轨道连通性可视化/命令行检查脚本',
     ],
+  },
+  {
+    id: 'treasure',
+    title: 'Treasure',
+    description: '基于 Python 的桌面端工具应用，提供实用的数据处理与自动化功能。',
+    tags: ['Python', 'Desktop'],
+    category: 'tool',
+    featured: true,
+    year: 2025,
+    repo: 'https://github.com/zhouzhiouhub/Treasure',
   },
   {
     id: 'portfolio-website',

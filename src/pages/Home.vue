@@ -15,7 +15,7 @@ useSeo({
   description: () => t('home.intro'),
 });
 
-const featuredProjects = computed(() => projects.filter((p) => p.featured).slice(0, 3));
+const featuredProjects = computed(() => projects.filter((p) => p.featured).slice(0, 6));
 const topSkills = computed(() => skills.slice(0, 8));
 </script>
 
