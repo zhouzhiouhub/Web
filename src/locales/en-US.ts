@@ -19,7 +19,7 @@ export default {
   /* ===== Home ===== */
   'home.title': 'Home',
   'home.greeting': 'Hello, welcome to my portfolio',
-  'home.name': 'Zhou Zhiou',
+  'home.name': 'Zhou Zhenyun',
   'home.role': 'Full Stack Developer / AI Application Engineer',
   'home.intro': 'Focused on Web full-stack development, AI application development, desktop app development, '
     + 'and automation tools. Passionate about turning ideas into real projects quickly.',
@@ -41,12 +41,15 @@ export default {
   /* ===== About ===== */
   'about.title': 'About Me',
   'about.description': 'Technical background and growth path',
-  'about.intro': "Hi, I'm Zhou Zhiou.",
-  'about.intro1': 'A software development engineer focused on Web applications, AI applications, '
-    + 'and cross-platform software development.',
-  'about.intro2': 'Experienced in both frontend and backend, having worked on enterprise websites, '
-    + 'business systems, intelligent reply systems, and desktop application development.',
-  'about.intro3': 'I enjoy exploring new technologies and turning ideas into practical projects quickly.',
+  'about.intro': "Hi, I'm Zhou Zhenyun.",
+  'about.intro1': 'A software development engineer with 2 years of experience in development, '
+    + 'delivery maintenance, and technical support, covering Web frontend/full-stack, '
+    + 'desktop build & release, Python automation, and cloud deployment.',
+  'about.intro2': 'Experienced in desktop software packaging, website maintenance, '
+    + 'subscription payment systems, automation tooling, and online troubleshooting. '
+    + 'Also worked on Android, Flutter, and WeChat Mini Program projects.',
+  'about.intro3': 'Result-oriented, valuing deliverability, maintainability, reproducibility, '
+    + 'and process standardization. Enjoy exploring new technologies and turning ideas into projects.',
   'about.directions': 'What I Do',
   'about.direction.dev.title': 'Software Development',
   'about.direction.dev.desc': 'Building stable, high-performance software systems.',
@@ -67,6 +70,7 @@ export default {
   'projects.all': 'All',
   'projects.filter.all': 'All',
   'projects.filter.web': 'Web Apps',
+  'projects.filter.mobile': 'Mobile Apps',
   'projects.filter.ai': 'AI',
   'projects.filter.desktop': 'Desktop Apps',
   'projects.filter.tool': 'Tools',
@@ -78,6 +82,7 @@ export default {
   'project.live': 'Live Demo',
   'project.source': 'Source Code',
   'project.category.web': 'Web Apps',
+  'project.category.mobile': 'Mobile Apps',
   'project.category.desktop': 'Desktop Apps',
   'project.category.tool': 'Tools',
   'project.category.ai': 'AI',
@@ -121,12 +126,20 @@ export default {
   'resume.info': 'Basic Info',
   'resume.name': 'Name',
   'resume.role': 'Role',
+  'resume.roleValue': 'Full Stack / Toolchain & Delivery Engineer',
   'resume.email': 'Email',
+  'resume.phone': 'Phone',
+  'resume.location': 'Location',
+  'resume.locationValue': 'Shenzhen',
   'resume.github': 'GitHub',
   'resume.website': 'Website',
   'resume.experience': 'Experience',
+  'resume.education': 'Education',
+  'resume.certificates': 'Certificates',
+  'resume.cert.1': 'Computer Technology & Software Professional Qualification Certificate',
+  'resume.cert.2': 'Driver License C1',
   'resume.skills': 'Skills',
-  'resume.download': 'Download PDF',
+  'resume.download': 'Online Resume',
 
   /* ===== Contact ===== */
   'contact.title': 'Contact',
@@ -140,6 +153,7 @@ export default {
   /* ===== Skills ===== */
   'skill.frontend': 'Frontend',
   'skill.backend': 'Backend',
+  'skill.mobile': 'Mobile',
   'skill.ai': 'AI',
   'skill.devops': 'DevOps',
   'skill.desktop': 'Desktop',
@@ -151,6 +165,7 @@ export default {
 
   /* ===== Categories ===== */
   'category.web': 'Web Apps',
+  'category.mobile': 'Mobile Apps',
   'category.desktop': 'Desktop Apps',
   'category.tool': 'Tools',
   'category.ai': 'AI',

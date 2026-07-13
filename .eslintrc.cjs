@@ -28,9 +28,11 @@ module.exports = {
     'import/no-extraneous-dependencies': [0, { packageDir: './' }],
     'import/no-unresolved': 'off',
     'max-len': ['error', {
-      code: 120,
-      ignorePattern: 'class="([\\s\\S]*?)"|d="([\\s\\S]*?)"',
+      code: 160,
+      ignorePattern: 'class="([\\s\\S]*?)"|d="([\\s\\S]*?)"|src="([\\s\\S]*?)"|href="([\\s\\S]*?)"|aria-label="([\\s\\S]*?)"|rel="([\\s\\S]*?)"',
       ignoreUrls: true,
+      ignoreStrings: true,
+      ignoreTemplateLiterals: true,
     }],
     'vue/multi-word-component-names': 'off',
     'vue/max-attributes-per-line': 'off',

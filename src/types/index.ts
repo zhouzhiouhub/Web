@@ -52,6 +52,7 @@ export interface Project {
 
 export type ProjectCategory =
   | 'web'
+  | 'mobile'
   | 'desktop'
   | 'tool'
   | 'ai'
@@ -70,10 +71,11 @@ export interface Skill {
 export type SkillCategory =
   | 'frontend'
   | 'backend'
-  | 'ai'
+  | 'mobile'
+  | 'desktop'
   | 'devops'
   | 'language'
-  | 'desktop';
+  | 'ai';
 
 export type SkillLevel = 'beginner' | 'intermediate' | 'advanced' | 'expert';
 
@@ -110,6 +112,20 @@ export interface Experience {
   highlights?: string[];
   highlightsKey?: string[];
   tech?: string[];
+}
+
+/* ===== Education ===== */
+
+export interface Education {
+  id: string;
+  school: string;
+  schoolKey?: string;
+  degree: string;
+  degreeKey?: string;
+  major: string;
+  majorKey?: string;
+  start: string;
+  end: string;
 }
 
 /* ===== Blog ===== */

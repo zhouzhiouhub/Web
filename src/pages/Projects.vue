@@ -17,7 +17,7 @@ useSeo({
 const activeCategory = ref<ProjectCategory | 'all'>('all');
 
 const categories: (ProjectCategory | 'all')[] = [
-  'all', 'web', 'mobile', 'tool', 'ai', 'open-source',
+  'all', 'web', 'mobile', 'desktop', 'tool', 'ai', 'open-source',
 ];
 
 const filteredProjects = computed(() => {

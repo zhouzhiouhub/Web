@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zhouzhiouhub.github.io/sitemap.xml

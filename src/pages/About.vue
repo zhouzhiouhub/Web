@@ -21,17 +21,65 @@ useSeo({
 
     <div class="space-y-6 text-base leading-relaxed text-foreground/90">
       <p>
-        我是一名专注于前端工程领域的开发者，拥有多年构建现代化 Web 应用的经验。
-        擅长使用 Vue 3、TypeScript 和 Vite 构建高性能、可维护的用户界面。
+        {{ t('about.intro') }}
+        {{ t('about.intro1') }}
       </p>
       <p>
-        我对技术架构有深入理解，从组件设计、状态管理到构建优化，
-        都追求工程化最佳实践。同时关注设计系统、可访问性和用户体验。
+        {{ t('about.intro2') }}
       </p>
       <p>
-        除了日常开发，我积极参与开源社区，分享技术文章，
-        并持续探索 AI、可视化等前沿方向。
+        {{ t('about.intro3') }}
       </p>
+    </div>
+
+    <!-- Directions -->
+    <div class="mt-12">
+      <h2 class="mb-6 text-xl font-bold text-foreground">
+        {{ t('about.directions') }}
+      </h2>
+      <div class="grid gap-6 sm:grid-cols-3">
+        <div class="rounded-lg border border-border bg-surface p-5">
+          <h3 class="mb-2 font-semibold text-foreground">
+            {{ t('about.direction.dev.title') }}
+          </h3>
+          <p class="text-sm text-muted">
+            {{ t('about.direction.dev.desc') }}
+          </p>
+        </div>
+        <div class="rounded-lg border border-border bg-surface p-5">
+          <h3 class="mb-2 font-semibold text-foreground">
+            {{ t('about.direction.ai.title') }}
+          </h3>
+          <p class="text-sm text-muted">
+            {{ t('about.direction.ai.desc') }}
+          </p>
+        </div>
+        <div class="rounded-lg border border-border bg-surface p-5">
+          <h3 class="mb-2 font-semibold text-foreground">
+            {{ t('about.direction.opensource.title') }}
+          </h3>
+          <p class="text-sm text-muted">
+            {{ t('about.direction.opensource.desc') }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Workflow -->
+    <div class="mt-12">
+      <h2 class="mb-6 text-xl font-bold text-foreground">
+        {{ t('about.workflow') }}
+      </h2>
+      <ul class="space-y-3">
+        <li
+          v-for="i in 4"
+          :key="i"
+          class="flex items-center gap-3 text-foreground/90"
+        >
+          <span class="text-primary">•</span>
+          {{ t(`about.workflow.${i}`) }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>
