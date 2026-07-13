@@ -1,20 +1,14 @@
 import { defineStore } from 'pinia';
-import { usePreferredDark, useStorage } from '@vueuse/core';
+import { useStorage } from '@vueuse/core';
 import { computed, watch } from 'vue';
 import type { ThemeMode } from '@/types';
 
 const STORAGE_KEY = 'theme-mode';
 
 export const useThemeStore = defineStore('theme', () => {
-  const storedMode = useStorage<ThemeMode>(STORAGE_KEY, 'system');
-  const systemDark = usePreferredDark();
+  const storedMode = useStorage<ThemeMode>(STORAGE_KEY, 'light');
 
-  const isDark = computed(() => {
-    if (storedMode.value === 'system') {
-      return systemDark.value;
-    }
-    return storedMode.value === 'dark';
-  });
+  const isDark = computed(() => storedMode.value === 'dark');
 
   const resolvedMode = computed<'light' | 'dark'>(() => (isDark.value ? 'dark' : 'light'));
 
