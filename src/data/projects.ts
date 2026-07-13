@@ -86,16 +86,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 'treasure',
-    title: 'Treasure',
-    description: '基于 Python 的桌面端工具应用，提供实用的数据处理与自动化功能。',
-    tags: ['Python', 'Desktop'],
-    category: 'tool',
-    featured: true,
-    year: 2025,
-    repo: 'https://github.com/zhouzhiouhub/Treasure',
-  },
-  {
     id: 'portfolio-website',
     title: 'Developer Portfolio',
     description: '个人开发者门户网站，展示技术能力、项目经验与博客文章。',
