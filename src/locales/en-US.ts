@@ -4,7 +4,7 @@ export default {
   'nav.about': 'About',
   'nav.projects': 'Projects',
   'nav.blog': 'Blog',
-  'nav.lab': 'Lab',
+  'nav.playground': 'Playground',
   'nav.opensource': 'Open Source',
   'nav.resume': 'Resume',
   'nav.contact': 'Contact',
@@ -18,6 +18,7 @@ export default {
 
   /* ===== Home ===== */
   'home.title': 'Home',
+  'home.greeting': 'Hello, welcome to my portfolio',
   'home.name': 'Zhou Zhiou',
   'home.role': 'Full Stack Developer / AI Application Engineer',
   'home.intro': 'Focused on Web full-stack development, AI application development, desktop app development, '
@@ -63,6 +64,7 @@ export default {
   'projects.title': 'Projects',
   'projects.description': 'Projects I built and open source contributions',
   'projects.featured': 'Featured Projects',
+  'projects.all': 'All',
   'projects.filter.all': 'All',
   'projects.filter.web': 'Web Apps',
   'projects.filter.ai': 'AI',
@@ -75,6 +77,11 @@ export default {
   'project.tech': 'Tech Stack',
   'project.live': 'Live Demo',
   'project.source': 'Source Code',
+  'project.category.web': 'Web Apps',
+  'project.category.desktop': 'Desktop Apps',
+  'project.category.tool': 'Tools',
+  'project.category.ai': 'AI',
+  'project.category.open-source': 'Open Source',
 
   /* ===== Blog ===== */
   'blog.title': 'Blog',
@@ -87,9 +94,9 @@ export default {
   'blog.readMore': 'Read More',
   'blog.empty': 'No articles yet',
 
-  /* ===== Lab ===== */
-  'lab.title': 'Lab',
-  'lab.description': 'Experiments, prototypes and demos',
+  /* ===== Playground ===== */
+  'playground.title': 'Playground',
+  'playground.description': 'Experiments, prototypes and demos',
   'lab.category.ai': 'AI Experiments',
   'lab.category.hardware': 'Hardware Experiments',
   'lab.category.frontend': 'Frontend Experiments',
@@ -153,6 +160,8 @@ export default {
   'common.viewAll': 'View All',
   'common.back': 'Back',
   'common.all': 'All',
+  'common.live': 'Live Demo',
+  'common.source': 'Source Code',
   'footer.rights': 'All rights reserved',
 
   /* ===== 404 ===== */

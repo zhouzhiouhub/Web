@@ -4,7 +4,7 @@ export default {
   'nav.about': '关于',
   'nav.projects': '项目',
   'nav.blog': '博客',
-  'nav.lab': '实验室',
+  'nav.playground': '实验室',
   'nav.opensource': '开源',
   'nav.resume': '简历',
   'nav.contact': '联系',
@@ -18,6 +18,7 @@ export default {
 
   /* ===== Home ===== */
   'home.title': '首页',
+  'home.greeting': '你好，欢迎来到我的个人主页',
   'home.name': '周志欧',
   'home.role': '全栈开发者 / AI 应用工程师',
   'home.intro': '专注于 Web 全栈开发、AI 应用开发、桌面应用开发和自动化工具开发。喜欢将想法快速转化为实际项目。',
@@ -60,6 +61,7 @@ export default {
   'projects.title': '项目',
   'projects.description': '我构建的项目与开源贡献',
   'projects.featured': '精选项目',
+  'projects.all': '全部',
   'projects.filter.all': '全部',
   'projects.filter.web': 'Web 应用',
   'projects.filter.ai': 'AI',
@@ -72,6 +74,11 @@ export default {
   'project.tech': '技术栈',
   'project.live': '在线体验',
   'project.source': '源码',
+  'project.category.web': 'Web 应用',
+  'project.category.desktop': '桌面应用',
+  'project.category.tool': '工具',
+  'project.category.ai': 'AI',
+  'project.category.open-source': '开源',
 
   /* ===== Blog ===== */
   'blog.title': '博客',
@@ -84,9 +91,9 @@ export default {
   'blog.readMore': '阅读全文',
   'blog.empty': '暂无文章',
 
-  /* ===== Lab ===== */
-  'lab.title': '实验室',
-  'lab.description': '实验、原型与 Demo',
+  /* ===== Playground ===== */
+  'playground.title': '实验室',
+  'playground.description': '实验、原型与 Demo',
   'lab.category.ai': 'AI 实验',
   'lab.category.hardware': '硬件实验',
   'lab.category.frontend': '前端实验',
@@ -150,6 +157,8 @@ export default {
   'common.viewAll': '查看全部',
   'common.back': '返回',
   'common.all': '全部',
+  'common.live': '在线体验',
+  'common.source': '源码',
   'footer.rights': '版权所有',
 
   /* ===== 404 ===== */

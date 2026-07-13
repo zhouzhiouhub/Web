@@ -1,12 +1,12 @@
 import type { NavItem } from '@/types';
 
 export const navItems: NavItem[] = [
-  { key: 'home', to: '/', icon: 'home' },
-  { key: 'about', to: '/about', icon: 'user' },
-  { key: 'projects', to: '/projects', icon: 'code' },
-  { key: 'blog', to: '/blog', icon: 'article' },
-  { key: 'lab', to: '/lab', icon: 'experiment' },
-  { key: 'opensource', to: '/opensource', icon: 'github' },
-  { key: 'resume', to: '/resume', icon: 'file' },
-  { key: 'contact', to: '/contact', icon: 'mail' },
+  { key: 'nav.home', to: '/', icon: 'home' },
+  { key: 'nav.about', to: '/about', icon: 'user' },
+  { key: 'nav.projects', to: '/projects', icon: 'code' },
+  { key: 'nav.blog', to: '/blog', icon: 'article' },
+  { key: 'nav.playground', to: '/playground', icon: 'experiment' },
+  { key: 'nav.opensource', to: '/opensource', icon: 'github' },
+  { key: 'nav.resume', to: '/resume', icon: 'file' },
+  { key: 'nav.contact', to: '/contact', icon: 'mail' },
 ];
