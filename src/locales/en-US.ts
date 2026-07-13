@@ -41,8 +41,8 @@ export default {
   /* ===== About ===== */
   'about.title': 'About Me',
   'about.description': 'Technical background and growth path',
-  'about.intro': "Hi, I'm Zhou Zhenyun.",
-  'about.intro1': 'A software development engineer with 2 years of experience in development, '
+  'about.intro': "Hi",
+  'about.intro1': 'I am a software development engineer with 2 years of experience in development, '
     + 'delivery maintenance, and technical support, covering Web frontend/full-stack, '
     + 'desktop build & release, Python automation, and cloud deployment.',
   'about.intro2': 'Experienced in desktop software packaging, website maintenance, '
