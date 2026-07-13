@@ -26,7 +26,12 @@ const socialIcons: Record<string, string> = {
 
 <template>
   <footer class="border-t border-border bg-surface">
-    <div class="mx-auto flex max-w-content flex-col items-center gap-4 px-4 py-8 sm:px-6 lg:px-8">
+    <div class="mx-auto flex max-w-content flex-col items-center justify-between gap-4 px-4 py-8 sm:flex-row sm:px-6 lg:px-8">
+      <!-- Copyright -->
+      <p class="text-sm text-muted">
+        &copy; {{ year }} Portfolio · {{ t('footer.rights') }}
+      </p>
+
       <!-- Social Links -->
       <div class="flex items-center gap-4">
         <a
@@ -51,11 +56,6 @@ const socialIcons: Record<string, string> = {
           </svg>
         </a>
       </div>
-
-      <!-- Copyright -->
-      <p class="text-sm text-muted">
-        &copy; {{ year }} Portfolio · {{ t('footer.rights') }}
-      </p>
     </div>
   </footer>
 </template>
