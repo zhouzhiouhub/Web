@@ -22,7 +22,8 @@ export const useLocaleStore = defineStore('locale', () => {
   watch(
     locale,
     (val) => {
-      (i18n.global.locale as unknown as { value: string }).value = val;
+      // vue-i18n v9 Composition API 模式下 global.locale 是 WritableComputedRef
+      i18n.global.locale.value = val;
       document.documentElement.setAttribute('lang', val);
     },
     { immediate: true },
