@@ -15,7 +15,7 @@ const options = computed(() => locales.map((l) => ({
 })));
 
 // 按钮上显示的简短语言标识
-const buttonLabel = computed(() => (locale === 'zh-CN' ? '中' : 'EN'));
+const buttonLabel = computed(() => (locale.value === 'zh-CN' ? '中' : 'EN'));
 
 function handleSelect(key: string) {
   setLocale(key as LocaleCode);

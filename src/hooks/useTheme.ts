@@ -1,11 +1,13 @@
+import { storeToRefs } from 'pinia';
 import { useThemeStore } from '@/stores/theme';
 import type { ThemeMode } from '@/types';
 
 export function useTheme() {
   const store = useThemeStore();
+  const { mode, isDark, resolvedMode } = storeToRefs(store);
 
-  function setMode(mode: ThemeMode) {
-    store.setMode(mode);
+  function setMode(m: ThemeMode) {
+    store.setMode(m);
   }
 
   function toggleTheme() {
@@ -13,9 +15,9 @@ export function useTheme() {
   }
 
   return {
-    mode: store.mode,
-    isDark: store.isDark,
-    resolvedMode: store.resolvedMode,
+    mode,
+    isDark,
+    resolvedMode,
     setMode,
     toggleTheme,
   };
