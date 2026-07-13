@@ -41,7 +41,7 @@ export default {
   /* ===== About ===== */
   'about.title': 'About Me',
   'about.description': 'Technical background and growth path',
-  'about.intro': "Hi",
+  'about.intro': 'Hi,',
   'about.intro1': 'I am a software development engineer with 2 years of experience in development, '
     + 'delivery maintenance, and technical support, covering Web frontend/full-stack, '
     + 'desktop build & release, Python automation, and cloud deployment.',

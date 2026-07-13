@@ -7,7 +7,6 @@ import { experiences } from '@/data/experience';
 import { skills } from '@/data/skills';
 import { educations } from '@/data/education';
 import { socialLinks } from '@/data/social';
-import type { SkillCategory } from '@/types';
 import { formatDateRange } from '@/utils';
 import ExperienceTimeline from '@/components/business/ExperienceTimeline.vue';
 import SkillBadge from '@/components/business/SkillBadge.vue';
@@ -18,15 +17,6 @@ useSeo({
   title: () => t('resume.title'),
   description: () => t('resume.description'),
 });
-
-const skillCategories: SkillCategory[] = [
-  'mobile', 'frontend', 'desktop', 'backend', 'devops', 'language',
-];
-
-const skillsByCategory = computed(() => skillCategories.map((cat) => ({
-  category: cat,
-  items: skills.filter((s) => s.category === cat),
-})));
 
 const certificates = computed(() => [
   t('resume.cert.1'),
@@ -168,19 +158,12 @@ const personalInfo = computed(() => [
       <h2 class="mb-6 text-xl font-bold text-foreground">
         {{ t('resume.skills') }}
       </h2>
-      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        <div v-for="group in skillsByCategory" :key="group.category">
-          <h3 class="mb-3 text-sm font-semibold text-muted">
-            {{ t(`skill.${group.category}`) }}
-          </h3>
-          <div class="space-y-2">
-            <SkillBadge
-              v-for="skill in group.items"
-              :key="skill.id"
-              :skill="skill"
-            />
-          </div>
-        </div>
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <SkillBadge
+          v-for="skill in skills"
+          :key="skill.id"
+          :skill="skill"
+        />
       </div>
     </section>
   </div>
