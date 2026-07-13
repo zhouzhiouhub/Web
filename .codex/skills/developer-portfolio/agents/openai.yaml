@@ -1,0 +1,4 @@
+interface:
+  display_name: "开发者官网"
+  short_description: "构建 Vue 3 科技风个人开发者官网"
+  default_prompt: "使用 $developer-portfolio 构建或扩展我的 Vue 3 个人开发者官网。"
