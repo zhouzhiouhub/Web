@@ -13,8 +13,8 @@ export default ({ mode }: { mode: string }) => {
     base: process.env.VITE_BASE_PUBLIC_PATH,
     plugins: [
       vue(),
-      // Only run ESLint and Stylelint in dev mode for faster builds
-      isDev && eslint({ cache: false }),
+      // Only run ESLint in dev mode for faster builds
+      ...(isDev ? [eslint({ cache: false })] : []),
       svgLoader(),
       autoImport({
         imports: [
@@ -32,7 +32,7 @@ export default ({ mode }: { mode: string }) => {
           './src/hooks',
         ],
       }),
-    ].filter(Boolean),
+    ],
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src'),
