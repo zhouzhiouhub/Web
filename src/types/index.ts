@@ -64,8 +64,7 @@ export interface Skill {
   id: string;
   name: string;
   category: SkillCategory;
-  level: SkillLevel;
-  icon?: string;
+  url?: string;
 }
 
 export type SkillCategory =
@@ -76,8 +75,6 @@ export type SkillCategory =
   | 'devops'
   | 'language'
   | 'ai';
-
-export type SkillLevel = 'beginner' | 'intermediate' | 'advanced' | 'expert';
 
 /* ===== Tech Stack Group (Homepage) ===== */
 

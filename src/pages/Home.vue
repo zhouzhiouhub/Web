@@ -16,9 +16,7 @@ useSeo({
 });
 
 const featuredProjects = computed(() => projects.filter((p) => p.featured).slice(0, 3));
-const topSkills = computed(() => skills.filter(
-  (s) => s.level === 'expert' || s.level === 'advanced',
-).slice(0, 8));
+const topSkills = computed(() => skills.slice(0, 8));
 </script>
 
 <template>

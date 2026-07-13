@@ -152,10 +152,6 @@ export default {
   'skill.devops': '运维',
   'skill.desktop': '桌面开发',
   'skill.language': '语言',
-  'skill.level.beginner': '入门',
-  'skill.level.intermediate': '熟悉',
-  'skill.level.advanced': '精通',
-  'skill.level.expert': '专家',
 
   /* ===== Categories ===== */
   'category.web': 'Web 应用',

@@ -158,10 +158,6 @@ export default {
   'skill.devops': 'DevOps',
   'skill.desktop': 'Desktop',
   'skill.language': 'Languages',
-  'skill.level.beginner': 'Beginner',
-  'skill.level.intermediate': 'Intermediate',
-  'skill.level.advanced': 'Advanced',
-  'skill.level.expert': 'Expert',
 
   /* ===== Categories ===== */
   'category.web': 'Web Apps',
