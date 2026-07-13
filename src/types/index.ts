@@ -117,6 +117,7 @@ export interface Education {
   id: string;
   school: string;
   schoolKey?: string;
+  url?: string;
   degree: string;
   degreeKey?: string;
   major: string;

@@ -4,6 +4,7 @@ export const educations: Education[] = [
   {
     id: 'gznu',
     school: '贵州师范学院',
+    url: 'https://www.gznc.edu.cn/',
     degree: '本科',
     major: '人工智能',
     start: '2020-09',

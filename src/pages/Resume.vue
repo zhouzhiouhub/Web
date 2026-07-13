@@ -122,7 +122,17 @@ const personalInfo = computed(() => [
           <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h3 class="text-lg font-semibold text-foreground">
-                {{ edu.school }}
+                <a
+                  v-if="edu.url"
+                  :href="edu.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-primary transition-colors"
+                >
+                  {{ edu.school }}
+                  <span class="ml-1 inline-block text-xs opacity-50">↗</span>
+                </a>
+                <template v-else>{{ edu.school }}</template>
               </h3>
               <p class="text-sm text-muted">
                 {{ edu.degree }} · {{ edu.major }}
