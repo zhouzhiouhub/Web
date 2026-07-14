@@ -11,16 +11,7 @@ useSeo({
   description: () => t('contact.description'),
 });
 
-const socialIcons: Record<string, string> = {
-  github: '/github.svg',
-  csdn: '/csdn.svg',
-  mail: '/email.svg',
-  phone: '/phone.svg',
-  globe: '/cv.svg',
-};
-
-const getSocialIcon = (icon: string) => socialIcons[icon] ?? socialIcons.mail;
-const isImageIcon = (icon: string) => icon.endsWith('.svg');
+const getIconStyle = (src?: string) => `--svg-icon-url: url("${src ?? '/email.svg'}")`;
 </script>
 
 <template>
@@ -44,25 +35,11 @@ const isImageIcon = (icon: string) => icon.endsWith('.svg');
           rel="noopener"
           class="flex flex-col items-center gap-4 py-4"
         >
-          <img
-            v-if="isImageIcon(getSocialIcon(social.icon))"
-            :src="getSocialIcon(social.icon)"
-            alt=""
+          <span
             aria-hidden="true"
-            class="size-10 object-contain"
-          >
-          <svg
-            v-else
-            class="size-10 text-primary"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path :d="getSocialIcon(social.icon)" />
-          </svg>
+            class="themed-svg-icon size-10 text-primary"
+            :style="getIconStyle(social.iconSrc)"
+          />
           <span class="text-sm font-medium text-foreground">
             {{ social.labelKey ? t(social.labelKey) : social.label }}
           </span>

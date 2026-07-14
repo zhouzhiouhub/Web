@@ -10,6 +10,8 @@
   --color-foreground: 17 24 39;
   --color-muted: 107 114 128;
   --color-border: 229 231 235;
+  --svg-icon-opacity: 0.82;
+  --svg-icon-hover-opacity: 1;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 5%);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
@@ -25,6 +27,8 @@ html.dark {
   --color-foreground: 243 244 246;
   --color-muted: 156 163 175;
   --color-border: 55 65 81;
+  --svg-icon-opacity: 0.92;
+  --svg-icon-hover-opacity: 1;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 30%);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 40%), 0 2px 4px -2px rgb(0 0 0 / 30%);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 50%), 0 4px 6px -4px rgb(0 0 0 / 40%);
@@ -75,6 +79,26 @@ body {
 :focus-visible {
   outline: 2px solid rgb(var(--color-primary));
   outline-offset: 2px;
+}
+
+/* ===== Themed SVG Icons ===== */
+
+.themed-svg-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  background-color: currentcolor;
+  opacity: var(--svg-icon-opacity);
+  transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+  mask: var(--svg-icon-url) center / contain no-repeat;
+}
+
+a:hover .themed-svg-icon,
+a:focus-visible .themed-svg-icon {
+  opacity: var(--svg-icon-hover-opacity);
+}
+
+a:hover .themed-svg-icon {
+  transform: translateY(-1px);
 }
 
 /* ===== Utility Animations ===== */
