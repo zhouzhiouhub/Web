@@ -130,6 +130,15 @@ export interface Education {
 
 /* ===== Blog ===== */
 
+export interface BlogContentBlock {
+  type: 'heading' | 'paragraph' | 'list' | 'quote' | 'code';
+  text?: string;
+  level?: 2 | 3;
+  items?: string[];
+  language?: string;
+  code?: string;
+}
+
 export interface BlogPost {
   id: string;
   slug: string;
@@ -142,6 +151,8 @@ export interface BlogPost {
   category: BlogCategory;
   readingTime: number;
   published: boolean;
+  sourceUrl?: string;
+  content: BlogContentBlock[];
 }
 
 export type BlogCategory =

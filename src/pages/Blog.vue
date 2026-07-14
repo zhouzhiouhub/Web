@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 import { RouterLink } from 'vue-router';
-import { NCard, NEmpty } from 'naive-ui';
+import { NCard, NEmpty, NTag } from 'naive-ui';
 import { useSeo } from '@/hooks/useSeo';
 import { blogPosts } from '@/data/blog';
+import type { BlogPost } from '@/types';
 
 const { t } = useI18n();
 
@@ -12,7 +13,10 @@ useSeo({
   description: () => t('blog.description'),
 });
 
-const publishedPosts = blogPosts.filter((p) => p.published);
+const publishedPosts = blogPosts.filter((post) => post.published);
+
+const getPostTitle = (post: BlogPost) => (post.titleKey ? t(post.titleKey) : post.title);
+const getPostExcerpt = (post: BlogPost) => (post.excerptKey ? t(post.excerptKey) : post.excerpt);
 </script>
 
 <template>
@@ -32,18 +36,33 @@ const publishedPosts = blogPosts.filter((p) => p.published);
       >
         <template #header>
           <RouterLink :to="`/blog/${post.slug}`" class="text-lg font-semibold text-foreground hover:text-primary">
-            {{ post.title }}
+            {{ getPostTitle(post) }}
           </RouterLink>
         </template>
 
-        <p class="mb-4 line-clamp-3 text-sm text-muted">
-          {{ post.excerpt }}
+        <div class="mb-4 flex flex-wrap gap-2">
+          <NTag
+            v-for="tag in post.tags"
+            :key="tag"
+            size="small"
+            :bordered="false"
+          >
+            {{ tag }}
+          </NTag>
+        </div>
+
+        <p class="mb-5 line-clamp-4 text-sm leading-6 text-muted">
+          {{ getPostExcerpt(post) }}
         </p>
 
-        <div class="flex items-center justify-between text-xs text-muted">
+        <div class="flex items-center justify-between gap-4 text-xs text-muted">
           <span>{{ post.date }}</span>
           <span>{{ t('blog.readingTime', { n: post.readingTime }) }}</span>
         </div>
+
+        <RouterLink :to="`/blog/${post.slug}`" class="mt-5 inline-block text-sm font-medium text-primary hover:text-primary">
+          {{ t('blog.readMore') }}
+        </RouterLink>
       </NCard>
     </div>
 

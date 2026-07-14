@@ -213,6 +213,7 @@ export default {
   'blog.category.engineering': '工程化',
   'blog.readingTime': '{n} 分钟阅读',
   'blog.readMore': '阅读全文',
+  'blog.source': '原文参考',
   'blog.empty': '暂无文章',
 
   /* ===== Playground ===== */

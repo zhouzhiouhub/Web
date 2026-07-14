@@ -213,6 +213,7 @@ export default {
   'blog.category.engineering': 'Engineering',
   'blog.readingTime': '{n} min read',
   'blog.readMore': 'Read More',
+  'blog.source': 'Original source',
   'blog.empty': 'No articles yet',
 
   /* ===== Playground ===== */
