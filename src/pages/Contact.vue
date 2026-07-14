@@ -11,7 +11,10 @@ useSeo({
   description: () => t('contact.description'),
 });
 
-const getIconStyle = (src?: string) => `--svg-icon-url: url("${src ?? '/email.svg'}")`;
+const getIconStyle = (src?: string, scale = 1) => [
+  `--svg-icon-url: url("${src ?? '/email.svg'}")`,
+  `--svg-icon-scale: ${scale}`,
+].join('; ');
 </script>
 
 <template>
@@ -38,7 +41,7 @@ const getIconStyle = (src?: string) => `--svg-icon-url: url("${src ?? '/email.sv
           <span
             aria-hidden="true"
             class="themed-svg-icon size-10 text-primary"
-            :style="getIconStyle(social.iconSrc)"
+            :style="getIconStyle(social.iconSrc, social.iconScale)"
           />
           <span class="text-sm font-medium text-foreground">
             {{ social.labelKey ? t(social.labelKey) : social.label }}

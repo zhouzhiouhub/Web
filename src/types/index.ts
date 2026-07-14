@@ -22,6 +22,7 @@ export interface SocialLink {
   labelKey?: string;
   icon: string;
   iconSrc?: string;
+  iconScale?: number;
   url: string;
 }
 

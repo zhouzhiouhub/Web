@@ -87,6 +87,8 @@ body {
   display: inline-block;
   flex-shrink: 0;
   background-color: currentcolor;
+  transform: scale(var(--svg-icon-scale, 1));
+  transform-origin: center;
   opacity: var(--svg-icon-opacity);
   transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
   mask: var(--svg-icon-url) center / contain no-repeat;
@@ -98,7 +100,7 @@ a:focus-visible .themed-svg-icon {
 }
 
 a:hover .themed-svg-icon {
-  transform: translateY(-1px);
+  transform: translateY(-1px) scale(var(--svg-icon-scale, 1));
 }
 
 /* ===== Utility Animations ===== */

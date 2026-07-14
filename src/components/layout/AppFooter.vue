@@ -6,7 +6,10 @@ import { socialLinks } from '@/data/social';
 const { t } = useI18n();
 
 const year = computed(() => new Date().getFullYear());
-const getIconStyle = (src?: string) => `--svg-icon-url: url("${src ?? '/email.svg'}")`;
+const getIconStyle = (src?: string, scale = 1) => [
+  `--svg-icon-url: url("${src ?? '/email.svg'}")`,
+  `--svg-icon-scale: ${scale}`,
+].join('; ');
 </script>
 
 <template>
@@ -31,7 +34,7 @@ const getIconStyle = (src?: string) => `--svg-icon-url: url("${src ?? '/email.sv
           <span
             aria-hidden="true"
             class="themed-svg-icon size-5"
-            :style="getIconStyle(social.iconSrc)"
+            :style="getIconStyle(social.iconSrc, social.iconScale)"
           />
         </a>
       </div>

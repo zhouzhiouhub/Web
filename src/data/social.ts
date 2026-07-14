@@ -14,6 +14,7 @@ export const socialLinks: SocialLink[] = [
     label: 'CSDN',
     labelKey: 'social.csdn',
     icon: 'csdn',
+    iconScale: 1.5,
     iconSrc: '/csdn.svg',
     url: 'https://blog.csdn.net/qq_59002866',
   },
