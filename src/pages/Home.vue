@@ -30,9 +30,6 @@ const topSkills = computed(() => skills.slice(0, 8));
 
       <div class="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
         <div class="mx-auto max-w-prose text-center">
-          <p class="mb-4 text-sm font-medium tracking-wide text-primary">
-            {{ t('home.greeting') }}
-          </p>
           <h1 class="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
             {{ t('home.role') }}
           </h1>

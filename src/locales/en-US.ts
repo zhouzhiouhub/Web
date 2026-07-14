@@ -18,7 +18,6 @@ export default {
 
   /* ===== Home ===== */
   'home.title': 'Home',
-  'home.greeting': 'Hello, welcome to my portfolio',
   'home.name': 'Zhou Zhenyun',
   'home.role': 'Mobile / Full Stack Developer',
   'home.intro': 'Software developer with experience in Web frontend/full-stack, client build and release, Python automation, cloud deployment, and production troubleshooting. Recently focused on Android, Flutter, and WeChat Mini Program projects.',

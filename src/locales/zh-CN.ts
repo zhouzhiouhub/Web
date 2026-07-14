@@ -18,7 +18,6 @@ export default {
 
   /* ===== Home ===== */
   'home.title': '首页',
-  'home.greeting': '你好，欢迎来到我的个人主页',
   'home.name': '周珍运',
   'home.role': '移动端 / 全栈开发工程师',
   'home.intro': '具备 Web 前端与全栈、客户端构建发布、Python 自动化、云平台部署和线上问题排查经验，近期持续完成 Android、Flutter、微信小程序等移动端项目。',
