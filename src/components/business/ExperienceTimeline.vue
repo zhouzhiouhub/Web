@@ -1,14 +1,28 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { NTag } from 'naive-ui';
 import type { Experience } from '@/types';
 import { formatDateRange } from '@/utils';
 
-defineProps<{
+const props = defineProps<{
   experience: Experience;
 }>();
 
-const { locale } = useI18n();
+const { locale, t } = useI18n();
+
+const company = computed(() => (
+  props.experience.companyKey ? t(props.experience.companyKey) : props.experience.company
+));
+const role = computed(() => (props.experience.roleKey ? t(props.experience.roleKey) : props.experience.role));
+const description = computed(() => (
+  props.experience.descriptionKey ? t(props.experience.descriptionKey) : props.experience.description
+));
+const highlights = computed(() => (
+  props.experience.highlightsKey?.length
+    ? props.experience.highlightsKey.map((key) => t(key))
+    : props.experience.highlights ?? []
+));
 </script>
 
 <template>
@@ -20,11 +34,11 @@ const { locale } = useI18n();
 
     <div class="mb-1 flex flex-wrap items-center gap-2">
       <h4 class="text-base font-semibold text-foreground">
-        {{ experience.role }}
+        {{ role }}
       </h4>
-      <span class="text-sm text-muted">@ {{ experience.company }}</span>
+      <span class="text-sm text-muted">@ {{ company }}</span>
       <NTag v-if="experience.current" size="small" type="success" round :bordered="false">
-        {{ locale === 'en-US' ? 'Current' : '在职' }}
+        {{ t('resume.current') }}
       </NTag>
     </div>
 
@@ -32,14 +46,14 @@ const { locale } = useI18n();
       {{ formatDateRange(experience.start, experience.end, locale) }}
     </p>
 
-    <p v-if="experience.description" class="mb-3 text-sm text-muted">
-      {{ experience.description }}
+    <p v-if="description" class="mb-3 text-sm text-muted">
+      {{ description }}
     </p>
 
-    <ul v-if="experience.highlights?.length" class="mb-3 space-y-1.5">
+    <ul v-if="highlights.length" class="mb-3 space-y-1.5">
       <li
-        v-for="(highlight, idx) in experience.highlights"
-        :key="idx"
+        v-for="highlight in highlights"
+        :key="highlight"
         class="flex items-start gap-2 text-sm text-muted"
       >
         <span class="mt-1.5 size-1 shrink-0 rounded-full bg-primary" />

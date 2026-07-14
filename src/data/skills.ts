@@ -8,6 +8,10 @@ export const skills: Skill[] = [
   { id: 'wechat-miniprogram', name: '微信小程序', category: 'mobile', url: 'https://developers.weixin.qq.com/miniprogram/dev/framework/' },
   { id: 'media3', name: 'Media3 ExoPlayer', category: 'mobile', url: 'https://developer.android.com/media/media3' },
   { id: 'gradle', name: 'Gradle Kotlin DSL', category: 'mobile', url: 'https://docs.gradle.org/current/userguide/kotlin_dsl.html' },
+  { id: 'download-manager', name: 'Android DownloadManager', category: 'mobile', url: 'https://developer.android.com/reference/android/app/DownloadManager' },
+  { id: 'saf', name: 'Storage Access Framework', category: 'mobile', url: 'https://developer.android.com/guide/topics/providers/document-provider' },
+  { id: 'androidx-test', name: 'AndroidX Test / Espresso', category: 'mobile', url: 'https://developer.android.com/training/testing/espresso' },
+  { id: 'wxml-wxss', name: 'WXML / WXSS', category: 'mobile', url: 'https://developers.weixin.qq.com/miniprogram/dev/framework/view/' },
 
   // Frontend
   { id: 'vue', name: 'Vue 3', category: 'frontend', url: 'https://cn.vuejs.org/' },
@@ -16,7 +20,10 @@ export const skills: Skill[] = [
   { id: 'nextjs', name: 'Next.js', category: 'frontend', url: 'https://nextjs.org/' },
   { id: 'astro', name: 'Astro', category: 'frontend', url: 'https://astro.build/' },
   { id: 'tailwind', name: 'Tailwind CSS', category: 'frontend', url: 'https://tailwindcss.com/' },
+  { id: 'ant-design', name: 'Ant Design', category: 'frontend', url: 'https://ant.design/' },
   { id: 'threejs', name: 'Three.js', category: 'frontend', url: 'https://threejs.org/' },
+  { id: 'webgl', name: 'WebGL', category: 'frontend', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API' },
+  { id: 'web-audio', name: 'Web Audio', category: 'frontend', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Audio_API' },
 
   // Desktop
   { id: 'rust', name: 'Rust', category: 'desktop', url: 'https://www.rust-lang.org/' },
@@ -28,6 +35,7 @@ export const skills: Skill[] = [
   { id: 'fastapi', name: 'FastAPI', category: 'backend', url: 'https://fastapi.tiangolo.com/' },
   { id: 'postgresql', name: 'PostgreSQL', category: 'backend', url: 'https://www.postgresql.org/' },
   { id: 'redis', name: 'Redis', category: 'backend', url: 'https://redis.io/' },
+  { id: 'webhook', name: 'Webhook', category: 'backend', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Webhooks' },
 
   // DevOps
   { id: 'cloudflare', name: 'Cloudflare', category: 'devops', url: 'https://www.cloudflare.com/' },
@@ -40,4 +48,7 @@ export const skills: Skill[] = [
   { id: 'javascript', name: 'JavaScript', category: 'language', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript' },
   { id: 'python', name: 'Python', category: 'language', url: 'https://www.python.org/' },
   { id: 'go', name: 'Go', category: 'language', url: 'https://go.dev/' },
+  { id: 'tkinter', name: 'Tkinter', category: 'language', url: 'https://docs.python.org/3/library/tkinter.html' },
+  { id: 'openpyxl', name: 'openpyxl', category: 'language', url: 'https://openpyxl.readthedocs.io/' },
+  { id: 'pyinstaller', name: 'PyInstaller', category: 'language', url: 'https://pyinstaller.org/' },
 ];

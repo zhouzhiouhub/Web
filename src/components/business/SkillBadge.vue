@@ -16,7 +16,7 @@ defineProps<{
   >
     <span class="text-sm font-medium text-foreground">{{ skill.name }}</span>
     <svg
-      class="size-4 shrink-0 text-muted transition-all group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+      class="size-4 shrink-0 text-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"

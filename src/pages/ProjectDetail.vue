@@ -11,9 +11,33 @@ const { t } = useI18n();
 
 const project = computed(() => projects.find((p) => p.id === route.params.id));
 
+const translateList = (keys?: string[], fallback?: string[]) => (
+  keys?.length ? keys.map((key) => t(key)) : fallback ?? []
+);
+
+const projectTitle = computed(() => {
+  const current = project.value;
+  if (!current) return t('projects.title');
+  return current.titleKey ? t(current.titleKey) : current.title;
+});
+
+const projectDescription = computed(() => {
+  const current = project.value;
+  if (!current) return '';
+  return current.descriptionKey ? t(current.descriptionKey) : current.description;
+});
+
+const projectFeatures = computed(() => translateList(project.value?.featuresKey, project.value?.features));
+const projectHighlights = computed(() => translateList(project.value?.highlightsKey, project.value?.highlights));
+const projectContribution = computed(() => {
+  const current = project.value;
+  if (!current) return '';
+  return current.contributionKey ? t(current.contributionKey) : current.contribution ?? '';
+});
+
 useSeo({
-  title: () => project.value?.title ?? t('projects.title'),
-  description: () => project.value?.description ?? '',
+  title: () => projectTitle.value,
+  description: () => projectDescription.value,
 });
 </script>
 
@@ -25,7 +49,7 @@ useSeo({
       </RouterLink>
 
       <h1 class="mb-4 text-3xl font-bold text-foreground">
-        {{ project.title }}
+        {{ projectTitle }}
       </h1>
 
       <div class="mb-6 flex flex-wrap items-center gap-3">
@@ -36,10 +60,10 @@ useSeo({
       </div>
 
       <p class="mb-8 text-base leading-relaxed text-foreground/90">
-        {{ project.description }}
+        {{ projectDescription }}
       </p>
 
-      <div class="mb-8 flex flex-wrap gap-2">
+      <div class="mb-10 flex flex-wrap gap-2">
         <NTag
           v-for="tag in project.tags"
           :key="tag"
@@ -51,7 +75,48 @@ useSeo({
         </NTag>
       </div>
 
-      <div v-if="project.url || project.repo" class="flex gap-4">
+      <section v-if="projectFeatures.length" class="mb-10">
+        <h2 class="mb-4 text-xl font-bold text-foreground">
+          {{ t('project.features') }}
+        </h2>
+        <ul class="space-y-3">
+          <li
+            v-for="feature in projectFeatures"
+            :key="feature"
+            class="flex items-start gap-3 text-sm leading-relaxed text-foreground/90"
+          >
+            <span class="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
+            <span>{{ feature }}</span>
+          </li>
+        </ul>
+      </section>
+
+      <section v-if="projectHighlights.length" class="mb-10">
+        <h2 class="mb-4 text-xl font-bold text-foreground">
+          {{ t('project.highlights') }}
+        </h2>
+        <ul class="space-y-3">
+          <li
+            v-for="highlight in projectHighlights"
+            :key="highlight"
+            class="flex items-start gap-3 text-sm leading-relaxed text-foreground/90"
+          >
+            <span class="mt-2 size-1.5 shrink-0 rounded-full bg-accent" />
+            <span>{{ highlight }}</span>
+          </li>
+        </ul>
+      </section>
+
+      <section v-if="projectContribution" class="mb-10">
+        <h2 class="mb-4 text-xl font-bold text-foreground">
+          {{ t('project.contribution') }}
+        </h2>
+        <p class="rounded-lg border border-border bg-surface p-5 text-sm leading-relaxed text-foreground/90">
+          {{ projectContribution }}
+        </p>
+      </section>
+
+      <div v-if="project.url || project.repo" class="flex flex-wrap gap-4">
         <a v-if="project.url" :href="project.url" target="_blank" rel="noopener">
           <NButton type="primary" round>{{ t('common.live') }}</NButton>
         </a>
