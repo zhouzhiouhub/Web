@@ -10,9 +10,6 @@ export default {
   'nav.contact': 'Contact',
 
   /* ===== Theme & Locale ===== */
-  'theme.light': 'Light',
-  'theme.dark': 'Dark',
-  'theme.system': 'System',
   'locale.zh-CN': '中文',
   'locale.en-US': 'English',
 
