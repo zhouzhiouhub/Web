@@ -96,6 +96,28 @@ useSeo({
             {{ block.text }}
           </blockquote>
 
+          <ul v-else-if="block.type === 'links'" class="space-y-3">
+            <li
+              v-for="link in block.links"
+              :key="link.url"
+              class="rounded-lg border border-border bg-surface transition-colors hover:border-primary/60"
+            >
+              <a
+                :href="link.url"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="block px-5 py-4"
+              >
+                <span class="block text-base font-semibold leading-7 text-primary">
+                  {{ link.label }}
+                </span>
+                <span v-if="link.description" class="mt-1 block text-sm leading-6 text-muted">
+                  {{ link.description }}
+                </span>
+              </a>
+            </li>
+          </ul>
+
           <pre
             v-else-if="block.type === 'code'"
             class="overflow-x-auto rounded-lg border border-border bg-surface p-4 text-sm leading-7 text-foreground"

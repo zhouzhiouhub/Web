@@ -130,11 +130,18 @@ export interface Education {
 
 /* ===== Blog ===== */
 
+export interface BlogLinkItem {
+  label: string;
+  url: string;
+  description?: string;
+}
+
 export interface BlogContentBlock {
-  type: 'heading' | 'paragraph' | 'list' | 'quote' | 'code';
+  type: 'heading' | 'paragraph' | 'list' | 'quote' | 'code' | 'links';
   text?: string;
   level?: 2 | 3;
   items?: string[];
+  links?: BlogLinkItem[];
   language?: string;
   code?: string;
 }
