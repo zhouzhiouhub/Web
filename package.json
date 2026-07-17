@@ -10,7 +10,9 @@
     "lint:js": "eslint --ext .ts,.vue --ignore-path .gitignore src",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
     "serve": "vite preview",
-    "typecheck": "vue-tsc --noEmit"
+    "typecheck": "vue-tsc --noEmit",
+    "deploy": "npm run build && wrangler deploy",
+    "preview": "npm run build && wrangler dev"
   },
   "dependencies": {
     "@vueuse/core": "^14.3.0",
@@ -21,6 +23,7 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.45.1",
     "@types/node": "^26.1.1",
     "@typescript-eslint/eslint-plugin": "^8.63.0",
     "@typescript-eslint/parser": "^8.63.0",
@@ -45,7 +48,8 @@
     "vite": "^6.0.0",
     "vite-plugin-eslint": "^1.8.1",
     "vite-svg-loader": "^5.1.0",
-    "vue-tsc": "^3.3.7"
+    "vue-tsc": "^3.3.7",
+    "wrangler": "^4.112.0"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "~4.62.2"
