@@ -20,6 +20,13 @@ const githubUrl = computed(() => socialLinks.find((link) => link.id === 'github'
 const outputContributions = computed(() => openSourceContributions.filter((item) => item.kind === 'pr'));
 const influenceContributions = computed(() => openSourceContributions.filter((item) => item.kind === 'review'));
 const openSourceProjects = computed(() => projects.filter((project) => project.category === 'open-source'));
+
+const contributionGridStyle = {
+  gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 22rem), 1fr))',
+};
+const projectGridStyle = {
+  gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 18rem), 1fr))',
+};
 </script>
 
 <template>
@@ -52,7 +59,7 @@ const openSourceProjects = computed(() => projects.filter((project) => project.c
       <p class="mb-6 text-sm text-muted">
         {{ t('opensource.output.description') }}
       </p>
-      <div class="grid gap-6 lg:grid-cols-2">
+      <div class="grid gap-6" :style="contributionGridStyle">
         <ContributionCard
           v-for="contribution in outputContributions"
           :key="contribution.id"
@@ -68,7 +75,7 @@ const openSourceProjects = computed(() => projects.filter((project) => project.c
       <p class="mb-6 text-sm text-muted">
         {{ t('opensource.influence.description') }}
       </p>
-      <div class="grid gap-6 lg:grid-cols-2">
+      <div class="grid gap-6" :style="contributionGridStyle">
         <ContributionCard
           v-for="contribution in influenceContributions"
           :key="contribution.id"
@@ -81,7 +88,7 @@ const openSourceProjects = computed(() => projects.filter((project) => project.c
       <h2 class="mb-6 text-xl font-bold text-foreground">
         {{ t('opensource.projects') }}
       </h2>
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-6" :style="projectGridStyle">
         <ProjectCard
           v-for="project in openSourceProjects"
           :key="project.id"
