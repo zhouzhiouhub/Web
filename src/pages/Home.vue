@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { NButton } from 'naive-ui';
 import { useSeo } from '@/hooks/useSeo';
-import { projects } from '@/data/projects';
+import { homeProjects } from '@/data/projects';
 import { skills } from '@/data/skills';
 import ProjectCard from '@/components/business/ProjectCard.vue';
 
@@ -15,7 +15,6 @@ useSeo({
   description: () => t('home.intro'),
 });
 
-const featuredProjects = computed(() => projects.filter((p) => p.featured).slice(0, 6));
 const topSkills = computed(() => skills.slice(0, 8));
 </script>
 
@@ -64,7 +63,7 @@ const topSkills = computed(() => skills.slice(0, 8));
       </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <ProjectCard
-          v-for="project in featuredProjects"
+          v-for="project in homeProjects"
           :key="project.id"
           :project="project"
         />

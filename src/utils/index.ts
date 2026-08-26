@@ -1,3 +1,12 @@
+import type { Project } from '@/types';
+
+/**
+ * Newest year first. Same-year items keep their given order so newly prepended projects stay first.
+ */
+export function sortProjectsByTime(items: readonly Project[]): Project[] {
+  return [...items].sort((left, right) => right.year - left.year);
+}
+
 /**
  * Format a date string (YYYY-MM) to a localized display string.
  */

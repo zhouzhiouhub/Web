@@ -1,6 +1,48 @@
 import type { Project } from '@/types';
+import { sortProjectsByTime } from '@/utils';
 
-export const projects: Project[] = [
+const projectItems: Project[] = [
+  {
+    id: 'kinolin-tool',
+    title: 'Kinolin Tool',
+    titleKey: 'project.kinolinTool.title',
+    description: '浏览器本地图片工具，支持 PNG / JPG 转 SVG、裁剪旋转改尺寸，以及 PNG / JPEG / WebP 转格式与压缩。',
+    descriptionKey: 'project.kinolinTool.description',
+    tags: ['Vue 3', 'TypeScript', 'Vite', 'Vue Router', 'Element Plus', 'imagetracerjs', 'esm-potrace-wasm', 'Cloudflare Workers'],
+    category: 'tool',
+    featured: true,
+    year: 2026,
+    url: 'https://tool.kinolin.com/',
+    repo: 'https://github.com/zhouzhiouhub/image-to-svg',
+    features: [
+      '图片转 SVG 支持原样封装（像素封进 SVG）和矢量描摹（黑白 / 多色、层数、去噪）',
+      '画面调整支持旋转、翻转、框选裁剪，并按像素或比例改尺寸',
+      '转格式 / 压缩支持 PNG、JPEG、WebP，可一次处理多张并打包 zip',
+      '输入支持拖拽、点击选择和 Ctrl+V 粘贴，图片只在本机处理、不上传服务器',
+      '顶栏可切换中 / 英与浅色 / 深色，最近结果保存在本机 IndexedDB',
+    ],
+    featuresKey: [
+      'project.kinolinTool.features.1',
+      'project.kinolinTool.features.2',
+      'project.kinolinTool.features.3',
+      'project.kinolinTool.features.4',
+      'project.kinolinTool.features.5',
+    ],
+    highlights: [
+      '描摹使用 imagetracerjs 与 esm-potrace-wasm，在浏览器内完成，无需后端',
+      '用 IndexedDB 保存最近 12 条结果，并限制单文件 20 MB、最长边 4096 px、批量最多 30 张',
+      '静态站点部署到 Cloudflare Workers，按路由生成带 SEO 的 HTML，避免 SPA fallback 重定向环',
+      '公开源码便于核对处理链路不包含网络上传',
+    ],
+    highlightsKey: [
+      'project.kinolinTool.highlights.1',
+      'project.kinolinTool.highlights.2',
+      'project.kinolinTool.highlights.3',
+      'project.kinolinTool.highlights.4',
+    ],
+    contribution: '独立完成产品功能、图片处理链路、本地历史存储、多语言 / 主题、SEO 与 Cloudflare 部署。',
+    contributionKey: 'project.kinolinTool.contribution',
+  },
   {
     id: 'videobrowser',
     title: 'VideoBrowser',
@@ -162,47 +204,6 @@ export const projects: Project[] = [
     ],
     contribution: '独立完成预算管理小程序的 MVP 页面、金额工具、本地预算服务、预算状态规则和后续云端迁移边界整理。',
     contributionKey: 'project.budget.contribution',
-  },
-  {
-    id: 'kinolin-tool',
-    title: 'Kinolin Tool',
-    titleKey: 'project.kinolinTool.title',
-    description: '浏览器本地图片工具，支持 PNG / JPG 转 SVG、裁剪旋转改尺寸，以及 PNG / JPEG / WebP 转格式与压缩。',
-    descriptionKey: 'project.kinolinTool.description',
-    tags: ['Vue 3', 'TypeScript', 'Vite', 'Vue Router', 'Element Plus', 'imagetracerjs', 'esm-potrace-wasm', 'Cloudflare Workers'],
-    category: 'tool',
-    featured: true,
-    year: 2026,
-    url: 'https://tool.kinolin.com/',
-    repo: 'https://github.com/zhouzhiouhub/image-to-svg',
-    features: [
-      '图片转 SVG 支持原样封装（像素封进 SVG）和矢量描摹（黑白 / 多色、层数、去噪）',
-      '画面调整支持旋转、翻转、框选裁剪，并按像素或比例改尺寸',
-      '转格式 / 压缩支持 PNG、JPEG、WebP，可一次处理多张并打包 zip',
-      '输入支持拖拽、点击选择和 Ctrl+V 粘贴，图片只在本机处理、不上传服务器',
-      '顶栏可切换中 / 英与浅色 / 深色，最近结果保存在本机 IndexedDB',
-    ],
-    featuresKey: [
-      'project.kinolinTool.features.1',
-      'project.kinolinTool.features.2',
-      'project.kinolinTool.features.3',
-      'project.kinolinTool.features.4',
-      'project.kinolinTool.features.5',
-    ],
-    highlights: [
-      '描摹使用 imagetracerjs 与 esm-potrace-wasm，在浏览器内完成，无需后端',
-      '用 IndexedDB 保存最近 12 条结果，并限制单文件 20 MB、最长边 4096 px、批量最多 30 张',
-      '静态站点部署到 Cloudflare Workers，按路由生成带 SEO 的 HTML，避免 SPA fallback 重定向环',
-      '公开源码便于核对处理链路不包含网络上传',
-    ],
-    highlightsKey: [
-      'project.kinolinTool.highlights.1',
-      'project.kinolinTool.highlights.2',
-      'project.kinolinTool.highlights.3',
-      'project.kinolinTool.highlights.4',
-    ],
-    contribution: '独立完成产品功能、图片处理链路、本地历史存储、多语言 / 主题、SEO 与 Cloudflare 部署。',
-    contributionKey: 'project.kinolinTool.contribution',
   },
   {
     id: 'sphere',
@@ -465,3 +466,10 @@ export const projects: Project[] = [
     contributionKey: 'project.pythonAutomation.contribution',
   },
 ];
+
+export const projects: Project[] = sortProjectsByTime(projectItems);
+
+/** Homepage shows a fixed window of newest projects: prepend a new one, drop the oldest. */
+export const HOME_PROJECT_COUNT = 6;
+
+export const homeProjects: Project[] = projects.slice(0, HOME_PROJECT_COUNT);
