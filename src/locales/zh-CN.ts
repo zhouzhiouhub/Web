@@ -465,7 +465,7 @@ export default {
   'footer.nav': '导航',
   'footer.social': '社交',
   'footer.rss': 'RSS',
-  'footer.tagline': '先交付，再沉淀。',
+  'footer.tagline': '持续学习，持续成长。',
 
   /* ===== 404 ===== */
   'notfound.title': '页面未找到',

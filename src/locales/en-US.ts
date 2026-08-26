@@ -465,7 +465,7 @@ export default {
   'footer.nav': 'Navigate',
   'footer.social': 'Social',
   'footer.rss': 'RSS',
-  'footer.tagline': 'Ship first. Then make it last.',
+  'footer.tagline': 'Keep Learning, Keep Growing.',
 
   /* ===== 404 ===== */
   'notfound.title': 'Page Not Found',
