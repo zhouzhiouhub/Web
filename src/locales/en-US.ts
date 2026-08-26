@@ -282,9 +282,9 @@ export default {
   'blog.readMore': 'Read More',
   'blog.source': 'Original source',
   'blog.empty': 'No articles yet',
-  'blog.rss': 'RSS feed',
+  'blog.rss': 'RSS',
   'blog.cadence.title': 'Publishing cadence',
-  'blog.cadence.description': 'Target: at least one post a month. I write about releases, incidents, and engineering work I just finished, with categories, covers, and RSS for discovery.',
+  'blog.cadence.description': 'Target: at least one post a month. I write about releases, incidents, and engineering work I just finished, with categories, covers, and RSS.',
 
   /* ===== Playground ===== */
   'playground.title': 'Playground',
@@ -328,7 +328,7 @@ export default {
   /* ===== Resume ===== */
   'resume.title': 'Resume',
   'resume.description': 'Work experience, project experience, and skills overview',
-  'resume.seoDescription': 'Online resume of Zhou Zhenyun: mobile / full-stack / client toolchain experience, open source, education, and skills. Contact details are masked by default.',
+  'resume.seoDescription': 'Resume of Zhou Zhenyun: mobile / full-stack / client toolchain experience, open source, education, and skills. Contact details are masked by default.',
   'resume.info': 'Basic Info',
   'resume.name': 'Name',
   'resume.role': 'Role',
@@ -359,7 +359,7 @@ export default {
   'resume.strength.3': 'Pragmatic in communication and collaboration, able to turn complex issues into executable steps, checklists, scripts, or reusable documentation.',
   'resume.strength.4': 'Continuously practices mobile and client-side development and builds from real features and user scenarios.',
   'resume.skills': 'Skills',
-  'resume.download': 'Online Resume',
+  'resume.download': 'Resume',
 
   /* ===== Experience & Education ===== */
   'experience.guangyuzhou.company': 'Shenzhen Guangyuzhou Technology Co., Ltd.',
@@ -432,7 +432,7 @@ export default {
   'social.csdn': 'CSDN',
   'social.email': 'Email',
   'social.phone': 'Phone',
-  'social.cv': 'Online Resume',
+  'social.cv': 'Resume',
 
   /* ===== Skills ===== */
   'skill.frontend': 'Frontend',
@@ -464,7 +464,7 @@ export default {
   'footer.rights': 'All rights reserved',
   'footer.nav': 'Navigate',
   'footer.social': 'Social',
-  'footer.rss': 'RSS feed',
+  'footer.rss': 'RSS',
   'footer.tagline': 'Ship first. Then make it last.',
 
   /* ===== 404 ===== */

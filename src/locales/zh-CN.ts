@@ -282,9 +282,9 @@ export default {
   'blog.readMore': '阅读全文',
   'blog.source': '原文参考',
   'blog.empty': '暂无文章',
-  'blog.rss': 'RSS 订阅',
+  'blog.rss': 'RSS',
   'blog.cadence.title': '更新节奏',
-  'blog.cadence.description': '目标每月至少更新 1 篇。优先写自己刚做完的发布、排障和工程化题目，并同步分类标签与封面，方便检索和 RSS 订阅。',
+  'blog.cadence.description': '目标每月至少更新 1 篇。优先写自己刚做完的发布、排障和工程化题目，并同步分类标签与封面，方便检索和 RSS。',
 
   /* ===== Playground ===== */
   'playground.title': '实验室',
@@ -328,7 +328,7 @@ export default {
   /* ===== Resume ===== */
   'resume.title': '简历',
   'resume.description': '工作经历、项目经验与技能概览',
-  'resume.seoDescription': '周珍运的在线简历：移动端 / 全栈 / 客户端工具链经历、开源贡献、教育背景与技能。联系方式已脱敏。',
+  'resume.seoDescription': '周珍运的简历：移动端 / 全栈 / 客户端工具链经历、开源贡献、教育背景与技能。联系方式已脱敏。',
   'resume.info': '基本信息',
   'resume.name': '姓名',
   'resume.role': '职业方向',
@@ -359,7 +359,7 @@ export default {
   'resume.strength.3': '表达和协作偏务实，能把复杂问题整理成可执行步骤、检查清单、脚本或文档，方便团队复用。',
   'resume.strength.4': '对移动端和客户端方向有持续项目实践，能从实际功能和用户使用场景出发做开发。',
   'resume.skills': '技能',
-  'resume.download': '在线简历',
+  'resume.download': '简历',
 
   /* ===== Experience & Education ===== */
   'experience.guangyuzhou.company': '深圳市光宇宙科技有限公司',
@@ -432,7 +432,7 @@ export default {
   'social.csdn': 'CSDN',
   'social.email': '邮箱',
   'social.phone': '电话',
-  'social.cv': '在线简历',
+  'social.cv': '简历',
 
   /* ===== Skills ===== */
   'skill.frontend': '前端',
@@ -464,7 +464,7 @@ export default {
   'footer.rights': '版权所有',
   'footer.nav': '导航',
   'footer.social': '社交',
-  'footer.rss': 'RSS 订阅',
+  'footer.rss': 'RSS',
   'footer.tagline': '先交付，再沉淀。',
 
   /* ===== 404 ===== */
