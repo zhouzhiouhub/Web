@@ -32,9 +32,6 @@ const skillGroups = computed(() => groupSkillsByCategory(skills));
       <div class="grid-bg pointer-events-none absolute inset-0 -z-10 opacity-[0.03]" />
       <div class="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
         <div class="mx-auto max-w-prose text-center">
-          <p class="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-primary">
-            {{ t('home.name') }}
-          </p>
           <h1 class="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
             {{ t('home.role') }}
           </h1>

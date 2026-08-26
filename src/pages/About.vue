@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 import { useSeo } from '@/hooks/useSeo';
-import { SITE_AUTHOR, SITE_AVATAR } from '@/data/site';
+import { SITE_AVATAR } from '@/data/site';
 import { aboutDirections, growthTimeline, techValues } from '@/data/about';
 
 const { t } = useI18n();
@@ -31,7 +31,6 @@ useSeo({
         class="size-28 shrink-0 rounded-full border border-border object-cover"
       />
       <div class="max-w-prose space-y-4 text-base leading-relaxed text-foreground/90">
-        <p class="text-sm font-medium text-primary">{{ SITE_AUTHOR }}</p>
         <p>
           {{ t('about.intro') }}
           {{ t('about.intro1') }}
