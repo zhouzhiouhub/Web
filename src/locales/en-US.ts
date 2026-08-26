@@ -465,7 +465,7 @@ export default {
   'footer.nav': 'Navigate',
   'footer.social': 'Social',
   'footer.rss': 'RSS feed',
-  'footer.tagline': 'Show the work: mobile, full-stack, release pipelines, and automation.',
+  'footer.tagline': 'Ship first. Then make it last.',
 
   /* ===== 404 ===== */
   'notfound.title': 'Page Not Found',

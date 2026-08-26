@@ -9,10 +9,8 @@ import { SITE_RSS_PATH } from '@/data/site';
 const { t } = useI18n();
 
 const year = computed(() => new Date().getFullYear());
-const getIconStyle = (src?: string, scale = 1) => [
-  `--svg-icon-url: url("${src ?? '/email.svg'}")`,
-  `--svg-icon-scale: ${scale}`,
-].join('; ');
+const logoSrc = `${import.meta.env.BASE_URL}logo.svg`;
+const brandLabel = computed(() => t('project.portfolio.title'));
 
 function isExternal(url: string) {
   return /^https?:\/\//.test(url);
@@ -21,52 +19,57 @@ function isExternal(url: string) {
 
 <template>
   <footer class="border-t border-border bg-surface">
-    <div class="mx-auto grid max-w-content gap-10 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
-      <div>
-        <p class="mb-3 text-lg font-semibold text-foreground">Kinolin</p>
-        <p class="max-w-xs text-sm leading-6 text-muted">
+    <div class="mx-auto max-w-content px-4 py-12 sm:px-6 lg:px-8">
+      <div class="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <RouterLink
+          to="/"
+          class="flex items-center gap-2 font-semibold text-foreground transition-opacity hover:opacity-80"
+          :aria-label="brandLabel"
+        >
+          <img
+            :src="logoSrc"
+            alt=""
+            width="36"
+            height="36"
+            class="block size-9 shrink-0 object-contain"
+            decoding="async"
+          />
+          <span class="text-lg">Kinolin</span>
+        </RouterLink>
+        <p class="max-w-xs text-sm leading-6 text-muted sm:text-right">
           {{ t('footer.tagline') }}
         </p>
       </div>
-      <div>
-        <p class="mb-3 text-sm font-semibold text-foreground">{{ t('footer.nav') }}</p>
-        <nav class="flex flex-col gap-2">
-          <RouterLink
-            v-for="item in navItems"
-            :key="item.to"
-            :to="item.to"
-            class="text-sm text-muted transition-colors hover:text-primary"
-          >
-            {{ t(item.key) }}
-          </RouterLink>
-        </nav>
-      </div>
-      <div>
-        <p class="mb-3 text-sm font-semibold text-foreground">{{ t('footer.social') }}</p>
-        <div class="mb-4 flex items-center gap-4">
-          <a
-            v-for="social in footerSocialLinks"
-            :key="social.id"
-            :href="social.url"
-            :target="isExternal(social.url) ? '_blank' : undefined"
-            :rel="isExternal(social.url) ? 'noopener' : undefined"
-            :aria-label="social.labelKey ? t(social.labelKey) : social.label"
-            class="text-muted transition-colors hover:text-primary"
-          >
-            <span
-              aria-hidden="true"
-              class="themed-svg-icon size-5"
-              :style="getIconStyle(social.iconSrc, social.iconScale)"
-            />
-          </a>
-        </div>
+
+      <nav
+        class="grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-4"
+        :aria-label="t('footer.nav')"
+      >
+        <RouterLink
+          v-for="item in navItems"
+          :key="item.to"
+          :to="item.to"
+          class="text-sm text-muted transition-colors hover:text-primary"
+        >
+          {{ t(item.key) }}
+        </RouterLink>
+        <a
+          v-for="social in footerSocialLinks"
+          :key="social.id"
+          :href="social.url"
+          :target="isExternal(social.url) ? '_blank' : undefined"
+          :rel="isExternal(social.url) ? 'noopener' : undefined"
+          class="text-sm text-muted transition-colors hover:text-primary"
+        >
+          {{ social.labelKey ? t(social.labelKey) : social.label }}
+        </a>
         <a
           :href="SITE_RSS_PATH"
-          class="text-sm text-primary transition-opacity hover:opacity-80"
+          class="text-sm text-muted transition-colors hover:text-primary"
         >
           {{ t('footer.rss') }}
         </a>
-      </div>
+      </nav>
     </div>
     <div class="border-t border-border">
       <p class="mx-auto max-w-content px-4 py-6 text-sm text-muted sm:px-6 lg:px-8">

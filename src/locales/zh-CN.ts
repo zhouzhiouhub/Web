@@ -465,7 +465,7 @@ export default {
   'footer.nav': '导航',
   'footer.social': '社交',
   'footer.rss': 'RSS 订阅',
-  'footer.tagline': '用可交付的项目说明能力：移动端、全栈、发布链路与自动化。',
+  'footer.tagline': '先交付，再沉淀。',
 
   /* ===== 404 ===== */
   'notfound.title': '页面未找到',
