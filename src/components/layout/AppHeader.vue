@@ -12,6 +12,8 @@ const route = useRoute();
 const showMobileMenu = ref(false);
 
 const activeKey = computed(() => route.path);
+const brandLabel = computed(() => t('project.portfolio.title'));
+const logoSrc = `${import.meta.env.BASE_URL}logo.svg`;
 
 function toggleMobileMenu() {
   showMobileMenu.value = !showMobileMenu.value;
@@ -28,9 +30,21 @@ function closeMobileMenu() {
   >
     <div class="mx-auto flex h-16 max-w-content items-center justify-between px-4 sm:px-6 lg:px-8">
       <!-- Logo -->
-      <RouterLink to="/" class="flex items-center gap-2 font-bold text-foreground transition-opacity hover:opacity-80">
-        <img src="/logo.svg" alt="Logo" class="size-8" />
-        <span class="hidden text-lg sm:inline">Portfolio</span>
+      <RouterLink
+        to="/"
+        class="flex items-center gap-2 font-bold text-foreground transition-opacity hover:opacity-80"
+        :aria-label="brandLabel"
+      >
+        <img
+          :src="logoSrc"
+          alt=""
+          width="36"
+          height="36"
+          class="block size-9 shrink-0 object-contain"
+          decoding="async"
+          fetchpriority="high"
+        />
+        <span class="hidden text-lg sm:inline">Kinolin</span>
       </RouterLink>
 
       <!-- Desktop Nav -->

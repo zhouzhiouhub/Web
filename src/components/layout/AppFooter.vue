@@ -17,7 +17,7 @@ const getIconStyle = (src?: string, scale = 1) => [
     <div class="mx-auto flex max-w-content flex-col items-center justify-between gap-4 px-4 py-8 sm:flex-row sm:px-6 lg:px-8">
       <!-- Copyright -->
       <p class="text-sm text-muted">
-        &copy; {{ year }} Portfolio · {{ t('footer.rights') }}
+        &copy; {{ year }} Kinolin · {{ t('footer.rights') }}
       </p>
 
       <!-- Social Links -->
