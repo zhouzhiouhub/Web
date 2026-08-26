@@ -19,6 +19,10 @@ const { t } = useI18n();
 const year = computed(() => new Date().getFullYear());
 const logoSrc = `${import.meta.env.BASE_URL}logo.svg`;
 const brandLabel = computed(() => t('project.portfolio.title'));
+const linkClass = [
+  'text-sm text-muted transition-colors hover:text-primary',
+  'max-sm:even:text-right sm:[&:nth-child(4n)]:text-right',
+].join(' ');
 
 function isExternal(url: string) {
   return /^https?:\/\//.test(url);
@@ -42,16 +46,6 @@ const accessLinks = computed<FooterAccessLink[]>(() => [
     href: SITE_RSS_PATH,
   },
 ]);
-
-const accessRows = computed(() => {
-  const links = accessLinks.value;
-  const columns = 4;
-  const rows: FooterAccessLink[][] = [];
-  for (let index = 0; index < links.length; index += columns) {
-    rows.push(links.slice(index, index + columns));
-  }
-  return rows;
-});
 </script>
 
 <template>
@@ -78,31 +72,28 @@ const accessRows = computed(() => {
         </p>
       </div>
 
-      <nav class="flex flex-col gap-3" :aria-label="t('footer.nav')">
-        <div
-          v-for="(row, rowIndex) in accessRows"
-          :key="rowIndex"
-          class="grid grid-cols-2 gap-x-6 gap-y-3 sm:flex sm:justify-between sm:gap-4"
-        >
-          <template v-for="link in row" :key="link.id">
-            <RouterLink
-              v-if="link.to"
-              :to="link.to"
-              class="text-sm text-muted transition-colors hover:text-primary max-sm:even:text-right sm:last:text-right"
-            >
-              {{ link.label }}
-            </RouterLink>
-            <a
-              v-else
-              :href="link.href"
-              :target="link.external ? '_blank' : undefined"
-              :rel="link.external ? 'noopener' : undefined"
-              class="text-sm text-muted transition-colors hover:text-primary max-sm:even:text-right sm:last:text-right"
-            >
-              {{ link.label }}
-            </a>
-          </template>
-        </div>
+      <nav
+        class="grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-4"
+        :aria-label="t('footer.nav')"
+      >
+        <template v-for="link in accessLinks" :key="link.id">
+          <RouterLink
+            v-if="link.to"
+            :to="link.to"
+            :class="linkClass"
+          >
+            {{ link.label }}
+          </RouterLink>
+          <a
+            v-else
+            :href="link.href"
+            :target="link.external ? '_blank' : undefined"
+            :rel="link.external ? 'noopener' : undefined"
+            :class="linkClass"
+          >
+            {{ link.label }}
+          </a>
+        </template>
       </nav>
     </div>
     <div class="border-t border-border">
