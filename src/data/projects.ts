@@ -318,7 +318,7 @@ export const projects: Project[] = [
   },
   {
     id: 'portfolio-website',
-    title: 'Developer Portfolio',
+    title: 'Kinolin Portfolio',
     titleKey: 'project.portfolio.title',
     description: '个人开发者门户网站，展示技术能力、项目经验、简历、博客文章和联系方式。',
     descriptionKey: 'project.portfolio.description',

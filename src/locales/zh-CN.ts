@@ -178,7 +178,7 @@ export default {
   'project.astroTwo.highlights.2': '利用 Astro 的静态生成优势降低运行成本，提升首屏和 SEO 表现',
   'project.astroTwo.highlights.3': '内容层与组件层分离，适合持续扩展作品集、博客和多语言页面',
   'project.astroTwo.contribution': '负责 Astro 静态站框架搭建、内容结构、Tailwind 样式、多语言/SEO/search 配置整理。',
-  'project.portfolio.title': 'Developer Portfolio',
+  'project.portfolio.title': 'Kinolin Portfolio',
   'project.portfolio.description': '个人开发者门户网站，展示技术能力、项目经验、简历、博客文章和联系方式。',
   'project.portfolio.features.1': '首页、关于、项目、项目详情、博客、实验室、开源、简历和联系多页面路由',
   'project.portfolio.features.2': '支持 light / dark / system 主题模式和用户偏好持久化',

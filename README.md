@@ -1,4 +1,4 @@
-# Developer Portfolio
+# Kinolin Portfolio
 
 个人开发者门户网站 — 展示技术能力、项目经验、技术文章和开源成果。
 

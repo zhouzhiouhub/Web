@@ -178,7 +178,7 @@ export default {
   'project.astroTwo.highlights.2': 'Uses Astro static generation to lower runtime cost and improve first-load and SEO performance.',
   'project.astroTwo.highlights.3': 'Separates content and component layers, making it suitable for expanding portfolios, blogs, and multilingual pages.',
   'project.astroTwo.contribution': 'Responsible for Astro static-site setup, content structure, Tailwind styling, multilingual/SEO/search configuration.',
-  'project.portfolio.title': 'Developer Portfolio',
+  'project.portfolio.title': 'Kinolin Portfolio',
   'project.portfolio.description': 'A personal developer portal showcasing technical skills, project experience, resume, blog posts, and contact channels.',
   'project.portfolio.features.1': 'Multi-page routing for Home, About, Projects, Project Detail, Blog, Playground, Open Source, Resume, and Contact.',
   'project.portfolio.features.2': 'Supports light / dark / system theme modes with persisted user preferences.',
