@@ -14,7 +14,7 @@ useSeo({
 </script>
 
 <template>
-  <div class="animate-fade-in mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+  <div class="animate-fade-in mx-auto w-full max-w-content px-4 py-16 sm:px-6 lg:px-8">
     <h1 class="mb-2 text-3xl font-bold text-foreground">
       {{ t('about.title') }}
     </h1>

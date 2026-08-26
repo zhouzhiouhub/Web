@@ -28,11 +28,11 @@ function closeMobileMenu() {
   <header
     class="sticky top-0 z-50 border-b border-border bg-surface/80 backdrop-blur-lg"
   >
-    <div class="mx-auto flex h-16 max-w-content items-center justify-between px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto flex h-16 w-full max-w-content items-center px-4 sm:px-6 lg:px-8">
       <!-- Logo -->
       <RouterLink
         to="/"
-        class="flex items-center gap-2 font-bold text-foreground transition-opacity hover:opacity-80"
+        class="flex shrink-0 items-center gap-2 font-bold text-foreground transition-opacity hover:opacity-80"
         :aria-label="brandLabel"
       >
         <img
@@ -48,7 +48,7 @@ function closeMobileMenu() {
       </RouterLink>
 
       <!-- Desktop Nav -->
-      <nav class="hidden items-center gap-1 md:flex">
+      <nav class="hidden flex-1 items-center justify-center gap-1 md:flex">
         <RouterLink
           v-for="item in navItems"
           :key="item.to"
@@ -61,7 +61,7 @@ function closeMobileMenu() {
       </nav>
 
       <!-- Actions -->
-      <div class="flex items-center gap-2">
+      <div class="ml-auto flex shrink-0 items-center gap-2">
         <LocaleSwitcher />
         <ThemeToggle />
         <!-- Mobile menu button -->
