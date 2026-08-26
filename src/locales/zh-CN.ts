@@ -461,7 +461,6 @@ export default {
   'common.next': '下一篇',
   'common.backToTop': '返回顶部',
   'common.loading': '加载中',
-  'common.breadcrumb': '面包屑导航',
   'footer.rights': '版权所有',
   'footer.nav': '导航',
   'footer.social': '社交',

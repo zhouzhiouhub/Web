@@ -461,7 +461,6 @@ export default {
   'common.next': 'Next',
   'common.backToTop': 'Back to top',
   'common.loading': 'Loading',
-  'common.breadcrumb': 'Breadcrumb',
   'footer.rights': 'All rights reserved',
   'footer.nav': 'Navigate',
   'footer.social': 'Social',

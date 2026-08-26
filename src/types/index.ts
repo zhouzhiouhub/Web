@@ -302,13 +302,6 @@ export interface ContactIntent {
   labelKey: string;
 }
 
-/* ===== Breadcrumb ===== */
-
-export interface BreadcrumbItem {
-  label: string;
-  to?: string;
-}
-
 /* ===== Adjacent nav ===== */
 
 export interface AdjacentLink {
