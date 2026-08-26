@@ -14,44 +14,42 @@ useSeo({
 </script>
 
 <template>
-  <div class="animate-fade-in mx-auto max-w-prose px-4 py-16 sm:px-6 lg:px-8">
-    <div class="mb-10 flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+  <div class="animate-fade-in mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+    <h1 class="mb-2 text-3xl font-bold text-foreground">
+      {{ t('about.title') }}
+    </h1>
+    <p class="mb-8 text-muted">
+      {{ t('about.description') }}
+    </p>
+
+    <section class="mb-16 flex flex-col gap-8 sm:flex-row sm:items-start">
       <img
         :src="SITE_AVATAR"
         :alt="t('about.avatarAlt')"
         width="112"
         height="112"
-        class="size-28 rounded-full border border-border object-cover"
+        class="size-28 shrink-0 rounded-full border border-border object-cover"
       />
-      <div>
-        <h1 class="mb-2 text-3xl font-bold text-foreground">
-          {{ t('about.title') }}
-        </h1>
-        <p class="text-muted">
-          {{ t('about.description') }}
+      <div class="max-w-prose space-y-4 text-base leading-relaxed text-foreground/90">
+        <p class="text-sm font-medium text-primary">{{ SITE_AUTHOR }}</p>
+        <p>
+          {{ t('about.intro') }}
+          {{ t('about.intro1') }}
         </p>
-        <p class="mt-2 text-sm font-medium text-primary">{{ SITE_AUTHOR }}</p>
+        <p>
+          {{ t('about.intro2') }}
+        </p>
+        <p>
+          {{ t('about.intro3') }}
+        </p>
       </div>
-    </div>
+    </section>
 
-    <div class="space-y-6 text-base leading-relaxed text-foreground/90">
-      <p>
-        {{ t('about.intro') }}
-        {{ t('about.intro1') }}
-      </p>
-      <p>
-        {{ t('about.intro2') }}
-      </p>
-      <p>
-        {{ t('about.intro3') }}
-      </p>
-    </div>
-
-    <div class="mt-12">
+    <section class="mb-16">
       <h2 class="mb-6 text-xl font-bold text-foreground">
         {{ t('about.directions') }}
       </h2>
-      <div class="grid gap-6 sm:grid-cols-3">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <div
           v-for="direction in aboutDirections"
           :key="direction.id"
@@ -65,9 +63,9 @@ useSeo({
           </p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="mt-12">
+    <section class="mb-16">
       <h2 class="mb-6 text-xl font-bold text-foreground">
         {{ t('about.timeline') }}
       </h2>
@@ -80,16 +78,16 @@ useSeo({
           <div class="absolute left-[-5px] top-1.5 size-2.5 rounded-full border-2 border-primary bg-surface" />
           <p class="mb-1 text-xs text-muted">{{ item.period }}</p>
           <h3 class="mb-2 font-semibold text-foreground">{{ t(item.titleKey) }}</h3>
-          <p class="text-sm leading-6 text-muted">{{ t(item.descriptionKey) }}</p>
+          <p class="max-w-prose text-sm leading-6 text-muted">{{ t(item.descriptionKey) }}</p>
         </article>
       </div>
-    </div>
+    </section>
 
-    <div class="mt-12">
+    <section class="mb-16">
       <h2 class="mb-6 text-xl font-bold text-foreground">
         {{ t('about.values') }}
       </h2>
-      <div class="grid gap-4 sm:grid-cols-2">
+      <div class="grid gap-6 sm:grid-cols-2">
         <article
           v-for="value in techValues"
           :key="value.id"
@@ -99,9 +97,9 @@ useSeo({
           <p class="text-sm leading-6 text-muted">{{ t(value.descriptionKey) }}</p>
         </article>
       </div>
-    </div>
+    </section>
 
-    <div class="mt-12">
+    <section>
       <h2 class="mb-6 text-xl font-bold text-foreground">
         {{ t('about.workflow') }}
       </h2>
@@ -115,6 +113,6 @@ useSeo({
           {{ t(`about.workflow.${i}`) }}
         </li>
       </ul>
-    </div>
+    </section>
   </div>
 </template>
