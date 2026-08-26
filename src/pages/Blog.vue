@@ -1,71 +1,77 @@
 <script setup lang="ts">
+import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { RouterLink } from 'vue-router';
-import { NCard, NEmpty, NTag } from 'naive-ui';
+import { NEmpty } from 'naive-ui';
 import { useSeo } from '@/hooks/useSeo';
-import { blogPosts } from '@/data/blog';
-import type { BlogPost } from '@/types';
+import { blogCategories, publishedPosts } from '@/data/blog';
+import { SITE_RSS_PATH } from '@/data/site';
+import type { BlogCategory } from '@/types';
+import BlogCard from '@/components/business/BlogCard.vue';
 
 const { t } = useI18n();
 
 useSeo({
   title: () => t('blog.title'),
-  description: () => t('blog.description'),
+  description: () => t('blog.seoDescription'),
 });
 
-const publishedPosts = blogPosts.filter((post) => post.published);
+const activeCategory = ref<BlogCategory | 'all'>('all');
 
-const getPostTitle = (post: BlogPost) => (post.titleKey ? t(post.titleKey) : post.title);
-const getPostExcerpt = (post: BlogPost) => (post.excerptKey ? t(post.excerptKey) : post.excerpt);
+const filteredPosts = computed(() => {
+  if (activeCategory.value === 'all') return publishedPosts;
+  return publishedPosts.filter((post) => post.category === activeCategory.value);
+});
 </script>
 
 <template>
   <div class="animate-fade-in mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
-    <h1 class="mb-2 text-3xl font-bold text-foreground">
-      {{ t('blog.title') }}
-    </h1>
-    <p class="mb-8 text-muted">
-      {{ t('blog.description') }}
-    </p>
-
-    <div v-if="publishedPosts.length" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <NCard
-        v-for="post in publishedPosts"
-        :key="post.id"
-        class="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-      >
-        <template #header>
-          <RouterLink :to="`/blog/${post.slug}`" class="text-lg font-semibold text-foreground hover:text-primary">
-            {{ getPostTitle(post) }}
-          </RouterLink>
-        </template>
-
-        <div class="mb-4 flex flex-wrap gap-2">
-          <NTag
-            v-for="tag in post.tags"
-            :key="tag"
-            size="small"
-            :bordered="false"
-          >
-            {{ tag }}
-          </NTag>
-        </div>
-
-        <p class="mb-5 line-clamp-4 text-sm leading-6 text-muted">
-          {{ getPostExcerpt(post) }}
+    <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <h1 class="mb-2 text-3xl font-bold text-foreground">
+          {{ t('blog.title') }}
+        </h1>
+        <p class="text-muted">
+          {{ t('blog.description') }}
         </p>
-
-        <div class="flex items-center justify-between gap-4 text-xs text-muted">
-          <span>{{ post.date }}</span>
-          <span>{{ t('blog.readingTime', { n: post.readingTime }) }}</span>
-        </div>
-
-        <RouterLink :to="`/blog/${post.slug}`" class="mt-5 inline-block text-sm font-medium text-primary hover:text-primary">
-          {{ t('blog.readMore') }}
-        </RouterLink>
-      </NCard>
+      </div>
+      <a :href="SITE_RSS_PATH" class="text-sm font-medium text-primary hover:opacity-80">
+        {{ t('blog.rss') }}
+      </a>
     </div>
 
+    <section class="mb-10 rounded-lg border border-border bg-surface p-5">
+      <h2 class="mb-2 text-lg font-semibold text-foreground">{{ t('blog.cadence.title') }}</h2>
+      <p class="text-sm leading-6 text-muted">{{ t('blog.cadence.description') }}</p>
+    </section>
+
+    <div class="mb-8 flex flex-wrap gap-2">
+      <button
+        type="button"
+        class="rounded-full px-4 py-2 text-sm font-medium transition-colors"
+        :class="activeCategory === 'all' ? 'bg-primary text-white' : 'bg-surface-raised text-muted hover:text-foreground'"
+        @click="activeCategory = 'all'"
+      >
+        {{ t('common.all') }}
+      </button>
+      <button
+        v-for="category in blogCategories"
+        :key="category"
+        type="button"
+        class="rounded-full px-4 py-2 text-sm font-medium transition-colors"
+        :class="activeCategory === category ? 'bg-primary text-white' : 'bg-surface-raised text-muted hover:text-foreground'"
+        @click="activeCategory = category"
+      >
+        {{ t(`blog.category.${category}`) }}
+      </button>
+    </div>
+
+    <div v-if="filteredPosts.length" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <BlogCard
+        v-for="post in filteredPosts"
+        :key="post.id"
+        :post="post"
+      />
+    </div>
     <NEmpty v-else :description="t('blog.empty')" />
   </div>
 </template>

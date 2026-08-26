@@ -5,6 +5,11 @@ import { useI18n } from 'vue-i18n';
 import { NButton, NTag, NEmpty } from 'naive-ui';
 import { useSeo } from '@/hooks/useSeo';
 import { projects } from '@/data/projects';
+import { getProjectArchitecture } from '@/data/project-media';
+import { getAdjacentItems, toAbsoluteUrl } from '@/utils';
+import MediaCover from '@/components/common/MediaCover.vue';
+import ArchitectureDiagram from '@/components/business/ArchitectureDiagram.vue';
+import AdjacentNav from '@/components/business/AdjacentNav.vue';
 
 const route = useRoute();
 const { t } = useI18n();
@@ -34,10 +39,28 @@ const projectContribution = computed(() => {
   if (!current) return '';
   return current.contributionKey ? t(current.contributionKey) : current.contribution ?? '';
 });
+const architecture = computed(() => (project.value ? getProjectArchitecture(project.value.id) : []));
+const showcase = computed(() => projectFeatures.value.slice(0, 4));
+const adjacent = computed(() => getAdjacentItems(
+  projects,
+  String(route.params.id),
+  (item) => `/projects/${item.id}`,
+  (item) => (item.titleKey ? t(item.titleKey) : item.title),
+));
 
 useSeo({
   title: () => projectTitle.value,
   description: () => projectDescription.value,
+  type: 'article',
+  jsonLd: () => (project.value ? {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: projectTitle.value,
+    description: projectDescription.value,
+    url: toAbsoluteUrl(`/projects/${project.value.id}`),
+    dateCreated: String(project.value.year),
+    keywords: project.value.tags.join(', '),
+  } : null),
 });
 </script>
 
@@ -47,6 +70,15 @@ useSeo({
       <RouterLink to="/projects" class="mb-6 inline-block text-sm text-muted hover:text-primary">
         ← {{ t('common.back') }}
       </RouterLink>
+
+      <div class="mb-8 overflow-hidden rounded-xl border border-border">
+        <MediaCover
+          :title="projectTitle"
+          :src="project.cover || project.thumbnail"
+          :category-label="t(`project.category.${project.category}`)"
+          :year="project.year"
+        />
+      </div>
 
       <h1 class="mb-4 text-3xl font-bold text-foreground">
         {{ projectTitle }}
@@ -74,6 +106,31 @@ useSeo({
           {{ tag }}
         </NTag>
       </div>
+
+      <section v-if="showcase.length" class="mb-10">
+        <h2 class="mb-4 text-xl font-bold text-foreground">
+          {{ t('project.gallery') }}
+        </h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <article
+            v-for="(item, index) in showcase"
+            :key="item"
+            class="overflow-hidden rounded-lg border border-border bg-surface"
+          >
+            <div class="flex h-28 items-center justify-center bg-gradient-to-br from-primary/15 to-accent/10">
+              <span class="text-xs font-medium text-primary">{{ t('project.screen') }} {{ index + 1 }}</span>
+            </div>
+            <p class="p-4 text-sm leading-6 text-muted">{{ item }}</p>
+          </article>
+        </div>
+      </section>
+
+      <section v-if="architecture.length" class="mb-10">
+        <h2 class="mb-4 text-xl font-bold text-foreground">
+          {{ t('project.architecture') }}
+        </h2>
+        <ArchitectureDiagram :layers="architecture" />
+      </section>
 
       <section v-if="projectFeatures.length" class="mb-10">
         <h2 class="mb-4 text-xl font-bold text-foreground">
@@ -124,6 +181,8 @@ useSeo({
           <NButton secondary round>{{ t('common.source') }}</NButton>
         </a>
       </div>
+
+      <AdjacentNav :prev="adjacent.prev" :next="adjacent.next" />
     </template>
 
     <NEmpty v-else :description="t('notfound.description')">

@@ -327,7 +327,7 @@ const projectItems: Project[] = [
     category: 'web',
     featured: false,
     year: 2025,
-    url: '/',
+    url: 'https://web.zhiou9588.workers.dev/',
     repo: 'https://github.com/zhouzhiouhub',
     features: [
       '首页、关于、项目、项目详情、博客、实验室、开源、简历和联系多页面路由',

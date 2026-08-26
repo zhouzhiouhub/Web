@@ -39,9 +39,7 @@ const pageTitle = computed(() => (t(String(route.meta.titleKey ?? 'home.title'))
     <NLoadingBarProvider>
       <NMessageProvider>
         <NDialogProvider>
-          <DefaultLayout :page-title="pageTitle">
-            <RouterView />
-          </DefaultLayout>
+          <DefaultLayout :page-title="pageTitle" />
         </NDialogProvider>
       </NMessageProvider>
     </NLoadingBarProvider>

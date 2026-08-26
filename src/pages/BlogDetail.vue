@@ -4,13 +4,16 @@ import { useRoute, RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { NButton, NEmpty, NTag } from 'naive-ui';
 import { useSeo } from '@/hooks/useSeo';
-import { blogPosts } from '@/data/blog';
+import { publishedPosts } from '@/data/blog';
+import { getAdjacentItems, toAbsoluteUrl } from '@/utils';
 import type { BlogContentBlock, BlogPost } from '@/types';
+import MediaCover from '@/components/common/MediaCover.vue';
+import AdjacentNav from '@/components/business/AdjacentNav.vue';
 
 const route = useRoute();
 const { t } = useI18n();
 
-const post = computed(() => blogPosts.find((item) => item.slug === route.params.slug && item.published));
+const post = computed(() => publishedPosts.find((item) => item.slug === route.params.slug));
 
 const resolvePostTitle = (targetPost?: BlogPost) => {
   if (!targetPost) return t('blog.title');
@@ -24,6 +27,12 @@ const resolvePostExcerpt = (targetPost?: BlogPost) => {
 
 const postTitle = computed(() => resolvePostTitle(post.value));
 const postExcerpt = computed(() => resolvePostExcerpt(post.value));
+const adjacent = computed(() => getAdjacentItems(
+  publishedPosts,
+  post.value?.id ?? '',
+  (item) => `/blog/${item.slug}`,
+  (item) => (item.titleKey ? t(item.titleKey) : item.title),
+));
 
 const getHeadingClass = (block: BlogContentBlock) => (
   block.level === 3
@@ -34,6 +43,17 @@ const getHeadingClass = (block: BlogContentBlock) => (
 useSeo({
   title: () => postTitle.value,
   description: () => postExcerpt.value,
+  type: 'article',
+  jsonLd: () => (post.value ? {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: postTitle.value,
+    description: postExcerpt.value,
+    datePublished: post.value.date,
+    author: { '@type': 'Person', name: '周珍运' },
+    url: toAbsoluteUrl(`/blog/${post.value.slug}`),
+    keywords: post.value.tags.join(', '),
+  } : null),
 });
 </script>
 
@@ -44,6 +64,14 @@ useSeo({
         {{ t('common.back') }}
       </RouterLink>
 
+      <div class="mb-8 overflow-hidden rounded-xl border border-border">
+        <MediaCover
+          :title="postTitle"
+          :src="post.cover"
+          :category-label="t(`blog.category.${post.category}`)"
+        />
+      </div>
+
       <h1 class="mb-4 text-3xl font-bold leading-tight text-foreground">
         {{ postTitle }}
       </h1>
@@ -51,6 +79,9 @@ useSeo({
       <div class="mb-8 flex flex-wrap items-center gap-4 text-sm text-muted">
         <span>{{ post.date }}</span>
         <span>{{ t('blog.readingTime', { n: post.readingTime }) }}</span>
+        <NTag size="small" round :bordered="false" type="primary">
+          {{ t(`blog.category.${post.category}`) }}
+        </NTag>
       </div>
 
       <div class="mb-8 flex flex-wrap gap-2">
@@ -135,6 +166,8 @@ useSeo({
           </a>
         </div>
       </article>
+
+      <AdjacentNav :prev="adjacent.prev" :next="adjacent.next" />
     </template>
 
     <NEmpty v-else :description="t('notfound.description')">

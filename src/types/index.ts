@@ -24,7 +24,12 @@ export interface SocialLink {
   iconSrc?: string;
   iconScale?: number;
   url: string;
+  /** Hide full value in public UI and skip footer icon links. */
+  sensitive?: boolean;
+  placement?: SocialPlacement;
 }
+
+export type SocialPlacement = 'all' | 'contact' | 'footer';
 
 /* ===== Project ===== */
 
@@ -50,6 +55,21 @@ export interface Project {
   /** 我的贡献 */
   contribution?: string;
   contributionKey?: string;
+  cover?: string;
+  gallery?: ProjectGalleryItem[];
+  architecture?: ArchitectureLayer[];
+}
+
+export interface ProjectGalleryItem {
+  src: string;
+  altKey?: string;
+  captionKey?: string;
+}
+
+export interface ArchitectureLayer {
+  id: string;
+  labelKey: string;
+  items: string[];
 }
 
 export type ProjectCategory =
@@ -159,6 +179,7 @@ export interface BlogPost {
   readingTime: number;
   published: boolean;
   sourceUrl?: string;
+  cover?: string;
   content: BlogContentBlock[];
 }
 
@@ -242,4 +263,55 @@ export interface CareerRole {
   titleKey: string;
   descriptionKey: string;
   icon?: string;
+}
+
+/* ===== Home Services ===== */
+
+export interface ServiceItem {
+  id: string;
+  titleKey: string;
+  descriptionKey: string;
+  icon: ServiceIcon;
+}
+
+export type ServiceIcon = 'mobile' | 'web' | 'toolchain' | 'automation';
+
+/* ===== Timeline / Values / FAQ ===== */
+
+export interface TimelineItem {
+  id: string;
+  period: string;
+  titleKey: string;
+  descriptionKey: string;
+}
+
+export interface ValueItem {
+  id: string;
+  titleKey: string;
+  descriptionKey: string;
+}
+
+export interface FaqItem {
+  id: string;
+  questionKey: string;
+  answerKey: string;
+}
+
+export interface ContactIntent {
+  id: string;
+  labelKey: string;
+}
+
+/* ===== Breadcrumb ===== */
+
+export interface BreadcrumbItem {
+  label: string;
+  to?: string;
+}
+
+/* ===== Adjacent nav ===== */
+
+export interface AdjacentLink {
+  to: string;
+  title: string;
 }

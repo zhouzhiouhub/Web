@@ -6,17 +6,19 @@ import { useSeo } from '@/hooks/useSeo';
 import { experiences } from '@/data/experience';
 import { skills } from '@/data/skills';
 import { educations } from '@/data/education';
-import { socialLinks } from '@/data/social';
+import { footerSocialLinks } from '@/data/social';
 import { openSourceContributions } from '@/data/opensource';
 import { formatDateRange } from '@/utils';
+import { SITE_AUTHOR, SITE_CV, SITE_DEFAULT_URL, SITE_EMAIL, SITE_PHONE } from '@/data/site';
 import ExperienceTimeline from '@/components/business/ExperienceTimeline.vue';
 import SkillBadge from '@/components/business/SkillBadge.vue';
+import RevealContact from '@/components/common/RevealContact.vue';
 
 const { t, locale } = useI18n();
 
 useSeo({
   title: () => t('resume.title'),
-  description: () => t('resume.description'),
+  description: () => t('resume.seoDescription'),
 });
 
 const profileParagraphs = computed(() => [
@@ -37,12 +39,15 @@ const certificates = computed(() => [
 ]);
 
 const personalInfo = computed(() => [
-  { label: t('resume.name'), value: '周珍运' },
+  { label: t('resume.name'), value: SITE_AUTHOR },
   { label: t('resume.role'), value: t('resume.roleValue') },
-  { label: t('resume.phone'), value: '18026403146' },
-  { label: t('resume.email'), value: '2922188469@qq.com' },
   { label: t('resume.expectedCity'), value: t('resume.expectedCityValue') },
-  { label: t('resume.website'), value: 'web.zhiou9588.workers.dev' },
+  { label: t('resume.website'), value: SITE_DEFAULT_URL.replace(/^https?:\/\//, ''), href: SITE_DEFAULT_URL },
+]);
+
+const contactInfo = computed(() => [
+  { label: t('resume.phone'), type: 'phone' as const, value: SITE_PHONE },
+  { label: t('resume.email'), type: 'email' as const, value: SITE_EMAIL },
 ]);
 </script>
 
@@ -61,8 +66,9 @@ const personalInfo = computed(() => [
         type="primary"
         round
         tag="a"
-        href="https://zhouzhiouhub.github.io/CV/"
+        :href="SITE_CV"
         target="_blank"
+        rel="noopener noreferrer"
       >
         {{ t('resume.download') }}
       </NButton>
@@ -80,12 +86,30 @@ const personalInfo = computed(() => [
           class="rounded-lg border border-border bg-surface p-4"
         >
           <p class="text-sm text-muted">{{ info.label }}</p>
-          <p class="mt-1 break-words font-medium text-foreground">{{ info.value }}</p>
+          <a
+            v-if="info.href"
+            :href="info.href"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-1 inline-block break-words font-medium text-primary"
+          >
+            {{ info.value }}
+          </a>
+          <p v-else class="mt-1 break-words font-medium text-foreground">{{ info.value }}</p>
+        </div>
+        <div
+          v-for="info in contactInfo"
+          :key="info.label"
+          class="rounded-lg border border-border bg-surface p-4"
+        >
+          <p class="mb-2 text-sm text-muted">{{ info.label }}</p>
+          <RevealContact :type="info.type" :value="info.value" />
         </div>
       </div>
+      <p class="mt-4 text-xs text-muted">{{ t('contact.maskedHint') }}</p>
       <div class="mt-4 flex flex-wrap gap-4">
         <a
-          v-for="social in socialLinks"
+          v-for="social in footerSocialLinks"
           :key="social.id"
           :href="social.url"
           target="_blank"

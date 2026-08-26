@@ -1,23 +1,38 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 import { useSeo } from '@/hooks/useSeo';
+import { SITE_AUTHOR, SITE_AVATAR } from '@/data/site';
+import { aboutDirections, growthTimeline, techValues } from '@/data/about';
 
 const { t } = useI18n();
 
 useSeo({
   title: () => t('about.title'),
-  description: () => t('about.description'),
+  description: () => t('about.seoDescription'),
+  type: 'profile',
 });
 </script>
 
 <template>
   <div class="animate-fade-in mx-auto max-w-prose px-4 py-16 sm:px-6 lg:px-8">
-    <h1 class="mb-2 text-3xl font-bold text-foreground">
-      {{ t('about.title') }}
-    </h1>
-    <p class="mb-8 text-muted">
-      {{ t('about.description') }}
-    </p>
+    <div class="mb-10 flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+      <img
+        :src="SITE_AVATAR"
+        :alt="t('about.avatarAlt')"
+        width="112"
+        height="112"
+        class="size-28 rounded-full border border-border object-cover"
+      />
+      <div>
+        <h1 class="mb-2 text-3xl font-bold text-foreground">
+          {{ t('about.title') }}
+        </h1>
+        <p class="text-muted">
+          {{ t('about.description') }}
+        </p>
+        <p class="mt-2 text-sm font-medium text-primary">{{ SITE_AUTHOR }}</p>
+      </div>
+    </div>
 
     <div class="space-y-6 text-base leading-relaxed text-foreground/90">
       <p>
@@ -32,40 +47,60 @@ useSeo({
       </p>
     </div>
 
-    <!-- Directions -->
     <div class="mt-12">
       <h2 class="mb-6 text-xl font-bold text-foreground">
         {{ t('about.directions') }}
       </h2>
       <div class="grid gap-6 sm:grid-cols-3">
-        <div class="rounded-lg border border-border bg-surface p-5">
+        <div
+          v-for="direction in aboutDirections"
+          :key="direction.id"
+          class="rounded-lg border border-border bg-surface p-5"
+        >
           <h3 class="mb-2 font-semibold text-foreground">
-            {{ t('about.direction.dev.title') }}
+            {{ t(direction.titleKey) }}
           </h3>
-          <p class="text-sm text-muted">
-            {{ t('about.direction.dev.desc') }}
-          </p>
-        </div>
-        <div class="rounded-lg border border-border bg-surface p-5">
-          <h3 class="mb-2 font-semibold text-foreground">
-            {{ t('about.direction.ai.title') }}
-          </h3>
-          <p class="text-sm text-muted">
-            {{ t('about.direction.ai.desc') }}
-          </p>
-        </div>
-        <div class="rounded-lg border border-border bg-surface p-5">
-          <h3 class="mb-2 font-semibold text-foreground">
-            {{ t('about.direction.opensource.title') }}
-          </h3>
-          <p class="text-sm text-muted">
-            {{ t('about.direction.opensource.desc') }}
+          <p class="text-sm leading-6 text-muted">
+            {{ t(direction.descriptionKey) }}
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Workflow -->
+    <div class="mt-12">
+      <h2 class="mb-6 text-xl font-bold text-foreground">
+        {{ t('about.timeline') }}
+      </h2>
+      <div>
+        <article
+          v-for="item in growthTimeline"
+          :key="item.id"
+          class="relative border-l border-border pb-8 pl-6 last:pb-0"
+        >
+          <div class="absolute left-[-5px] top-1.5 size-2.5 rounded-full border-2 border-primary bg-surface" />
+          <p class="mb-1 text-xs text-muted">{{ item.period }}</p>
+          <h3 class="mb-2 font-semibold text-foreground">{{ t(item.titleKey) }}</h3>
+          <p class="text-sm leading-6 text-muted">{{ t(item.descriptionKey) }}</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="mt-12">
+      <h2 class="mb-6 text-xl font-bold text-foreground">
+        {{ t('about.values') }}
+      </h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <article
+          v-for="value in techValues"
+          :key="value.id"
+          class="rounded-lg border border-border bg-surface p-5"
+        >
+          <h3 class="mb-2 font-semibold text-foreground">{{ t(value.titleKey) }}</h3>
+          <p class="text-sm leading-6 text-muted">{{ t(value.descriptionKey) }}</p>
+        </article>
+      </div>
+    </div>
+
     <div class="mt-12">
       <h2 class="mb-6 text-xl font-bold text-foreground">
         {{ t('about.workflow') }}

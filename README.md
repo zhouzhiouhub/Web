@@ -92,6 +92,19 @@ src/
 
 默认语言为 `zh-CN`，预留 `en-US` 和 `ja-JP`。所有用户可见文案通过 `src/locales/` 管理。
 
+## SEO 与订阅
+
+- 每个页面通过 `useSeo` 设置 title、description、Open Graph、Twitter Card、canonical 和 JSON-LD。
+- 构建时生成 `sitemap.xml` 与 `rss.xml`。
+- 联系方式在简历页和联系页默认脱敏，邮箱统一为 `zhouzhiou9588@163.com`。
+
+站点地址可用环境变量覆盖：
+
+```bash
+VITE_SITE_URL=https://web.zhiou9588.workers.dev
+VITE_BASE_PUBLIC_PATH=/
+```
+
 ## 开发规范
 
 详见 `AGENT.md`。

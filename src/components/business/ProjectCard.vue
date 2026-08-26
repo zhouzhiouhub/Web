@@ -4,6 +4,7 @@ import { RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { NTag, NCard } from 'naive-ui';
 import type { Project } from '@/types';
+import MediaCover from '@/components/common/MediaCover.vue';
 
 const props = defineProps<{
   project: Project;
@@ -22,20 +23,20 @@ const projectDescription = computed(() => (
     :to="{ name: 'project-detail', params: { id: project.id } }"
     class="group block h-full min-h-[300px] cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
   >
-    <NCard :bordered="true" class="h-full">
-      <template #header>
-        <div class="flex items-center justify-between gap-4">
-          <h3 class="text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
-            {{ projectTitle }}
-          </h3>
-          <span class="shrink-0 text-xs text-muted">{{ project.year }}</span>
-        </div>
+    <NCard :bordered="true" class="h-full overflow-hidden">
+      <template #cover>
+        <MediaCover
+          compact
+          :title="projectTitle"
+          :src="project.cover || project.thumbnail"
+          :category-label="t(`project.category.${project.category}`)"
+          :year="project.year"
+        />
       </template>
-
-      <template #header-extra>
-        <span class="rounded-full bg-surface-raised px-2.5 py-0.5 text-xs font-medium text-muted">
-          {{ t(`project.category.${project.category}`) }}
-        </span>
+      <template #header>
+        <h3 class="text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
+          {{ projectTitle }}
+        </h3>
       </template>
 
       <div class="flex h-full flex-col">

@@ -1,4 +1,5 @@
 import type { SocialLink } from '@/types';
+import { SITE_CSDN, SITE_CV, SITE_GITHUB } from '@/data/site';
 
 export const socialLinks: SocialLink[] = [
   {
@@ -7,7 +8,7 @@ export const socialLinks: SocialLink[] = [
     labelKey: 'social.github',
     icon: 'github',
     iconSrc: '/github.svg',
-    url: 'https://github.com/zhouzhiouhub',
+    url: SITE_GITHUB,
   },
   {
     id: 'csdn',
@@ -16,7 +17,7 @@ export const socialLinks: SocialLink[] = [
     icon: 'csdn',
     iconScale: 1.5,
     iconSrc: '/csdn.svg',
-    url: 'https://blog.csdn.net/qq_59002866',
+    url: SITE_CSDN,
   },
   {
     id: 'email',
@@ -24,7 +25,9 @@ export const socialLinks: SocialLink[] = [
     labelKey: 'social.email',
     icon: 'mail',
     iconSrc: '/email.svg',
-    url: 'mailto:zhouzhiou9588@163.com',
+    url: '/contact',
+    sensitive: true,
+    placement: 'contact',
   },
   {
     id: 'phone',
@@ -32,7 +35,9 @@ export const socialLinks: SocialLink[] = [
     labelKey: 'social.phone',
     icon: 'phone',
     iconSrc: '/phone.svg',
-    url: 'tel:18026403146',
+    url: '/contact',
+    sensitive: true,
+    placement: 'contact',
   },
   {
     id: 'cv',
@@ -40,6 +45,9 @@ export const socialLinks: SocialLink[] = [
     labelKey: 'social.cv',
     icon: 'globe',
     iconSrc: '/cv.svg',
-    url: 'https://zhouzhiouhub.github.io/CV/',
+    url: SITE_CV,
   },
 ];
+
+export const footerSocialLinks = socialLinks.filter((link) => link.placement !== 'contact');
+export const contactSocialLinks = socialLinks.filter((link) => !link.sensitive);

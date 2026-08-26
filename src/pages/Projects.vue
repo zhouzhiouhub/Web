@@ -11,7 +11,7 @@ const { t } = useI18n();
 
 useSeo({
   title: () => t('projects.title'),
-  description: () => t('projects.description'),
+  description: () => t('projects.seoDescription'),
 });
 
 const activeCategory = ref<ProjectCategory | 'all'>('all');

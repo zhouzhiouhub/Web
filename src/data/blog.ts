@@ -438,3 +438,9 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 ];
+
+export const publishedPosts = blogPosts.filter((post) => post.published);
+
+export const latestPosts = publishedPosts.slice(0, 3);
+
+export const blogCategories = ['ai', 'frontend', 'cpp', 'engineering'] as const;

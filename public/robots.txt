@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zhouzhiouhub.github.io/sitemap.xml
+Sitemap: https://web.zhiou9588.workers.dev/sitemap.xml
