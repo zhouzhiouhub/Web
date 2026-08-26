@@ -7,6 +7,7 @@ import { experiences } from '@/data/experience';
 import { skills } from '@/data/skills';
 import { educations } from '@/data/education';
 import { socialLinks } from '@/data/social';
+import { openSourceContributions } from '@/data/opensource';
 import { formatDateRange } from '@/utils';
 import ExperienceTimeline from '@/components/business/ExperienceTimeline.vue';
 import SkillBadge from '@/components/business/SkillBadge.vue';
@@ -129,6 +130,43 @@ const personalInfo = computed(() => [
           :key="exp.id"
           :experience="exp"
         />
+      </div>
+    </section>
+
+    <!-- Open Source -->
+    <section class="mb-16">
+      <h2 class="mb-6 text-xl font-bold text-foreground">
+        {{ t('resume.opensource') }}
+      </h2>
+      <div class="space-y-4">
+        <a
+          v-for="contribution in openSourceContributions"
+          :key="contribution.id"
+          :href="contribution.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary/50"
+        >
+          <div class="mb-2 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+              <h3 class="text-lg font-semibold text-foreground">
+                {{ contribution.titleKey ? t(contribution.titleKey) : contribution.title }}
+              </h3>
+              <p class="mt-1 font-mono text-sm text-muted">
+                {{ contribution.repo }}
+              </p>
+            </div>
+            <span class="shrink-0 text-xs font-medium text-primary">
+              {{ t(`opensource.status.${contribution.status}`) }}
+            </span>
+          </div>
+          <p class="text-sm leading-relaxed text-foreground/90">
+            {{ contribution.valueKey ? t(contribution.valueKey) : contribution.value }}
+          </p>
+          <span class="mt-3 inline-block text-sm font-medium text-primary">
+            {{ t(`opensource.cta.${contribution.kind}`) }}
+          </span>
+        </a>
       </div>
     </section>
 

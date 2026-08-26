@@ -189,6 +189,27 @@ export type LabStatus = 'active' | 'paused' | 'planned';
 
 /* ===== Open Source ===== */
 
+export type OpenSourceContributionKind = 'pr' | 'review';
+
+export type OpenSourceContributionStatus = 'merged' | 'open' | 'discussion';
+
+export interface OpenSourceContribution {
+  id: string;
+  kind: OpenSourceContributionKind;
+  status: OpenSourceContributionStatus;
+  repo: string;
+  repoUrl: string;
+  title: string;
+  titleKey?: string;
+  content: string;
+  contentKey?: string;
+  value: string;
+  valueKey?: string;
+  url: string;
+  tags: string[];
+  year: number;
+}
+
 export interface OpenSourceProject {
   id: string;
   name: string;

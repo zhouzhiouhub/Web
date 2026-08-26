@@ -1,0 +1,36 @@
+import type { OpenSourceContribution } from '@/types';
+
+export const openSourceContributions: OpenSourceContribution[] = [
+  {
+    id: 'vite-docs-cn-1749',
+    kind: 'pr',
+    status: 'open',
+    repo: 'vitejs/docs-cn',
+    repoUrl: 'https://github.com/vitejs/docs-cn',
+    title: 'Vite 中文文档历史版本部署指南',
+    titleKey: 'opensource.docsCn.title',
+    content: '为 Vite 中文文档的历史版本维护提交了 DEPLOYMENT.md，整理分支与域名映射、部署触发机制、手动回退方案以及历史版本维护约定。',
+    contentKey: 'opensource.docsCn.content',
+    value: '补齐历史版本文档部署流程说明，降低后续维护者的协作成本。',
+    valueKey: 'opensource.docsCn.value',
+    url: 'https://github.com/vitejs/docs-cn/pull/1749',
+    tags: ['Vite', 'docs-cn', 'DEPLOYMENT.md'],
+    year: 2026,
+  },
+  {
+    id: 'vite-23143',
+    kind: 'review',
+    status: 'discussion',
+    repo: 'vitejs/vite',
+    repoUrl: 'https://github.com/vitejs/vite',
+    title: 'JavaScript API server.close() 挂起问题分析',
+    titleKey: 'opensource.viteClose.title',
+    content: '在 vitejs/vite#23143 下对比 #23155 与 #23347 两条候选修复：前者在 close() 中直接结算 pending processing Promise，改动更小；后者额外在 optimizedDeps load 钩子加入 isClosed 守卫，覆盖面更广。建议将前者更完整的测试并入后者。',
+    contentKey: 'opensource.viteClose.content',
+    value: '把 server.close() 挂起问题落到异步流程控制：optimizer 未 init 时 pending Promise 无法结算，导致 close() 永久等待。',
+    valueKey: 'opensource.viteClose.value',
+    url: 'https://github.com/vitejs/vite/issues/23143',
+    tags: ['Vite', 'JavaScript API', 'SSR', 'optimizer'],
+    year: 2026,
+  },
+];
