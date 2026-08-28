@@ -45,7 +45,8 @@ html {
 }
 
 body {
-  font-family: InterVariable, system-ui, -apple-system, sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
 }
 
 /* ===== Scrollbar ===== */
@@ -108,12 +109,10 @@ a:hover .themed-svg-icon {
 @keyframes fade-in {
   from {
     transform: translateY(8px);
-    opacity: 0;
   }
 
   to {
     transform: translateY(0);
-    opacity: 1;
   }
 }
 

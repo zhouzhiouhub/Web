@@ -1,12 +1,14 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
 import { NButton } from 'naive-ui';
 import { useTheme } from '@/hooks/useTheme';
 
+const { t } = useI18n();
 const { isDark, toggleTheme } = useTheme();
 </script>
 
 <template>
-  <NButton quaternary circle aria-label="Toggle theme" @click="toggleTheme">
+  <NButton quaternary circle :aria-label="t('common.toggleTheme')" @click="toggleTheme">
     <template #icon>
       <Transition
         enter-active-class="transition duration-200 ease-out"

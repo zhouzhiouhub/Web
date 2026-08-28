@@ -29,7 +29,7 @@ function handleSelect(key: string) {
     trigger="click"
     @select="handleSelect"
   >
-    <NButton quaternary circle aria-label="Switch language">
+    <NButton quaternary circle :aria-label="t('common.switchLanguage')">
       <span class="text-xs font-bold">{{ buttonLabel }}</span>
     </NButton>
   </NDropdown>

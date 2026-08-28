@@ -1,18 +1,16 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { defineAsyncComponent, onMounted, shallowRef } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { NButton } from 'naive-ui';
 import { useSeo, buildPersonJsonLd, buildWebSiteJsonLd } from '@/hooks/useSeo';
-import { homeProjects } from '@/data/projects';
-import { skills } from '@/data/skills';
-import { latestPosts } from '@/data/blog';
 import { homeServices, homeStats } from '@/data/home';
-import { groupSkillsByCategory } from '@/utils';
 import { SITE_OG_IMAGE } from '@/data/site';
-import ProjectCard from '@/components/business/ProjectCard.vue';
-import BlogCard from '@/components/business/BlogCard.vue';
+import type { BlogPost, Project, Skill } from '@/types';
 import ServiceCard from '@/components/business/ServiceCard.vue';
+
+const ProjectCard = defineAsyncComponent(() => import('@/components/business/ProjectCard.vue'));
+const BlogCard = defineAsyncComponent(() => import('@/components/business/BlogCard.vue'));
 
 const { t } = useI18n();
 
@@ -23,11 +21,25 @@ useSeo({
   jsonLd: () => [buildWebSiteJsonLd(), buildPersonJsonLd()],
 });
 
-const skillGroups = computed(() => groupSkillsByCategory(skills));
+const homeProjects = shallowRef<Project[]>([]);
+const latestPosts = shallowRef<BlogPost[]>([]);
+const skillGroups = shallowRef<{ category: string; labelKey: string; skills: Skill[] }[]>([]);
+
+onMounted(async () => {
+  const [projectMod, blogMod, skillMod, utilsMod] = await Promise.all([
+    import('@/data/projects'),
+    import('@/data/blog'),
+    import('@/data/skills'),
+    import('@/utils'),
+  ]);
+  homeProjects.value = projectMod.homeProjects;
+  latestPosts.value = blogMod.latestPosts;
+  skillGroups.value = utilsMod.groupSkillsByCategory(skillMod.skills);
+});
 </script>
 
 <template>
-  <div class="animate-fade-in">
+  <div>
     <section class="relative overflow-hidden">
       <div class="grid-bg pointer-events-none absolute inset-0 -z-10 opacity-[0.03]" />
       <div class="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
@@ -86,7 +98,7 @@ const skillGroups = computed(() => groupSkillsByCategory(skills));
       </div>
     </section>
 
-    <section class="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+    <section v-if="homeProjects.length" class="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
       <div class="mb-8 flex items-center justify-between">
         <h2 class="text-2xl font-bold text-foreground">
           {{ t('projects.featured') }}
@@ -104,7 +116,7 @@ const skillGroups = computed(() => groupSkillsByCategory(skills));
       </div>
     </section>
 
-    <section class="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+    <section v-if="skillGroups.length" class="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
       <div class="mb-8">
         <h2 class="text-2xl font-bold text-foreground">
           {{ t('home.techstack.title') }}
@@ -131,7 +143,7 @@ const skillGroups = computed(() => groupSkillsByCategory(skills));
       </div>
     </section>
 
-    <section class="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+    <section v-if="latestPosts.length" class="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
       <div class="mb-8 flex items-center justify-between">
         <h2 class="text-2xl font-bold text-foreground">
           {{ t('home.articles.title') }}

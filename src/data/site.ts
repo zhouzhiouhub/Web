@@ -10,9 +10,13 @@ export const SITE_CSDN = 'https://blog.csdn.net/qq_59002866';
 export const SITE_CV = 'https://zhouzhiouhub.github.io/CV/';
 const baseUrl = import.meta.env.BASE_URL || '/';
 
-export const SITE_OG_IMAGE = `${baseUrl}og.png`;
+export const SITE_OG_IMAGE = `${baseUrl}og.svg`;
 export const SITE_AVATAR = `${baseUrl}avatar.svg`;
 export const SITE_RSS_PATH = `${baseUrl}rss.xml`;
+/** Full lockup for dark surfaces: gradient K + white wordmark. */
+export const SITE_LOGO_WORDMARK_DARK = `${baseUrl}logo.svg`;
+/** Full lockup for light surfaces: gradient K + navy wordmark. */
+export const SITE_LOGO_WORDMARK_LIGHT = `${baseUrl}kinolin-logo-final-path.svg`;
 
 export function getSiteUrl(): string {
   const envUrl = import.meta.env.VITE_SITE_URL?.replace(/\/$/, '');

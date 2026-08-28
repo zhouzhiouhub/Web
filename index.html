@@ -11,16 +11,31 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Kinolin" />
     <meta property="og:url" content="https://web.zhiou9588.workers.dev/" />
-    <meta property="og:image" content="https://web.zhiou9588.workers.dev/og.png" />
+    <meta property="og:image" content="https://web.zhiou9588.workers.dev/og.svg" />
     <meta property="og:locale" content="zh_CN" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="周珍运 · 移动端 / 全栈开发工程师" />
     <meta name="twitter:description" content="周珍运（Kinolin）的个人开发者门户：移动端、全栈、客户端发布与自动化项目、技术博客和开源贡献。" />
-    <meta name="twitter:image" content="https://web.zhiou9588.workers.dev/og.png" />
+    <meta name="twitter:image" content="https://web.zhiou9588.workers.dev/og.svg" />
     <link rel="canonical" href="https://web.zhiou9588.workers.dev/" />
     <link rel="alternate" type="application/rss+xml" title="Kinolin Blog" href="/rss.xml" />
     <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
     <title>周珍运 · 移动端 / 全栈开发工程师</title>
+    <style>
+      html { background-color: #f9fafb; }
+      html.dark { background-color: #0a0c14; color-scheme: dark; }
+    </style>
+    <script>
+      (function () {
+        try {
+          var mode = JSON.parse(localStorage.getItem('theme-mode') || '"light"');
+          if (mode === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="app"></div>

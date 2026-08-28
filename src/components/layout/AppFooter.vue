@@ -5,6 +5,7 @@ import { useI18n } from 'vue-i18n';
 import { navItems } from '@/data/navigation';
 import { footerSocialLinks } from '@/data/social';
 import { SITE_RSS_PATH } from '@/data/site';
+import BrandLogo from '@/components/common/BrandLogo.vue';
 
 interface FooterAccessLink {
   id: string;
@@ -17,7 +18,6 @@ interface FooterAccessLink {
 const { t } = useI18n();
 
 const year = computed(() => new Date().getFullYear());
-const logoSrc = `${import.meta.env.BASE_URL}logo.svg`;
 const brandLabel = computed(() => t('project.portfolio.title'));
 const linkClass = [
   'text-sm text-muted transition-colors hover:text-primary',
@@ -54,18 +54,10 @@ const accessLinks = computed<FooterAccessLink[]>(() => [
       <div class="mb-10 flex items-center justify-between gap-6">
         <RouterLink
           to="/"
-          class="flex shrink-0 items-center gap-2 font-semibold text-foreground transition-opacity hover:opacity-80"
+          class="flex shrink-0 items-center transition-opacity hover:opacity-80"
           :aria-label="brandLabel"
         >
-          <img
-            :src="logoSrc"
-            alt=""
-            width="36"
-            height="36"
-            class="block size-9 shrink-0 object-contain"
-            decoding="async"
-          />
-          <span class="text-lg">Kinolin</span>
+          <BrandLogo lazy />
         </RouterLink>
         <p class="text-right text-sm leading-6 text-muted">
           {{ t('footer.tagline') }}

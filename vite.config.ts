@@ -1,10 +1,40 @@
 import { defineConfig, loadEnv } from 'vite';
+import type { Plugin } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import eslint from 'vite-plugin-eslint';
 import svgLoader from 'vite-svg-loader';
 import autoImport from 'unplugin-auto-import/dist/vite.js';
 import { resolve } from 'path';
 import { seoAssetsPlugin, SITE_DEFAULT_URL } from './vite-plugin-seo-assets';
+
+function inlineCssPlugin(): Plugin {
+  return {
+    name: 'inline-css',
+    apply: 'build',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html, ctx) {
+        if (!ctx.bundle) return html;
+
+        const css = Object.values(ctx.bundle)
+          .filter((item) => item.type === 'asset' && item.fileName.endsWith('.css'))
+          .map((item) => {
+            if (item.type !== 'asset') return '';
+            return typeof item.source === 'string'
+              ? item.source
+              : new TextDecoder().decode(item.source);
+          })
+          .join('\n');
+
+        if (!css) return html;
+
+        return html
+          .replace(/<link\s[^>]*rel="stylesheet"[^>]*>/g, '')
+          .replace('</head>', `<style>${css}</style>\n  </head>`);
+      },
+    },
+  };
+}
 
 export default ({ mode }: { mode: string }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
@@ -16,6 +46,7 @@ export default ({ mode }: { mode: string }) => {
     plugins: [
       vue(),
       seoAssetsPlugin(siteUrl),
+      inlineCssPlugin(),
       // Only run ESLint in dev mode for faster builds
       ...(isDev ? [eslint({ cache: false })] : []),
       svgLoader(),

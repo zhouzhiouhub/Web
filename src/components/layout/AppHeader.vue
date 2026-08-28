@@ -4,6 +4,7 @@ import { RouterLink, useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { NButton } from 'naive-ui';
 import { navItems } from '@/data/navigation';
+import BrandLogo from '@/components/common/BrandLogo.vue';
 import ThemeToggle from '@/components/common/ThemeToggle.vue';
 import LocaleSwitcher from '@/components/common/LocaleSwitcher.vue';
 
@@ -13,7 +14,6 @@ const showMobileMenu = ref(false);
 
 const activeKey = computed(() => route.path);
 const brandLabel = computed(() => t('project.portfolio.title'));
-const logoSrc = `${import.meta.env.BASE_URL}logo.svg`;
 
 function toggleMobileMenu() {
   showMobileMenu.value = !showMobileMenu.value;
@@ -32,19 +32,10 @@ function closeMobileMenu() {
       <!-- Logo -->
       <RouterLink
         to="/"
-        class="flex shrink-0 items-center gap-2 font-bold text-foreground transition-opacity hover:opacity-80"
+        class="flex shrink-0 items-center transition-opacity hover:opacity-80"
         :aria-label="brandLabel"
       >
-        <img
-          :src="logoSrc"
-          alt=""
-          width="36"
-          height="36"
-          class="block size-9 shrink-0 object-contain"
-          decoding="async"
-          fetchpriority="high"
-        />
-        <span class="hidden text-lg sm:inline">Kinolin</span>
+        <BrandLogo />
       </RouterLink>
 
       <!-- Desktop Nav -->
@@ -69,7 +60,9 @@ function closeMobileMenu() {
           class="md:hidden"
           quaternary
           circle
-          aria-label="Toggle menu"
+          :aria-label="t('common.toggleMenu')"
+          :aria-expanded="showMobileMenu"
+          aria-controls="mobile-nav"
           @click="toggleMobileMenu"
         >
           <template #icon>
@@ -93,6 +86,7 @@ function closeMobileMenu() {
     >
       <nav
         v-if="showMobileMenu"
+        id="mobile-nav"
         class="border-t border-border bg-surface px-4 py-3 md:hidden"
       >
         <RouterLink

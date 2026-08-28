@@ -1,7 +1,4 @@
 import type { ServiceItem, StatItem } from '@/types';
-import { blogPosts } from '@/data/blog';
-import { openSourceContributions } from '@/data/opensource';
-import { projects } from '@/data/projects';
 
 export const homeServices: ServiceItem[] = [
   {
@@ -30,20 +27,21 @@ export const homeServices: ServiceItem[] = [
   },
 ];
 
+/** Keep in sync with `projects`, published `blogPosts`, and `openSourceContributions`. */
 export const homeStats: StatItem[] = [
   {
     id: 'projects',
-    value: String(projects.length),
+    value: '12',
     labelKey: 'home.stats.projects',
   },
   {
     id: 'articles',
-    value: String(blogPosts.filter((post) => post.published).length),
+    value: '3',
     labelKey: 'home.stats.articles',
   },
   {
     id: 'opensource',
-    value: String(openSourceContributions.length),
+    value: '2',
     labelKey: 'home.stats.opensource',
   },
   {

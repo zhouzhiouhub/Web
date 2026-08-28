@@ -10,7 +10,16 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
+        sans: [
+          'ui-sans-serif',
+          'system-ui',
+          'Segoe UI',
+          'PingFang SC',
+          'Hiragino Sans GB',
+          'Noto Sans SC',
+          'Microsoft YaHei',
+          ...defaultTheme.fontFamily.sans,
+        ],
         mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
       },
       colors: {
