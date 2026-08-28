@@ -16,11 +16,11 @@ defineProps<{
     <img
       v-if="src"
       :src="src"
-      :alt="title"
+      alt=""
       class="size-full object-cover"
       loading="lazy"
       decoding="async"
-    />
+    >
     <div
       v-else
       class="absolute inset-0"
@@ -31,14 +31,20 @@ defineProps<{
       <div class="absolute -right-8 -top-8 size-32 rounded-full bg-primary/20 blur-2xl" />
       <div class="absolute -bottom-10 -left-6 size-28 rounded-full bg-accent/20 blur-2xl" />
     </div>
-    <div class="absolute inset-0 flex flex-col justify-between p-4">
+    <div
+      class="absolute inset-0 flex flex-col justify-between p-4"
+      aria-hidden="true"
+    >
       <div class="flex items-center justify-between gap-3 text-xs font-medium text-foreground/80">
         <span v-if="categoryLabel" class="rounded-full bg-surface/80 px-2.5 py-1 backdrop-blur-sm">
           {{ categoryLabel }}
         </span>
         <span v-if="year" class="text-muted">{{ year }}</span>
       </div>
-      <p class="line-clamp-2 text-lg font-semibold tracking-tight text-foreground">
+      <p
+        v-if="!compact"
+        class="line-clamp-2 text-lg font-semibold tracking-tight text-foreground"
+      >
         {{ title }}
       </p>
     </div>

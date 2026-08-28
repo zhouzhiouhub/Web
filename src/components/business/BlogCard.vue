@@ -14,12 +14,15 @@ const { t } = useI18n();
 
 const title = computed(() => (props.post.titleKey ? t(props.post.titleKey) : props.post.title));
 const excerpt = computed(() => (props.post.excerptKey ? t(props.post.excerptKey) : props.post.excerpt));
+const titleId = computed(() => `blog-card-title-${props.post.id}`);
 </script>
 
 <template>
-  <RouterLink :to="`/blog/${post.slug}`" class="group block h-full">
+  <article
+    class="group relative h-full cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-within:ring-2 focus-within:ring-primary/60"
+  >
     <NCard
-      class="h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+      class="h-full overflow-hidden"
       :bordered="true"
     >
       <template #cover>
@@ -31,8 +34,13 @@ const excerpt = computed(() => (props.post.excerptKey ? t(props.post.excerptKey)
         />
       </template>
 
-      <h3 class="mb-3 text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
-        {{ title }}
+      <h3 :id="titleId" class="mb-3 text-lg font-semibold text-foreground">
+        <RouterLink
+          :to="`/blog/${post.slug}`"
+          class="stretched-link transition-colors group-hover:text-primary"
+        >
+          {{ title }}
+        </RouterLink>
       </h3>
       <div class="mb-3 flex flex-wrap gap-2">
         <NTag
@@ -52,5 +60,14 @@ const excerpt = computed(() => (props.post.excerptKey ? t(props.post.excerptKey)
         <span>{{ t('blog.readingTime', { n: post.readingTime }) }}</span>
       </div>
     </NCard>
-  </RouterLink>
+  </article>
 </template>
+
+<style scoped>
+.stretched-link::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: '';
+}
+</style>

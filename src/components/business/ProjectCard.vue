@@ -16,12 +16,12 @@ const projectTitle = computed(() => (props.project.titleKey ? t(props.project.ti
 const projectDescription = computed(() => (
   props.project.descriptionKey ? t(props.project.descriptionKey) : props.project.description
 ));
+const titleId = computed(() => `project-card-title-${props.project.id}`);
 </script>
 
 <template>
-  <RouterLink
-    :to="{ name: 'project-detail', params: { id: project.id } }"
-    class="group block h-full min-h-[300px] cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+  <article
+    class="group relative h-full min-h-[300px] cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-within:ring-2 focus-within:ring-primary/60"
   >
     <NCard :bordered="true" class="h-full overflow-hidden">
       <template #cover>
@@ -34,8 +34,13 @@ const projectDescription = computed(() => (
         />
       </template>
       <template #header>
-        <h3 class="text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
-          {{ projectTitle }}
+        <h3 :id="titleId" class="text-lg font-semibold text-foreground">
+          <RouterLink
+            :to="{ name: 'project-detail', params: { id: project.id } }"
+            class="stretched-link transition-colors group-hover:text-primary"
+          >
+            {{ projectTitle }}
+          </RouterLink>
         </h3>
       </template>
 
@@ -59,12 +64,12 @@ const projectDescription = computed(() => (
       </div>
 
       <template #action>
-        <span class="text-xs font-medium text-primary">
+        <span class="text-xs font-medium text-primary" aria-hidden="true">
           {{ t('project.viewDetail') }}
         </span>
       </template>
     </NCard>
-  </RouterLink>
+  </article>
 </template>
 
 <style scoped>
@@ -77,5 +82,12 @@ const projectDescription = computed(() => (
 :deep(.n-card__content) {
   flex: 1 1 auto;
   min-height: 0;
+}
+
+.stretched-link::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: '';
 }
 </style>
