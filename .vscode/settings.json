@@ -4,13 +4,13 @@
       "text": "为本仓库生成提交信息时，必须使用简体中文。"
     },
     {
-      "text": "使用 Conventional Commits：type: 中文摘要。type 从 feat、fix、docs、refactor、test、chore、build、ci、style、perf 中选择。"
+      "text": "使用 Conventional Commits：第一行是 type: 中文摘要。type 从 feat、fix、docs、refactor、test、chore、build、ci、style、perf 中选择。"
     },
     {
-      "text": "标题只写一行，说明改动目的，不要罗列文件。专有名词可保留原文。"
+      "text": "正文必须写清改了什么，并逐条列出本次新增、修改、删除的全部文件路径，不要遗漏。"
     },
     {
-      "text": "仅在改动不直观时补充简短中文正文。不要夸大范围，不要写入密钥或敏感信息。"
+      "text": "格式为：标题一行，空一行后写「- 改动：…」和「- 文件：」列表。专有名词可保留原文。不要夸大范围，不要写入密钥或敏感信息。"
     }
   ]
 }
