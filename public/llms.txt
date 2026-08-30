@@ -1,0 +1,44 @@
+# Kinolin
+
+> 周珍运（Kinolin / Zhou Zhenyun）的个人开发者门户：移动端、全栈、客户端发布、自动化项目、技术博客和开源贡献。
+
+本文件供 AI 智能体了解站点结构与抓取意图。请优先跟随下方链接访问对应页面，并遵守 robots.txt。联系方式仅用于正当合作，禁止用于垃圾营销或模型训练中的骚扰用途。
+
+## Pages
+
+- [首页](https://web.zhiou9588.workers.dev/): 移动端 / 全栈开发工程师周珍运的门户首页。
+- [关于](https://web.zhiou9588.workers.dev/about): 技术背景、成长时间线与工程价值观。
+- [项目](https://web.zhiou9588.workers.dev/projects): Android、Flutter、小程序、Web 全栈与自动化作品集。
+- [博客](https://web.zhiou9588.workers.dev/blog): Microsoft Store / Steam 发布、SEO 与工程化实践。
+- [实验室](https://web.zhiou9588.workers.dev/playground): 实验、原型与 Demo。
+- [开源](https://web.zhiou9588.workers.dev/opensource): 面向 Vite 生态的文档与核心仓库贡献。
+- [简历](https://web.zhiou9588.workers.dev/resume): 经历、技能与教育背景；联系方式默认脱敏。
+- [联系](https://web.zhiou9588.workers.dev/contact): 合作意向、响应时间与联系表单。
+
+## Projects
+
+- [Kinolin Tool](https://web.zhiou9588.workers.dev/projects/kinolin-tool): 浏览器本地图片工具：转 SVG、裁剪改尺寸、转格式与压缩。
+- [VideoBrowser](https://web.zhiou9588.workers.dev/projects/videobrowser): Android 视频浏览器：广告过滤、Media3 播放与下载管理。
+- [Sokoban](https://web.zhiou9588.workers.dev/projects/sokoban): Flutter 推箱子：自定义关卡、死局检测与提示求解。
+- [wechat-resume-app](https://web.zhiou9588.workers.dev/projects/wechat-resume-app): 微信小程序简历：可视化编辑、海报分享与管理看板。
+- [Budget](https://web.zhiou9588.workers.dev/projects/budget): 微信小程序预算：月度预算、记账、筛选与本地持久化。
+- [Sphere](https://web.zhiou9588.workers.dev/projects/sphere): Three.js 3D 轨道冲刺小游戏。
+- [Game-Web](https://web.zhiou9588.workers.dev/projects/game-web): Next.js 15 游戏资源站，多语言响应式门户。
+- [Astro_Two](https://web.zhiou9588.workers.dev/projects/astro-two): Astro 4 多语言静态站点模板。
+- [Kinolin Portfolio](https://web.zhiou9588.workers.dev/projects/portfolio-website): 本站：个人开发者门户、项目、博客与简历。
+- [客户端软件构建与发布链路](https://web.zhiou9588.workers.dev/projects/client-build-pipeline): 桌面端从编译到商店上架与下载校验。
+- [官网、后台与订阅支付系统维护](https://web.zhiou9588.workers.dev/projects/website-payment-system): 多产品官网、后台与订阅支付链路。
+- [Python 自动化工具集](https://web.zhiou9588.workers.dev/projects/python-automation): 数据处理、任务调度与本地工具交付。
+
+## Blog
+
+- [Microsoft Store 自动化上架：MSIX 打包与 Submission API 外链指南](https://web.zhiou9588.workers.dev/blog/microsoft-store-publishing-guide): 围绕 MSIX Packaging Tool、MSIX Toolkit、StoreBroker 和 Microsoft Store Submission API，整理自动化上架的流程边界。
+- [Steam 应用上架流程：Steamworks、商店页与 SteamPipe 构建](https://web.zhiou9588.workers.dev/blog/steam-publishing-guide): 从 Steamworks 账号准备、AppID 创建、商店资料填写到 SteamCMD 上传构建，整理一套 Steam 上架流程。
+- [SEO 优化实践指南：从页面结构到持续监控](https://web.zhiou9588.workers.dev/blog/seo-optimization-guide): 围绕搜索意图、标题描述、语义化结构、站点地图、结构化数据、性能和内容更新，整理 SEO 优化流程。
+
+## Optional
+
+- [Sitemap](https://web.zhiou9588.workers.dev/sitemap.xml): 公开页面的 XML 站点地图。
+- [RSS](https://web.zhiou9588.workers.dev/rss.xml): 技术博客订阅源。
+- [GitHub](https://github.com/zhouzhiouhub): 源码与开源贡献。
+- [CSDN](https://blog.csdn.net/qq_59002866): 同步发布的技术文章。

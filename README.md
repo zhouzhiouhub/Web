@@ -95,7 +95,7 @@ src/
 ## SEO 与订阅
 
 - 每个页面通过 `useSeo` 设置 title、description、Open Graph、Twitter Card、canonical 和 JSON-LD。
-- 构建时生成 `sitemap.xml` 与 `rss.xml`。
+- 构建时生成 `sitemap.xml`、`rss.xml` 与符合 llms.txt 规范的 `/llms.txt`（含 H1 与 Markdown 链接，供 AI 智能体浏览）。
 - 联系方式在简历页和联系页默认脱敏，邮箱统一为 `zhouzhiou9588@163.com`。
 
 站点地址可用环境变量覆盖：
