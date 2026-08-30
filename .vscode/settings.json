@@ -1,0 +1,16 @@
+{
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "text": "为本仓库生成提交信息时，必须使用简体中文。"
+    },
+    {
+      "text": "使用 Conventional Commits：type: 中文摘要。type 从 feat、fix、docs、refactor、test、chore、build、ci、style、perf 中选择。"
+    },
+    {
+      "text": "标题只写一行，说明改动目的，不要罗列文件。专有名词可保留原文。"
+    },
+    {
+      "text": "仅在改动不直观时补充简短中文正文。不要夸大范围，不要写入密钥或敏感信息。"
+    }
+  ]
+}
