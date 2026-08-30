@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useWindowScroll } from '@vueuse/core';
 import { useI18n } from 'vue-i18n';
-import { NButton } from 'naive-ui';
+import IconButton from '@/components/common/IconButton.vue';
 
 const { t } = useI18n();
 const { y } = useWindowScroll();
@@ -19,22 +19,19 @@ function scrollToTop() {
     enter-from-class="translate-y-2 opacity-0"
     enter-to-class="translate-y-0 opacity-100"
     leave-active-class="transition duration-150 ease-in"
-    leave-from-class="translate-y-0 opacity-100"
+    leave-from-class="opacity-100 translate-y-0"
     leave-to-class="translate-y-2 opacity-0"
   >
     <div v-if="visible" class="fixed bottom-6 right-6 z-40">
-      <NButton
-        type="primary"
-        circle
+      <IconButton
+        variant="primary"
         :aria-label="t('common.backToTop')"
         @click="scrollToTop"
       >
-        <template #icon>
-          <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
-          </svg>
-        </template>
-      </NButton>
+        <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+        </svg>
+      </IconButton>
     </div>
   </Transition>
 </template>

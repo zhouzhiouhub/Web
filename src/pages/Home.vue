@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { defineAsyncComponent, onMounted, shallowRef } from 'vue';
+import { defineAsyncComponent, onMounted, onUnmounted, ref, shallowRef } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import { NButton } from 'naive-ui';
 import { useSeo, buildPersonJsonLd, buildWebSiteJsonLd } from '@/hooks/useSeo';
 import { homeServices, homeStats } from '@/data/home';
 import { SITE_OG_IMAGE } from '@/data/site';
@@ -11,6 +10,7 @@ import ServiceCard from '@/components/business/ServiceCard.vue';
 
 const ProjectCard = defineAsyncComponent(() => import('@/components/business/ProjectCard.vue'));
 const BlogCard = defineAsyncComponent(() => import('@/components/business/BlogCard.vue'));
+const NaiveAppProvider = defineAsyncComponent(() => import('@/components/common/NaiveAppProvider.vue'));
 
 const { t } = useI18n();
 
@@ -24,17 +24,7 @@ useSeo({
 const homeProjects = shallowRef<Project[]>([]);
 const latestPosts = shallowRef<BlogPost[]>([]);
 const skillGroups = shallowRef<{ category: string; labelKey: string; skills: Skill[] }[]>([]);
-
-function afterFirstPaint(task: () => void) {
-  const run = () => {
-    if (typeof requestIdleCallback === 'function') {
-      requestIdleCallback(task, { timeout: 2000 });
-      return;
-    }
-    setTimeout(task, 1);
-  };
-  requestAnimationFrame(() => requestAnimationFrame(run));
-}
+const belowFoldSentinel = ref<HTMLElement | null>(null);
 
 async function loadBelowFold() {
   const [projectMod, blogMod, skillMod, utilsMod] = await Promise.all([
@@ -49,9 +39,20 @@ async function loadBelowFold() {
 }
 
 onMounted(() => {
-  afterFirstPaint(() => {
+  const el = belowFoldSentinel.value;
+  if (!el || typeof IntersectionObserver === 'undefined') {
     loadBelowFold();
-  });
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    if (!entries.some((entry) => entry.isIntersecting)) return;
+    observer.disconnect();
+    loadBelowFold();
+  }, { rootMargin: '0px' });
+
+  observer.observe(el);
+  onUnmounted(() => observer.disconnect());
 });
 </script>
 
@@ -68,20 +69,14 @@ onMounted(() => {
             {{ t('home.intro') }}
           </p>
           <div class="flex flex-wrap items-center justify-center gap-4">
-            <RouterLink to="/projects">
-              <NButton type="primary" size="large" round>
-                {{ t('home.cta.projects') }}
-              </NButton>
+            <RouterLink to="/projects" class="cta-btn cta-btn-primary">
+              {{ t('home.cta.projects') }}
             </RouterLink>
-            <RouterLink to="/resume">
-              <NButton size="large" round secondary>
-                {{ t('home.cta.resume') }}
-              </NButton>
+            <RouterLink to="/resume" class="cta-btn cta-btn-secondary">
+              {{ t('home.cta.resume') }}
             </RouterLink>
-            <RouterLink to="/contact">
-              <NButton size="large" round tertiary>
-                {{ t('home.cta.contact') }}
-              </NButton>
+            <RouterLink to="/contact" class="cta-btn cta-btn-tertiary">
+              {{ t('home.cta.contact') }}
             </RouterLink>
           </div>
         </div>
@@ -101,6 +96,8 @@ onMounted(() => {
       </div>
     </section>
 
+    <div ref="belowFoldSentinel" class="h-px" aria-hidden="true" />
+
     <section class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
       <div class="mb-8">
         <h2 class="text-2xl font-bold text-foreground">{{ t('home.services.title') }}</h2>
@@ -115,67 +112,69 @@ onMounted(() => {
       </div>
     </section>
 
-    <section v-if="homeProjects.length" class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
-      <div class="mb-8 flex items-center justify-between">
-        <h2 class="text-2xl font-bold text-foreground">
-          {{ t('projects.featured') }}
-        </h2>
-        <RouterLink to="/projects" class="text-sm font-medium text-primary hover:text-primary-hover">
-          {{ t('home.viewAllProjects') }}
-        </RouterLink>
-      </div>
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <ProjectCard
-          v-for="project in homeProjects"
-          :key="project.id"
-          :project="project"
-        />
-      </div>
-    </section>
+    <NaiveAppProvider v-if="homeProjects.length || latestPosts.length || skillGroups.length">
+      <section v-if="homeProjects.length" class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+        <div class="mb-8 flex items-center justify-between">
+          <h2 class="text-2xl font-bold text-foreground">
+            {{ t('projects.featured') }}
+          </h2>
+          <RouterLink to="/projects" class="text-sm font-medium text-primary hover:text-primary-hover">
+            {{ t('home.viewAllProjects') }}
+          </RouterLink>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <ProjectCard
+            v-for="project in homeProjects"
+            :key="project.id"
+            :project="project"
+          />
+        </div>
+      </section>
 
-    <section v-if="skillGroups.length" class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
-      <div class="mb-8">
-        <h2 class="text-2xl font-bold text-foreground">
-          {{ t('home.techstack.title') }}
-        </h2>
-      </div>
-      <div class="space-y-8">
-        <div v-for="group in skillGroups" :key="group.category">
-          <h3 class="mb-3 text-sm font-semibold uppercase tracking-wide text-muted">
-            {{ t(group.labelKey) }}
-          </h3>
-          <div class="flex flex-wrap gap-3">
-            <a
-              v-for="skill in group.skills"
-              :key="skill.id"
-              :href="skill.url"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="rounded-lg border border-border bg-surface px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary/50"
-            >
-              {{ skill.name }}
-            </a>
+      <section v-if="skillGroups.length" class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold text-foreground">
+            {{ t('home.techstack.title') }}
+          </h2>
+        </div>
+        <div class="space-y-8">
+          <div v-for="group in skillGroups" :key="group.category">
+            <h3 class="mb-3 text-sm font-semibold uppercase tracking-wide text-muted">
+              {{ t(group.labelKey) }}
+            </h3>
+            <div class="flex flex-wrap gap-3">
+              <a
+                v-for="skill in group.skills"
+                :key="skill.id"
+                :href="skill.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="rounded-lg border border-border bg-surface px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary/50"
+              >
+                {{ skill.name }}
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section v-if="latestPosts.length" class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
-      <div class="mb-8 flex items-center justify-between">
-        <h2 class="text-2xl font-bold text-foreground">
-          {{ t('home.articles.title') }}
-        </h2>
-        <RouterLink to="/blog" class="text-sm font-medium text-primary hover:text-primary-hover">
-          {{ t('home.viewAllArticles') }}
-        </RouterLink>
-      </div>
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <BlogCard
-          v-for="post in latestPosts"
-          :key="post.id"
-          :post="post"
-        />
-      </div>
-    </section>
+      <section v-if="latestPosts.length" class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+        <div class="mb-8 flex items-center justify-between">
+          <h2 class="text-2xl font-bold text-foreground">
+            {{ t('home.articles.title') }}
+          </h2>
+          <RouterLink to="/blog" class="text-sm font-medium text-primary hover:text-primary-hover">
+            {{ t('home.viewAllArticles') }}
+          </RouterLink>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <BlogCard
+            v-for="post in latestPosts"
+            :key="post.id"
+            :post="post"
+          />
+        </div>
+      </section>
+    </NaiveAppProvider>
   </div>
 </template>

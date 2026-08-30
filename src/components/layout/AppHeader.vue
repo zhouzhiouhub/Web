@@ -2,11 +2,11 @@
 import { computed, ref } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import { NButton } from 'naive-ui';
 import { navItems } from '@/data/navigation';
 import BrandLogo from '@/components/common/BrandLogo.vue';
 import ThemeToggle from '@/components/common/ThemeToggle.vue';
 import LocaleSwitcher from '@/components/common/LocaleSwitcher.vue';
+import IconButton from '@/components/common/IconButton.vue';
 
 const { t } = useI18n();
 const route = useRoute();
@@ -56,22 +56,18 @@ function closeMobileMenu() {
         <LocaleSwitcher />
         <ThemeToggle />
         <!-- Mobile menu button -->
-        <NButton
+        <IconButton
           class="md:hidden"
-          quaternary
-          circle
           :aria-label="t('common.toggleMenu')"
           :aria-expanded="showMobileMenu"
           aria-controls="mobile-nav"
           @click="toggleMobileMenu"
         >
-          <template #icon>
-            <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path v-if="!showMobileMenu" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-              <path v-else stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </template>
-        </NButton>
+          <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path v-if="!showMobileMenu" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            <path v-else stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </IconButton>
       </div>
     </div>
 

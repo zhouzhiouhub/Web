@@ -1,36 +1,55 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
+import { onClickOutside } from '@vueuse/core';
 import { useI18n } from 'vue-i18n';
-import { NButton, NDropdown } from 'naive-ui';
 import { useLocale } from '@/hooks/useLocale';
 import type { LocaleCode } from '@/types';
+import IconButton from '@/components/common/IconButton.vue';
 
 const { t } = useI18n();
 const { locale, locales, setLocale } = useLocale();
+const open = ref(false);
+const rootRef = ref<HTMLElement | null>(null);
 
-// 将 options 改为 computed，确保语言切换时下拉菜单重新计算标签
-const options = computed(() => locales.map((l) => ({
-  label: () => t(l.labelKey),
-  key: l.code,
-})));
-
-// 按钮上显示的简短语言标识
 const buttonLabel = computed(() => (locale.value === 'zh-CN' ? '中' : 'EN'));
 
-function handleSelect(key: string) {
-  setLocale(key as LocaleCode);
+onClickOutside(rootRef, () => {
+  open.value = false;
+});
+
+function handleSelect(key: LocaleCode) {
+  setLocale(key);
+  open.value = false;
 }
 </script>
 
 <template>
-  <NDropdown
-    :key="locale"
-    :options="options"
-    trigger="click"
-    @select="handleSelect"
-  >
-    <NButton quaternary circle :aria-label="t('common.switchLanguage')">
+  <div ref="rootRef" class="relative">
+    <IconButton
+      :aria-label="t('common.switchLanguage')"
+      :aria-expanded="open"
+      aria-controls="locale-menu"
+      @click="open = !open"
+    >
       <span class="text-xs font-bold">{{ buttonLabel }}</span>
-    </NButton>
-  </NDropdown>
+    </IconButton>
+    <div
+      v-if="open"
+      id="locale-menu"
+      role="menu"
+      class="absolute right-0 z-50 mt-2 min-w-[7.5rem] rounded-lg border border-border bg-surface py-1 shadow-md"
+    >
+      <button
+        v-for="item in locales"
+        :key="item.code"
+        type="button"
+        role="menuitem"
+        class="block w-full px-3 py-2 text-left text-sm text-foreground transition-colors hover:bg-surface-raised"
+        :class="{ 'font-semibold text-primary': locale === item.code }"
+        @click="handleSelect(item.code)"
+      >
+        {{ t(item.labelKey) }}
+      </button>
+    </div>
+  </div>
 </template>

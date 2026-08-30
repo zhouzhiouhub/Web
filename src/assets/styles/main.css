@@ -52,6 +52,22 @@ html.theme-ready {
   contain-intrinsic-size: auto 24rem;
 }
 
+.cta-btn {
+  @apply inline-flex min-h-10 items-center justify-center rounded-full px-5 text-base font-medium transition-colors;
+}
+
+.cta-btn-primary {
+  @apply bg-primary text-white hover:bg-primary-hover dark:text-background;
+}
+
+.cta-btn-secondary {
+  @apply border border-border bg-surface-raised text-foreground hover:border-primary/50;
+}
+
+.cta-btn-tertiary {
+  @apply text-muted hover:bg-surface-raised hover:text-foreground;
+}
+
 body {
   font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', 'PingFang SC',
     'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
