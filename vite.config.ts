@@ -90,6 +90,9 @@ export default ({ mode }: { mode: string }) => {
       cssMinify: true,
       modulePreload: {
         polyfill: false,
+        resolveDependencies: (_filename, deps) => deps.filter((dep) => (
+          !/NaiveAppProvider|use-memo|use-message|FormItem|\/merge-|\/Card-|\/Button-|\/Tag-|\/Empty-|\/light-/.test(dep)
+        )),
       },
     },
   });

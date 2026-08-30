@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
-import { onClickOutside } from '@vueuse/core';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useLocale } from '@/hooks/useLocale';
 import type { LocaleCode } from '@/types';
@@ -13,8 +12,16 @@ const rootRef = ref<HTMLElement | null>(null);
 
 const buttonLabel = computed(() => (locale.value === 'zh-CN' ? '中' : 'EN'));
 
-onClickOutside(rootRef, () => {
-  open.value = false;
+onMounted(() => {
+  const closeIfOutside = (event: MouseEvent) => {
+    const root = rootRef.value;
+    if (!root || root.contains(event.target as Node)) return;
+    open.value = false;
+  };
+  document.addEventListener('click', closeIfOutside);
+  onUnmounted(() => {
+    document.removeEventListener('click', closeIfOutside);
+  });
 });
 
 function handleSelect(key: LocaleCode) {

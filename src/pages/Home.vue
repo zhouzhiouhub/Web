@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineAsyncComponent, onMounted, onUnmounted, ref, shallowRef } from 'vue';
+import { onMounted, onUnmounted, ref, shallowRef } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useSeo, buildPersonJsonLd, buildWebSiteJsonLd } from '@/hooks/useSeo';
@@ -7,10 +7,7 @@ import { homeServices, homeStats } from '@/data/home';
 import { SITE_OG_IMAGE } from '@/data/site';
 import type { BlogPost, Project, Skill } from '@/types';
 import ServiceCard from '@/components/business/ServiceCard.vue';
-
-const ProjectCard = defineAsyncComponent(() => import('@/components/business/ProjectCard.vue'));
-const BlogCard = defineAsyncComponent(() => import('@/components/business/BlogCard.vue'));
-const NaiveAppProvider = defineAsyncComponent(() => import('@/components/common/NaiveAppProvider.vue'));
+import MediaCover from '@/components/common/MediaCover.vue';
 
 const { t } = useI18n();
 
@@ -54,6 +51,22 @@ onMounted(() => {
   observer.observe(el);
   onUnmounted(() => observer.disconnect());
 });
+
+function projectTitle(project: Project) {
+  return project.titleKey ? t(project.titleKey) : project.title;
+}
+
+function projectDescription(project: Project) {
+  return project.descriptionKey ? t(project.descriptionKey) : project.description;
+}
+
+function postTitle(post: BlogPost) {
+  return post.titleKey ? t(post.titleKey) : post.title;
+}
+
+function postExcerpt(post: BlogPost) {
+  return post.excerptKey ? t(post.excerptKey) : post.excerpt;
+}
 </script>
 
 <template>
@@ -96,8 +109,6 @@ onMounted(() => {
       </div>
     </section>
 
-    <div ref="belowFoldSentinel" class="h-px" aria-hidden="true" />
-
     <section class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
       <div class="mb-8">
         <h2 class="text-2xl font-bold text-foreground">{{ t('home.services.title') }}</h2>
@@ -112,69 +123,120 @@ onMounted(() => {
       </div>
     </section>
 
-    <NaiveAppProvider v-if="homeProjects.length || latestPosts.length || skillGroups.length">
-      <section v-if="homeProjects.length" class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
-        <div class="mb-8 flex items-center justify-between">
-          <h2 class="text-2xl font-bold text-foreground">
-            {{ t('projects.featured') }}
-          </h2>
-          <RouterLink to="/projects" class="text-sm font-medium text-primary hover:text-primary-hover">
-            {{ t('home.viewAllProjects') }}
-          </RouterLink>
-        </div>
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <ProjectCard
-            v-for="project in homeProjects"
-            :key="project.id"
-            :project="project"
-          />
-        </div>
-      </section>
+    <div ref="belowFoldSentinel" class="h-px" aria-hidden="true" />
 
-      <section v-if="skillGroups.length" class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
-        <div class="mb-8">
-          <h2 class="text-2xl font-bold text-foreground">
-            {{ t('home.techstack.title') }}
-          </h2>
-        </div>
-        <div class="space-y-8">
-          <div v-for="group in skillGroups" :key="group.category">
-            <h3 class="mb-3 text-sm font-semibold uppercase tracking-wide text-muted">
-              {{ t(group.labelKey) }}
-            </h3>
-            <div class="flex flex-wrap gap-3">
-              <a
-                v-for="skill in group.skills"
-                :key="skill.id"
-                :href="skill.url"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="rounded-lg border border-border bg-surface px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary/50"
+    <section v-if="homeProjects.length" class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mb-8 flex items-center justify-between">
+        <h2 class="text-2xl font-bold text-foreground">
+          {{ t('projects.featured') }}
+        </h2>
+        <RouterLink to="/projects" class="text-sm font-medium text-primary hover:text-primary-hover">
+          {{ t('home.viewAllProjects') }}
+        </RouterLink>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <article
+          v-for="project in homeProjects"
+          :key="project.id"
+          class="overflow-hidden rounded-lg border border-border bg-surface transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+        >
+          <MediaCover
+            compact
+            :title="projectTitle(project)"
+            :src="project.cover || project.thumbnail"
+            :category-label="t(`project.category.${project.category}`)"
+            :year="project.year"
+          />
+          <div class="p-4">
+            <h3 class="mb-2 text-lg font-semibold text-foreground">
+              <RouterLink
+                :to="{ name: 'project-detail', params: { id: project.id } }"
+                class="transition-colors hover:text-primary"
               >
-                {{ skill.name }}
-              </a>
+                {{ projectTitle(project) }}
+              </RouterLink>
+            </h3>
+            <p class="mb-3 line-clamp-2 text-sm text-muted">
+              {{ projectDescription(project) }}
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              <span
+                v-for="tag in project.tags"
+                :key="tag"
+                class="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary"
+              >
+                {{ tag }}
+              </span>
             </div>
           </div>
-        </div>
-      </section>
+        </article>
+      </div>
+    </section>
 
-      <section v-if="latestPosts.length" class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
-        <div class="mb-8 flex items-center justify-between">
-          <h2 class="text-2xl font-bold text-foreground">
-            {{ t('home.articles.title') }}
-          </h2>
-          <RouterLink to="/blog" class="text-sm font-medium text-primary hover:text-primary-hover">
-            {{ t('home.viewAllArticles') }}
-          </RouterLink>
+    <section v-if="skillGroups.length" class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-foreground">
+          {{ t('home.techstack.title') }}
+        </h2>
+      </div>
+      <div class="space-y-8">
+        <div v-for="group in skillGroups" :key="group.category">
+          <h3 class="mb-3 text-sm font-semibold uppercase tracking-wide text-muted">
+            {{ t(group.labelKey) }}
+          </h3>
+          <div class="flex flex-wrap gap-3">
+            <a
+              v-for="skill in group.skills"
+              :key="skill.id"
+              :href="skill.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-lg border border-border bg-surface px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary/50"
+            >
+              {{ skill.name }}
+            </a>
+          </div>
         </div>
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <BlogCard
-            v-for="post in latestPosts"
-            :key="post.id"
-            :post="post"
+      </div>
+    </section>
+
+    <section v-if="latestPosts.length" class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mb-8 flex items-center justify-between">
+        <h2 class="text-2xl font-bold text-foreground">
+          {{ t('home.articles.title') }}
+        </h2>
+        <RouterLink to="/blog" class="text-sm font-medium text-primary hover:text-primary-hover">
+          {{ t('home.viewAllArticles') }}
+        </RouterLink>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <article
+          v-for="post in latestPosts"
+          :key="post.id"
+          class="overflow-hidden rounded-lg border border-border bg-surface transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+        >
+          <MediaCover
+            compact
+            :title="postTitle(post)"
+            :src="post.cover"
+            :category-label="t(`blog.category.${post.category}`)"
           />
-        </div>
-      </section>
-    </NaiveAppProvider>
+          <div class="p-4">
+            <h3 class="mb-2 text-lg font-semibold text-foreground">
+              <RouterLink :to="`/blog/${post.slug}`" class="transition-colors hover:text-primary">
+                {{ postTitle(post) }}
+              </RouterLink>
+            </h3>
+            <p class="mb-3 line-clamp-3 text-sm leading-6 text-muted">
+              {{ postExcerpt(post) }}
+            </p>
+            <div class="flex items-center justify-between text-xs text-muted">
+              <span>{{ post.date }}</span>
+              <span>{{ t('blog.readingTime', { n: post.readingTime }) }}</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
   </div>
 </template>

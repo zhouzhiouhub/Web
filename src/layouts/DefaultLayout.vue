@@ -6,7 +6,7 @@ import AppFooter from '@/components/layout/AppFooter.vue';
 import PageSkeleton from '@/components/common/PageSkeleton.vue';
 
 const route = useRoute();
-const needsNaive = computed(() => route.name !== 'home');
+const needsNaive = computed(() => route.name != null && route.name !== 'home');
 const NaiveAppProvider = defineAsyncComponent(() => import('@/components/common/NaiveAppProvider.vue'));
 const BackToTop = defineAsyncComponent(() => import('@/components/common/BackToTop.vue'));
 const showBackToTop = ref(false);
