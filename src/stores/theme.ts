@@ -32,6 +32,12 @@ export const useThemeStore = defineStore('theme', () => {
 
   watch(isDark, () => applyTheme(), { immediate: true });
 
+  if (typeof window !== 'undefined') {
+    requestAnimationFrame(() => {
+      document.documentElement.classList.add('theme-ready');
+    });
+  }
+
   return {
     mode: storedMode,
     isDark,

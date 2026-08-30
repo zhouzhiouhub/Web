@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { defineAsyncComponent } from 'vue';
 import AppHeader from '@/components/layout/AppHeader.vue';
 import AppFooter from '@/components/layout/AppFooter.vue';
-import BackToTop from '@/components/common/BackToTop.vue';
 import PageSkeleton from '@/components/common/PageSkeleton.vue';
+
+const BackToTop = defineAsyncComponent(() => import('@/components/common/BackToTop.vue'));
 
 defineProps<{
   pageTitle?: string;

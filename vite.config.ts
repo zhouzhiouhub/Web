@@ -16,8 +16,21 @@ function inlineCssPlugin(): Plugin {
       handler(html, ctx) {
         if (!ctx.bundle) return html;
 
+        let nextHtml = html.replace(
+          /<script type="module" crossorigin src="/g,
+          '<script type="module" crossorigin fetchpriority="high" src="',
+        );
+
+        const stylesheetLinks = [...html.matchAll(/<link\s[^>]*rel="stylesheet"[^>]*>/g)];
+        if (!stylesheetLinks.length) return nextHtml;
+
+        const hrefs = stylesheetLinks.map((match) => {
+          const href = match[0].match(/href="([^"]+)"/)?.[1];
+          return href ? href.replace(/^\//, '') : '';
+        }).filter(Boolean);
+
         const css = Object.values(ctx.bundle)
-          .filter((item) => item.type === 'asset' && item.fileName.endsWith('.css'))
+          .filter((item) => item.type === 'asset' && hrefs.includes(item.fileName))
           .map((item) => {
             if (item.type !== 'asset') return '';
             return typeof item.source === 'string'
@@ -26,9 +39,9 @@ function inlineCssPlugin(): Plugin {
           })
           .join('\n');
 
-        if (!css) return html;
+        if (!css) return nextHtml;
 
-        return html
+        return nextHtml
           .replace(/<link\s[^>]*rel="stylesheet"[^>]*>/g, '')
           .replace('</head>', `<style>${css}</style>\n  </head>`);
       },
@@ -70,6 +83,13 @@ export default ({ mode }: { mode: string }) => {
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src'),
+      },
+    },
+    build: {
+      target: 'es2022',
+      cssMinify: true,
+      modulePreload: {
+        polyfill: false,
       },
     },
   });

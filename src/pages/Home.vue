@@ -25,7 +25,18 @@ const homeProjects = shallowRef<Project[]>([]);
 const latestPosts = shallowRef<BlogPost[]>([]);
 const skillGroups = shallowRef<{ category: string; labelKey: string; skills: Skill[] }[]>([]);
 
-onMounted(async () => {
+function afterFirstPaint(task: () => void) {
+  const run = () => {
+    if (typeof requestIdleCallback === 'function') {
+      requestIdleCallback(task, { timeout: 2000 });
+      return;
+    }
+    setTimeout(task, 1);
+  };
+  requestAnimationFrame(() => requestAnimationFrame(run));
+}
+
+async function loadBelowFold() {
   const [projectMod, blogMod, skillMod, utilsMod] = await Promise.all([
     import('@/data/projects'),
     import('@/data/blog'),
@@ -35,6 +46,12 @@ onMounted(async () => {
   homeProjects.value = projectMod.homeProjects;
   latestPosts.value = blogMod.latestPosts;
   skillGroups.value = utilsMod.groupSkillsByCategory(skillMod.skills);
+}
+
+onMounted(() => {
+  afterFirstPaint(() => {
+    loadBelowFold();
+  });
 });
 </script>
 
@@ -84,7 +101,7 @@ onMounted(async () => {
       </div>
     </section>
 
-    <section class="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+    <section class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
       <div class="mb-8">
         <h2 class="text-2xl font-bold text-foreground">{{ t('home.services.title') }}</h2>
         <p class="mt-2 max-w-prose text-muted">{{ t('home.services.description') }}</p>
@@ -98,7 +115,7 @@ onMounted(async () => {
       </div>
     </section>
 
-    <section v-if="homeProjects.length" class="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+    <section v-if="homeProjects.length" class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
       <div class="mb-8 flex items-center justify-between">
         <h2 class="text-2xl font-bold text-foreground">
           {{ t('projects.featured') }}
@@ -116,7 +133,7 @@ onMounted(async () => {
       </div>
     </section>
 
-    <section v-if="skillGroups.length" class="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+    <section v-if="skillGroups.length" class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
       <div class="mb-8">
         <h2 class="text-2xl font-bold text-foreground">
           {{ t('home.techstack.title') }}
@@ -143,7 +160,7 @@ onMounted(async () => {
       </div>
     </section>
 
-    <section v-if="latestPosts.length" class="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+    <section v-if="latestPosts.length" class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
       <div class="mb-8 flex items-center justify-between">
         <h2 class="text-2xl font-bold text-foreground">
           {{ t('home.articles.title') }}
