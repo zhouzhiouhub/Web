@@ -103,8 +103,8 @@ onMounted(async () => {
         <h2 class="text-2xl font-bold text-foreground">
           {{ t('projects.featured') }}
         </h2>
-        <RouterLink to="/projects" class="text-sm font-medium text-primary hover:opacity-80">
-          {{ t('common.viewAll') }} →
+        <RouterLink to="/projects" class="text-sm font-medium text-primary hover:text-primary-hover">
+          {{ t('home.viewAllProjects') }}
         </RouterLink>
       </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -148,8 +148,8 @@ onMounted(async () => {
         <h2 class="text-2xl font-bold text-foreground">
           {{ t('home.articles.title') }}
         </h2>
-        <RouterLink to="/blog" class="text-sm font-medium text-primary hover:opacity-80">
-          {{ t('common.viewAll') }} →
+        <RouterLink to="/blog" class="text-sm font-medium text-primary hover:text-primary-hover">
+          {{ t('home.viewAllArticles') }}
         </RouterLink>
       </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

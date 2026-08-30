@@ -114,7 +114,7 @@ const contactInfo = computed(() => [
           :href="social.url"
           target="_blank"
           rel="noopener"
-          class="text-sm text-primary transition-opacity hover:opacity-80"
+          class="text-sm text-primary transition-colors hover:text-primary-hover"
         >
           {{ social.labelKey ? t(social.labelKey) : social.label }}
         </a>

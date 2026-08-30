@@ -34,6 +34,8 @@ export default {
   'home.services.automation.title': 'Automation & Ops',
   'home.services.automation.desc': 'Python tools, scheduled jobs, log triage, and Cloudflare / Nginx upkeep.',
   'home.articles.title': 'Latest Articles',
+  'home.viewAllProjects': 'View all projects',
+  'home.viewAllArticles': 'View all articles',
   'home.techstack.title': 'Tech Stack',
   'home.techstack.frontend': 'Frontend',
   'home.techstack.backend': 'Backend',
@@ -359,7 +361,7 @@ export default {
   'resume.strength.3': 'Pragmatic in communication and collaboration, able to turn complex issues into executable steps, checklists, scripts, or reusable documentation.',
   'resume.strength.4': 'Continuously practices mobile and client-side development and builds from real features and user scenarios.',
   'resume.skills': 'Skills',
-  'resume.download': 'Resume',
+  'resume.download': 'View online CV',
 
   /* ===== Experience & Education ===== */
   'experience.guangyuzhou.company': 'Shenzhen Guangyuzhou Technology Co., Ltd.',
@@ -432,7 +434,7 @@ export default {
   'social.csdn': 'CSDN',
   'social.email': 'Email',
   'social.phone': 'Phone',
-  'social.cv': 'Resume',
+  'social.cv': 'Online CV',
 
   /* ===== Skills ===== */
   'skill.frontend': 'Frontend',

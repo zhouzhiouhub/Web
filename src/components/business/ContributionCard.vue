@@ -35,22 +35,19 @@ const statusType = computed<'success' | 'warning' | 'info'>(() => {
     :aria-label="title"
   >
     <NCard :bordered="true" class="h-full">
-      <template #header>
-        <div class="flex items-start justify-between gap-4">
+      <div class="flex h-full flex-col">
+        <div class="mb-4 flex items-start justify-between gap-4">
           <h3 class="text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
             {{ title }}
           </h3>
-          <span class="shrink-0 text-xs text-muted">{{ contribution.year }}</span>
+          <div class="flex shrink-0 items-center gap-2">
+            <span class="text-xs text-muted">{{ contribution.year }}</span>
+            <NTag size="small" :type="statusType" round :bordered="false">
+              {{ t(`opensource.status.${contribution.status}`) }}
+            </NTag>
+          </div>
         </div>
-      </template>
 
-      <template #header-extra>
-        <NTag size="small" :type="statusType" round :bordered="false">
-          {{ t(`opensource.status.${contribution.status}`) }}
-        </NTag>
-      </template>
-
-      <div class="flex h-full flex-col">
         <div class="mb-4 flex flex-wrap items-center gap-2 text-xs text-muted">
           <span class="rounded-full bg-surface-raised px-2.5 py-0.5 font-medium">
             {{ t(`opensource.kind.${contribution.kind}`) }}

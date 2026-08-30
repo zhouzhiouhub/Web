@@ -1,14 +1,14 @@
 /* ===== Theme Tokens ===== */
 
 :root {
-  --color-primary: 6 182 212;
-  --color-primary-hover: 14 165 233;
+  --color-primary: 14 116 144;
+  --color-primary-hover: 21 94 117;
   --color-accent: 139 92 246;
   --color-background: 249 250 251;
   --color-surface: 255 255 255;
   --color-surface-raised: 243 244 246;
   --color-foreground: 17 24 39;
-  --color-muted: 107 114 128;
+  --color-muted: 75 85 99;
   --color-border: 229 231 235;
   --svg-icon-opacity: 0.82;
   --svg-icon-hover-opacity: 1;

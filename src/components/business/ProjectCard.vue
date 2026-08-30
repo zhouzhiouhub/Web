@@ -33,8 +33,9 @@ const titleId = computed(() => `project-card-title-${props.project.id}`);
           :year="project.year"
         />
       </template>
-      <template #header>
-        <h3 :id="titleId" class="text-lg font-semibold text-foreground">
+
+      <div class="flex h-full flex-col">
+        <h3 :id="titleId" class="mb-3 text-lg font-semibold text-foreground">
           <RouterLink
             :to="{ name: 'project-detail', params: { id: project.id } }"
             class="stretched-link transition-colors group-hover:text-primary"
@@ -42,9 +43,6 @@ const titleId = computed(() => `project-card-title-${props.project.id}`);
             {{ projectTitle }}
           </RouterLink>
         </h3>
-      </template>
-
-      <div class="flex h-full flex-col">
         <p class="mb-4 line-clamp-2 min-h-10 text-sm text-muted">
           {{ projectDescription }}
         </p>

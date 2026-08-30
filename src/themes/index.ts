@@ -4,14 +4,14 @@ import type { GlobalThemeOverrides } from 'naive-ui';
 
 export const themeTokens = {
   light: {
-    primary: 'rgb(6, 182, 212)',
-    primaryHover: 'rgb(14, 165, 233)',
+    primary: 'rgb(14, 116, 144)',
+    primaryHover: 'rgb(21, 94, 117)',
     accent: 'rgb(139, 92, 246)',
     background: 'rgb(249, 250, 251)',
     surface: 'rgb(255, 255, 255)',
     surfaceRaised: 'rgb(243, 244, 246)',
     foreground: 'rgb(17, 24, 39)',
-    muted: 'rgb(107, 114, 128)',
+    muted: 'rgb(75, 85, 99)',
     border: 'rgb(229, 231, 235)',
   },
   dark: {
@@ -44,6 +44,10 @@ export const lightThemeOverrides: GlobalThemeOverrides = {
     textColor3: themeTokens.light.muted,
     borderColor: themeTokens.light.border,
     dividerColor: themeTokens.light.border,
+  },
+  Tag: {
+    textColorPrimary: themeTokens.light.foreground,
+    colorPrimary: 'rgba(14, 116, 144, 0.12)',
   },
 };
 

@@ -34,6 +34,8 @@ export default {
   'home.services.automation.title': '自动化与运维',
   'home.services.automation.desc': 'Python 工具、定时任务、日志排查、Cloudflare / Nginx 线上保障。',
   'home.articles.title': '最新文章',
+  'home.viewAllProjects': '查看全部项目',
+  'home.viewAllArticles': '查看全部文章',
   'home.techstack.title': '技术栈',
   'home.techstack.frontend': '前端',
   'home.techstack.backend': '后端',
@@ -359,7 +361,7 @@ export default {
   'resume.strength.3': '表达和协作偏务实，能把复杂问题整理成可执行步骤、检查清单、脚本或文档，方便团队复用。',
   'resume.strength.4': '对移动端和客户端方向有持续项目实践，能从实际功能和用户使用场景出发做开发。',
   'resume.skills': '技能',
-  'resume.download': '简历',
+  'resume.download': '查看在线简历',
 
   /* ===== Experience & Education ===== */
   'experience.guangyuzhou.company': '深圳市光宇宙科技有限公司',
@@ -432,7 +434,7 @@ export default {
   'social.csdn': 'CSDN',
   'social.email': '邮箱',
   'social.phone': '电话',
-  'social.cv': '简历',
+  'social.cv': '在线简历',
 
   /* ===== Skills ===== */
   'skill.frontend': '前端',

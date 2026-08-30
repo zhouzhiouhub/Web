@@ -34,7 +34,7 @@ const filteredPosts = computed(() => {
           {{ t('blog.description') }}
         </p>
       </div>
-      <a :href="SITE_RSS_PATH" class="text-sm font-medium text-primary hover:opacity-80">
+      <a :href="SITE_RSS_PATH" class="text-sm font-medium text-primary hover:text-primary-hover">
         {{ t('blog.rss') }}
       </a>
     </div>

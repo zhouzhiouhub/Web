@@ -26,7 +26,7 @@ function closeMobileMenu() {
 
 <template>
   <header
-    class="sticky top-0 z-50 border-b border-border bg-surface/80 backdrop-blur-lg"
+    class="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur-lg"
   >
     <div class="mx-auto flex h-16 w-full max-w-content items-center px-4 sm:px-6 lg:px-8">
       <!-- Logo -->
@@ -45,7 +45,7 @@ function closeMobileMenu() {
           :key="item.to"
           :to="item.to"
           class="rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface-raised hover:text-foreground"
-          :class="{ '!text-primary': activeKey === item.to }"
+          :class="{ 'bg-surface-raised !text-foreground': activeKey === item.to }"
         >
           {{ t(item.key) }}
         </RouterLink>
@@ -94,7 +94,7 @@ function closeMobileMenu() {
           :key="item.to"
           :to="item.to"
           class="block rounded-md px-3 py-2.5 text-sm font-medium text-muted transition-colors hover:bg-surface-raised hover:text-foreground"
-          :class="{ 'bg-surface-raised !text-primary': activeKey === item.to }"
+          :class="{ 'bg-surface-raised !text-foreground': activeKey === item.to }"
           @click="closeMobileMenu"
         >
           {{ t(item.key) }}
