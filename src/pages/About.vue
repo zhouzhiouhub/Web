@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n';
 import { useSeo } from '@/hooks/useSeo';
 import { SITE_AVATAR } from '@/data/site';
 import { aboutDirections, growthTimeline, techValues } from '@/data/about';
+import PageContainer from '@/components/layout/PageContainer.vue';
 
 const { t } = useI18n();
 
@@ -14,7 +15,7 @@ useSeo({
 </script>
 
 <template>
-  <div class="animate-fade-in mx-auto w-full max-w-content px-4 py-16 sm:px-6 lg:px-8">
+  <PageContainer>
     <h1 class="mb-2 text-3xl font-bold text-foreground">
       {{ t('about.title') }}
     </h1>
@@ -113,5 +114,5 @@ useSeo({
         </li>
       </ul>
     </section>
-  </div>
+  </PageContainer>
 </template>

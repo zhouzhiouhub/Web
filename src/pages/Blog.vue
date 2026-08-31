@@ -7,6 +7,7 @@ import { blogCategories, publishedPosts } from '@/data/blog';
 import { SITE_RSS_PATH } from '@/data/site';
 import type { BlogCategory } from '@/types';
 import BlogCard from '@/components/business/BlogCard.vue';
+import PageContainer from '@/components/layout/PageContainer.vue';
 
 const { t } = useI18n();
 
@@ -24,7 +25,7 @@ const filteredPosts = computed(() => {
 </script>
 
 <template>
-  <div class="animate-fade-in mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+  <PageContainer>
     <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
       <div>
         <h1 class="mb-2 text-3xl font-bold text-foreground">
@@ -73,5 +74,5 @@ const filteredPosts = computed(() => {
       />
     </div>
     <NEmpty v-else :description="t('blog.empty')" />
-  </div>
+  </PageContainer>
 </template>

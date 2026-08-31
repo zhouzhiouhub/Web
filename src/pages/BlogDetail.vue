@@ -9,6 +9,7 @@ import { getAdjacentItems, toAbsoluteUrl } from '@/utils';
 import type { BlogContentBlock, BlogPost } from '@/types';
 import MediaCover from '@/components/common/MediaCover.vue';
 import AdjacentNav from '@/components/business/AdjacentNav.vue';
+import PageContainer from '@/components/layout/PageContainer.vue';
 
 const route = useRoute();
 const { t } = useI18n();
@@ -58,13 +59,13 @@ useSeo({
 </script>
 
 <template>
-  <div class="animate-fade-in mx-auto max-w-prose px-4 py-16 sm:px-6 lg:px-8">
+  <PageContainer>
     <template v-if="post">
       <RouterLink to="/blog" class="mb-6 inline-block text-sm text-muted hover:text-primary">
         {{ t('common.back') }}
       </RouterLink>
 
-      <div class="mb-8 overflow-hidden rounded-xl border border-border">
+      <div class="mb-8 w-full overflow-hidden rounded-xl border border-border">
         <MediaCover
           :title="postTitle"
           :src="post.cover"
@@ -177,5 +178,5 @@ useSeo({
         </RouterLink>
       </template>
     </NEmpty>
-  </div>
+  </PageContainer>
 </template>

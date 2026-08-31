@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n';
 import { NEmpty } from 'naive-ui';
 import { useSeo } from '@/hooks/useSeo';
+import PageContainer from '@/components/layout/PageContainer.vue';
 
 const { t } = useI18n();
 
@@ -12,7 +13,7 @@ useSeo({
 </script>
 
 <template>
-  <div class="animate-fade-in mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+  <PageContainer>
     <h1 class="mb-2 text-3xl font-bold text-foreground">
       {{ t('playground.title') }}
     </h1>
@@ -21,5 +22,5 @@ useSeo({
     </p>
 
     <NEmpty :description="t('playground.description')" />
-  </div>
+  </PageContainer>
 </template>

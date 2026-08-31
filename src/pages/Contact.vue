@@ -7,6 +7,7 @@ import { contactFaqs } from '@/data/contact';
 import { SITE_EMAIL, SITE_PHONE } from '@/data/site';
 import RevealContact from '@/components/common/RevealContact.vue';
 import ContactForm from '@/components/business/ContactForm.vue';
+import PageContainer from '@/components/layout/PageContainer.vue';
 
 const { t } = useI18n();
 
@@ -23,7 +24,7 @@ const getIconStyle = (src?: string, scale = 1) => [
 
 <template>
   <NMessageProvider>
-    <div class="animate-fade-in mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+    <PageContainer>
       <h1 class="mb-2 text-3xl font-bold text-foreground">
         {{ t('contact.title') }}
       </h1>
@@ -100,6 +101,6 @@ const getIconStyle = (src?: string, scale = 1) => [
           </NCollapse>
         </div>
       </section>
-    </div>
+    </PageContainer>
   </NMessageProvider>
 </template>

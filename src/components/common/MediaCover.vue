@@ -10,7 +10,7 @@ defineProps<{
 
 <template>
   <div
-    class="relative overflow-hidden bg-surface-raised"
+    class="relative w-full overflow-hidden bg-surface-raised"
     :class="compact ? 'aspect-[16/9]' : 'aspect-[16/9] sm:aspect-[2/1]'"
   >
     <img

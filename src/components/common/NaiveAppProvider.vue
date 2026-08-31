@@ -42,6 +42,7 @@ watch(() => localeStore.locale, (code) => {
 
 <template>
   <NConfigProvider
+    class="block w-full"
     :theme="naiveTheme"
     :theme-overrides="themeOverrides"
     :locale="naiveLocale"

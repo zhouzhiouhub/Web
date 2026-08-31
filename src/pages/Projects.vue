@@ -6,6 +6,7 @@ import { useSeo } from '@/hooks/useSeo';
 import { projects } from '@/data/projects';
 import type { ProjectCategory } from '@/types';
 import ProjectCard from '@/components/business/ProjectCard.vue';
+import PageContainer from '@/components/layout/PageContainer.vue';
 
 const { t } = useI18n();
 
@@ -27,7 +28,7 @@ const filteredProjects = computed(() => {
 </script>
 
 <template>
-  <div class="animate-fade-in mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+  <PageContainer>
     <h1 class="mb-2 text-3xl font-bold text-foreground">
       {{ t('projects.title') }}
     </h1>
@@ -59,5 +60,5 @@ const filteredProjects = computed(() => {
       />
     </div>
     <NEmpty v-else :description="t('projects.empty')" />
-  </div>
+  </PageContainer>
 </template>

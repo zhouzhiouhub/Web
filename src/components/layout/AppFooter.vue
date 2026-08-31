@@ -50,7 +50,7 @@ const accessLinks = computed<FooterAccessLink[]>(() => [
 
 <template>
   <footer class="border-t border-border bg-surface">
-    <div class="mx-auto w-full max-w-content px-4 py-12 sm:px-6 lg:px-8">
+    <div class="page-width py-12">
       <div class="mb-10 flex items-center justify-between gap-6">
         <RouterLink
           to="/"
@@ -89,7 +89,7 @@ const accessLinks = computed<FooterAccessLink[]>(() => [
       </nav>
     </div>
     <div class="border-t border-border">
-      <p class="mx-auto w-full max-w-content px-4 py-6 text-sm text-muted sm:px-6 lg:px-8">
+      <p class="page-width py-6 text-sm text-muted">
         &copy; {{ year }} Kinolin · {{ t('footer.rights') }}
       </p>
     </div>

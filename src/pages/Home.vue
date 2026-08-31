@@ -83,7 +83,7 @@ function postExcerpt(post: BlogPost) {
   <div>
     <section v-if="!useStaticHero" class="relative overflow-hidden">
       <div class="grid-bg pointer-events-none absolute inset-0 -z-10 opacity-[0.03]" />
-      <div class="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
+      <div class="py-20 lg:py-32">
         <div class="mx-auto max-w-prose text-center">
           <h1 class="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
             {{ t('home.role') }}
@@ -106,7 +106,7 @@ function postExcerpt(post: BlogPost) {
       </div>
     </section>
 
-    <section class="mx-auto max-w-content px-4 py-12 sm:px-6 lg:px-8">
+    <section class="py-12">
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div
           v-for="stat in homeStats"
@@ -119,7 +119,7 @@ function postExcerpt(post: BlogPost) {
       </div>
     </section>
 
-    <section class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+    <section class="defer-paint py-16">
       <div class="mb-8">
         <h2 class="text-2xl font-bold text-foreground">{{ t('home.services.title') }}</h2>
         <p class="mt-2 max-w-prose text-muted">{{ t('home.services.description') }}</p>
@@ -135,7 +135,7 @@ function postExcerpt(post: BlogPost) {
 
     <div ref="belowFoldSentinel" class="h-px" aria-hidden="true" />
 
-    <section v-if="homeProjects.length" class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+    <section v-if="homeProjects.length" class="defer-paint py-16">
       <div class="mb-8 flex items-center justify-between">
         <h2 class="text-2xl font-bold text-foreground">
           {{ t('projects.featured') }}
@@ -183,7 +183,7 @@ function postExcerpt(post: BlogPost) {
       </div>
     </section>
 
-    <section v-if="skillGroups.length" class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+    <section v-if="skillGroups.length" class="defer-paint py-16">
       <div class="mb-8">
         <h2 class="text-2xl font-bold text-foreground">
           {{ t('home.techstack.title') }}
@@ -210,7 +210,7 @@ function postExcerpt(post: BlogPost) {
       </div>
     </section>
 
-    <section v-if="latestPosts.length" class="defer-paint mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+    <section v-if="latestPosts.length" class="defer-paint py-16">
       <div class="mb-8 flex items-center justify-between">
         <h2 class="text-2xl font-bold text-foreground">
           {{ t('home.articles.title') }}

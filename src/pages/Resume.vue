@@ -13,6 +13,7 @@ import { SITE_AUTHOR, SITE_CV, SITE_DEFAULT_URL, SITE_EMAIL, SITE_PHONE } from '
 import ExperienceTimeline from '@/components/business/ExperienceTimeline.vue';
 import SkillBadge from '@/components/business/SkillBadge.vue';
 import RevealContact from '@/components/common/RevealContact.vue';
+import PageContainer from '@/components/layout/PageContainer.vue';
 
 const { t, locale } = useI18n();
 
@@ -53,7 +54,7 @@ const contactInfo = computed(() => [
 
 <template>
   <NMessageProvider>
-    <div class="animate-fade-in mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+    <PageContainer>
       <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 class="text-3xl font-bold text-foreground">
@@ -280,6 +281,6 @@ const contactInfo = computed(() => [
           />
         </div>
       </section>
-    </div>
+    </PageContainer>
   </NMessageProvider>
 </template>

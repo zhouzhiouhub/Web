@@ -14,7 +14,7 @@ useSeo({
 </script>
 
 <template>
-  <div class="animate-fade-in flex min-h-[60vh] flex-col items-center justify-center px-4 text-center">
+  <div class="animate-fade-in flex min-h-[60vh] flex-col items-center justify-center py-16 text-center">
     <h1 class="mb-4 text-6xl font-bold text-primary sm:text-8xl">404</h1>
     <h2 class="mb-2 text-xl font-semibold text-foreground">
       {{ t('notfound.title') }}

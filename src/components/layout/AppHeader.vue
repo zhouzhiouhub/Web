@@ -32,7 +32,7 @@ function closeMobileMenu() {
 
 <template>
   <component :is="headerRoot" v-bind="headerProps">
-    <div class="mx-auto flex h-16 w-full max-w-content items-center px-4 sm:px-6 lg:px-8">
+    <div class="page-width flex h-16 items-center">
       <RouterLink
         to="/"
         class="flex shrink-0 items-center transition-opacity hover:opacity-80"

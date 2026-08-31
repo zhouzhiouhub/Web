@@ -255,6 +255,7 @@ const projectItems: Project[] = [
     category: 'web',
     featured: false,
     year: 2025,
+    url: 'https://gameweb.kinolin.com/',
     repo: 'https://github.com/zhouzhiouhub/Game-Web',
     features: [
       'Next.js 15 App Router + React 19 构建前端路由、页面布局和交互组件',

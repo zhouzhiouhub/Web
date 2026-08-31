@@ -8,6 +8,7 @@ import { openSourceContributions } from '@/data/opensource';
 import { socialLinks } from '@/data/social';
 import ProjectCard from '@/components/business/ProjectCard.vue';
 import ContributionCard from '@/components/business/ContributionCard.vue';
+import PageContainer from '@/components/layout/PageContainer.vue';
 
 const { t } = useI18n();
 
@@ -30,7 +31,7 @@ const projectGridStyle = {
 </script>
 
 <template>
-  <div class="animate-fade-in mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
+  <PageContainer>
     <div class="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
       <div>
         <h1 class="mb-2 text-3xl font-bold text-foreground">
@@ -96,5 +97,5 @@ const projectGridStyle = {
         />
       </div>
     </section>
-  </div>
+  </PageContainer>
 </template>

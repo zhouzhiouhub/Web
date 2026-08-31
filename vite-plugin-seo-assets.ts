@@ -181,7 +181,7 @@ export function buildHomePrerenderShell(messages: Record<string, string> = zhCN)
     '    <header id="static-header" class="sticky top-0 z-50 h-16 border-b border-border bg-surface/95 backdrop-blur-lg"></header>',
     '    <section id="home-hero" class="relative overflow-hidden">',
     '      <div class="grid-bg pointer-events-none absolute inset-0 -z-10 opacity-[0.03]"></div>',
-    '      <div class="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">',
+    '      <div class="page-width py-20 lg:py-32">',
     '        <div class="mx-auto max-w-prose text-center">',
     `          <h1 class="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl" data-i18n="home.role">${t('home.role')}</h1>`,
     `          <p class="mb-10 text-base text-muted sm:text-lg" data-i18n="home.intro">${t('home.intro')}</p>`,
