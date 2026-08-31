@@ -42,12 +42,14 @@ watch(() => localeStore.locale, (code) => {
 
 <template>
   <NConfigProvider
-    class="block w-full"
+    class="!block !w-full min-w-0"
     :theme="naiveTheme"
     :theme-overrides="themeOverrides"
     :locale="naiveLocale"
     inline-theme-disabled
   >
-    <slot />
+    <div class="w-full min-w-0">
+      <slot />
+    </div>
   </NConfigProvider>
 </template>

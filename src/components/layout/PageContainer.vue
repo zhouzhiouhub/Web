@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full animate-fade-in py-16">
+  <div class="animate-fade-in w-full min-w-0 py-16">
     <slot />
   </div>
 </template>

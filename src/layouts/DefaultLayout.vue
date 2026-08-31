@@ -33,7 +33,7 @@ onMounted(() => {
 <template>
   <div :class="staticShell ? 'flex flex-1 flex-col' : 'flex min-h-screen flex-col bg-background text-foreground'">
     <AppHeader />
-    <main class="page-width flex-1">
+    <main class="page-width min-w-0 flex-1">
       <RouterView v-slot="{ Component }">
         <Suspense>
           <NaiveAppProvider v-if="needsNaive">

@@ -83,25 +83,23 @@ function postExcerpt(post: BlogPost) {
   <div>
     <section v-if="!useStaticHero" class="relative overflow-hidden">
       <div class="grid-bg pointer-events-none absolute inset-0 -z-10 opacity-[0.03]" />
-      <div class="py-20 lg:py-32">
-        <div class="mx-auto max-w-prose text-center">
-          <h1 class="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            {{ t('home.role') }}
-          </h1>
-          <p class="mb-10 text-base text-muted sm:text-lg">
-            {{ t('home.intro') }}
-          </p>
-          <div class="flex flex-wrap items-center justify-center gap-4">
-            <RouterLink to="/projects" class="cta-btn cta-btn-primary">
-              {{ t('home.cta.projects') }}
-            </RouterLink>
-            <RouterLink to="/resume" class="cta-btn cta-btn-secondary">
-              {{ t('home.cta.resume') }}
-            </RouterLink>
-            <RouterLink to="/contact" class="cta-btn cta-btn-tertiary">
-              {{ t('home.cta.contact') }}
-            </RouterLink>
-          </div>
+      <div class="py-20 text-center lg:py-32">
+        <h1 class="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+          {{ t('home.role') }}
+        </h1>
+        <p class="mb-10 text-base text-muted sm:text-lg">
+          {{ t('home.intro') }}
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <RouterLink to="/projects" class="cta-btn cta-btn-primary">
+            {{ t('home.cta.projects') }}
+          </RouterLink>
+          <RouterLink to="/resume" class="cta-btn cta-btn-secondary">
+            {{ t('home.cta.resume') }}
+          </RouterLink>
+          <RouterLink to="/contact" class="cta-btn cta-btn-tertiary">
+            {{ t('home.cta.contact') }}
+          </RouterLink>
         </div>
       </div>
     </section>
@@ -122,7 +120,7 @@ function postExcerpt(post: BlogPost) {
     <section class="defer-paint py-16">
       <div class="mb-8">
         <h2 class="text-2xl font-bold text-foreground">{{ t('home.services.title') }}</h2>
-        <p class="mt-2 max-w-prose text-muted">{{ t('home.services.description') }}</p>
+        <p class="mt-2 text-muted">{{ t('home.services.description') }}</p>
       </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <ServiceCard
