@@ -1,7 +1,6 @@
 import type { Plugin } from 'vite';
-import { mkdirSync, writeFileSync } from 'fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
-import zhCN from './src/locales/zh-CN';
 
 export const SITE_DEFAULT_URL = 'https://web.zhiou9588.workers.dev';
 
@@ -173,7 +172,28 @@ function htmlEscape(value: string): string {
     .replace(/"/g, '&quot;');
 }
 
-export function buildHomePrerenderShell(messages: Record<string, string> = zhCN): string {
+const HOME_SHELL_KEYS = [
+  'home.role',
+  'home.intro',
+  'home.cta.projects',
+  'home.cta.resume',
+  'home.cta.contact',
+] as const;
+
+function loadHomeShellMessages(): Record<string, string> {
+  const source = readFileSync(resolve(process.cwd(), 'src/locales/zh-CN.ts'), 'utf8');
+  const messages: Record<string, string> = {};
+
+  HOME_SHELL_KEYS.forEach((key) => {
+    const escapedKey = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const match = source.match(new RegExp(`'${escapedKey}':\\s*'((?:\\\\'|[^'])*)'`));
+    messages[key] = match ? match[1].replace(/\\'/g, "'") : '';
+  });
+
+  return messages;
+}
+
+export function buildHomePrerenderShell(messages: Record<string, string> = loadHomeShellMessages()): string {
   const t = (key: string) => htmlEscape(messages[key] ?? '');
 
   return [
