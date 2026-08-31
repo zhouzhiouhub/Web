@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, shallowRef } from 'vue';
+import { onMounted, onUnmounted, ref, shallowRef, watch } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useSeo, buildPersonJsonLd, buildWebSiteJsonLd } from '@/hooks/useSeo';
@@ -8,8 +8,10 @@ import { SITE_OG_IMAGE } from '@/data/site';
 import type { BlogPost, Project, Skill } from '@/types';
 import ServiceCard from '@/components/business/ServiceCard.vue';
 import MediaCover from '@/components/common/MediaCover.vue';
+import { hasStaticHomeHero, syncHomeHeroText } from '@/utils/home-shell';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
+const useStaticHero = hasStaticHomeHero();
 
 useSeo({
   title: () => t('home.title'),
@@ -35,7 +37,15 @@ async function loadBelowFold() {
   skillGroups.value = utilsMod.groupSkillsByCategory(skillMod.skills);
 }
 
+if (useStaticHero) {
+  watch(locale, () => {
+    syncHomeHeroText((key) => t(key));
+  });
+}
+
 onMounted(() => {
+  if (useStaticHero) syncHomeHeroText((key) => t(key));
+
   const el = belowFoldSentinel.value;
   if (!el || typeof IntersectionObserver === 'undefined') {
     loadBelowFold();
@@ -71,7 +81,7 @@ function postExcerpt(post: BlogPost) {
 
 <template>
   <div>
-    <section class="relative overflow-hidden">
+    <section v-if="!useStaticHero" class="relative overflow-hidden">
       <div class="grid-bg pointer-events-none absolute inset-0 -z-10 opacity-[0.03]" />
       <div class="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
         <div class="mx-auto max-w-prose text-center">

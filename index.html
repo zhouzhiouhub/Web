@@ -21,7 +21,7 @@
     <link rel="describedby" href="/llms.txt" />
     <link rel="alternate" type="application/rss+xml" title="Kinolin Blog" href="/rss.xml" />
     <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
-    <title>周珍运 · 移动端 / 全栈开发工程师</title>
+    <title>Kinolin Portfolio</title>
     <style>
       html { background-color: #f9fafb; }
       html.dark { background-color: #0a0c14; color-scheme: dark; }
@@ -35,6 +35,10 @@
             document.documentElement.setAttribute('data-theme', 'dark');
           }
         } catch (e) {}
+        var path = location.pathname.replace(/\/+$/, '');
+        if (path !== '' && !/\/index\.html$/.test(location.pathname)) {
+          document.documentElement.classList.add('not-home');
+        }
       })();
     </script>
   </head>

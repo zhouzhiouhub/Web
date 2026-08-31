@@ -1,6 +1,7 @@
 import type { Plugin } from 'vite';
 import { mkdirSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
+import zhCN from './src/locales/zh-CN';
 
 export const SITE_DEFAULT_URL = 'https://web.zhiou9588.workers.dev';
 
@@ -162,6 +163,44 @@ export function buildLlmsTxt(siteUrl: string): string {
     '- [CSDN](https://blog.csdn.net/qq_59002866): 同步发布的技术文章。',
     '',
   ].join('\n');
+}
+
+function htmlEscape(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+export function buildHomePrerenderShell(messages: Record<string, string> = zhCN): string {
+  const t = (key: string) => htmlEscape(messages[key] ?? '');
+
+  return [
+    '<div class="flex min-h-screen flex-col bg-background text-foreground">',
+    '    <header id="static-header" class="sticky top-0 z-50 h-16 border-b border-border bg-surface/95 backdrop-blur-lg"></header>',
+    '    <section id="home-hero" class="relative overflow-hidden">',
+    '      <div class="grid-bg pointer-events-none absolute inset-0 -z-10 opacity-[0.03]"></div>',
+    '      <div class="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">',
+    '        <div class="mx-auto max-w-prose text-center">',
+    `          <h1 class="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl" data-i18n="home.role">${t('home.role')}</h1>`,
+    `          <p class="mb-10 text-base text-muted sm:text-lg" data-i18n="home.intro">${t('home.intro')}</p>`,
+    '          <div class="flex flex-wrap items-center justify-center gap-4">',
+    `            <a href="/projects" class="cta-btn cta-btn-primary" data-i18n="home.cta.projects">${t('home.cta.projects')}</a>`,
+    `            <a href="/resume" class="cta-btn cta-btn-secondary" data-i18n="home.cta.resume">${t('home.cta.resume')}</a>`,
+    `            <a href="/contact" class="cta-btn cta-btn-tertiary" data-i18n="home.cta.contact">${t('home.cta.contact')}</a>`,
+    '          </div>',
+    '        </div>',
+    '      </div>',
+    '    </section>',
+    '    <div id="app" class="flex flex-1 flex-col"></div>',
+    '    </div>',
+  ].join('\n');
+}
+
+export function injectHomePrerenderShell(html: string): string {
+  if (html.includes('id="home-hero"')) return html;
+  return html.replace('<div id="app"></div>', buildHomePrerenderShell());
 }
 
 export function seoAssetsPlugin(siteUrl = SITE_DEFAULT_URL): Plugin {

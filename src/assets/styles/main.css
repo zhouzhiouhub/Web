@@ -47,6 +47,15 @@ html.theme-ready {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+html.not-home #home-hero {
+  display: none;
+}
+
+#static-header {
+  min-height: 4rem;
+  height: auto;
+}
+
 .defer-paint {
   content-visibility: auto;
   contain-intrinsic-size: auto 24rem;

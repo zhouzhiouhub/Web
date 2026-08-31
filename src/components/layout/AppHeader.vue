@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, Teleport } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { navItems } from '@/data/navigation';
@@ -7,10 +7,16 @@ import BrandLogo from '@/components/common/BrandLogo.vue';
 import ThemeToggle from '@/components/common/ThemeToggle.vue';
 import LocaleSwitcher from '@/components/common/LocaleSwitcher.vue';
 import IconButton from '@/components/common/IconButton.vue';
+import { hasStaticHeader } from '@/utils/home-shell';
 
 const { t } = useI18n();
 const route = useRoute();
 const showMobileMenu = ref(false);
+const staticHeader = hasStaticHeader();
+const headerRoot = staticHeader ? Teleport : 'header';
+const headerProps = staticHeader
+  ? { to: '#static-header' }
+  : { class: 'sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur-lg' };
 
 const activeKey = computed(() => route.path);
 const brandLabel = computed(() => t('project.portfolio.title'));
@@ -25,11 +31,8 @@ function closeMobileMenu() {
 </script>
 
 <template>
-  <header
-    class="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur-lg"
-  >
+  <component :is="headerRoot" v-bind="headerProps">
     <div class="mx-auto flex h-16 w-full max-w-content items-center px-4 sm:px-6 lg:px-8">
-      <!-- Logo -->
       <RouterLink
         to="/"
         class="flex shrink-0 items-center transition-opacity hover:opacity-80"
@@ -38,7 +41,6 @@ function closeMobileMenu() {
         <BrandLogo />
       </RouterLink>
 
-      <!-- Desktop Nav -->
       <nav class="hidden flex-1 items-center justify-center gap-1 md:flex">
         <RouterLink
           v-for="item in navItems"
@@ -51,11 +53,9 @@ function closeMobileMenu() {
         </RouterLink>
       </nav>
 
-      <!-- Actions -->
       <div class="ml-auto flex shrink-0 items-center gap-2">
         <LocaleSwitcher />
         <ThemeToggle />
-        <!-- Mobile menu button -->
         <IconButton
           class="md:hidden"
           :aria-label="t('common.toggleMenu')"
@@ -71,7 +71,6 @@ function closeMobileMenu() {
       </div>
     </div>
 
-    <!-- Mobile Nav -->
     <Transition
       enter-active-class="transition duration-200 ease-out"
       enter-from-class="opacity-0 -translate-y-2"
@@ -97,5 +96,5 @@ function closeMobileMenu() {
         </RouterLink>
       </nav>
     </Transition>
-  </header>
+  </component>
 </template>

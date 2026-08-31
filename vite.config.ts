@@ -5,7 +5,7 @@ import eslint from 'vite-plugin-eslint';
 import svgLoader from 'vite-svg-loader';
 import autoImport from 'unplugin-auto-import/dist/vite.js';
 import { resolve } from 'path';
-import { seoAssetsPlugin, SITE_DEFAULT_URL } from './vite-plugin-seo-assets';
+import { injectHomePrerenderShell, seoAssetsPlugin, SITE_DEFAULT_URL } from './vite-plugin-seo-assets';
 
 function inlineCssPlugin(): Plugin {
   return {
@@ -16,13 +16,13 @@ function inlineCssPlugin(): Plugin {
       handler(html, ctx) {
         if (!ctx.bundle) return html;
 
-        let nextHtml = html.replace(
+        const nextHtml = html.replace(
           /<script type="module" crossorigin src="/g,
           '<script type="module" crossorigin fetchpriority="high" src="',
         );
 
         const stylesheetLinks = [...html.matchAll(/<link\s[^>]*rel="stylesheet"[^>]*>/g)];
-        if (!stylesheetLinks.length) return nextHtml;
+        if (!stylesheetLinks.length) return injectHomePrerenderShell(nextHtml);
 
         const hrefs = stylesheetLinks.map((match) => {
           const href = match[0].match(/href="([^"]+)"/)?.[1];
@@ -39,11 +39,13 @@ function inlineCssPlugin(): Plugin {
           })
           .join('\n');
 
-        if (!css) return nextHtml;
+        if (!css) return injectHomePrerenderShell(nextHtml);
 
-        return nextHtml
-          .replace(/<link\s[^>]*rel="stylesheet"[^>]*>/g, '')
-          .replace('</head>', `<style>${css}</style>\n  </head>`);
+        return injectHomePrerenderShell(
+          nextHtml
+            .replace(/<link\s[^>]*rel="stylesheet"[^>]*>/g, '')
+            .replace('</head>', `<style>${css}</style>\n  </head>`),
+        );
       },
     },
   };
