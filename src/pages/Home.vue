@@ -147,14 +147,11 @@ function postExcerpt(post: BlogPost) {
           :key="project.id"
           class="overflow-hidden rounded-lg border border-border bg-surface transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
         >
-          <MediaCover
-            compact
-            :title="projectTitle(project)"
-            :src="project.cover || project.thumbnail"
-            :category-label="t(`project.category.${project.category}`)"
-            :year="project.year"
-          />
           <div class="p-4">
+            <div class="mb-3 flex items-center justify-between gap-3 text-xs text-muted">
+              <span>{{ t(`project.category.${project.category}`) }}</span>
+              <span>{{ project.year }}</span>
+            </div>
             <h3 class="mb-2 text-lg font-semibold text-foreground">
               <RouterLink
                 :to="{ name: 'project-detail', params: { id: project.id } }"

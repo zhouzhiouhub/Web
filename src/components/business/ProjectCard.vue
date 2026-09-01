@@ -4,7 +4,6 @@ import { RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { NTag, NCard } from 'naive-ui';
 import type { Project } from '@/types';
-import MediaCover from '@/components/common/MediaCover.vue';
 
 const props = defineProps<{
   project: Project;
@@ -21,20 +20,14 @@ const titleId = computed(() => `project-card-title-${props.project.id}`);
 
 <template>
   <article
-    class="group relative h-full min-h-[300px] cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-within:ring-2 focus-within:ring-primary/60"
+    class="group relative h-full cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-within:ring-2 focus-within:ring-primary/60"
   >
     <NCard :bordered="true" class="h-full overflow-hidden">
-      <template #cover>
-        <MediaCover
-          compact
-          :title="projectTitle"
-          :src="project.cover || project.thumbnail"
-          :category-label="t(`project.category.${project.category}`)"
-          :year="project.year"
-        />
-      </template>
-
       <div class="flex h-full flex-col">
+        <div class="mb-3 flex items-center justify-between gap-3 text-xs text-muted">
+          <span>{{ t(`project.category.${project.category}`) }}</span>
+          <span>{{ project.year }}</span>
+        </div>
         <h3 :id="titleId" class="mb-3 text-lg font-semibold text-foreground">
           <RouterLink
             :to="{ name: 'project-detail', params: { id: project.id } }"
