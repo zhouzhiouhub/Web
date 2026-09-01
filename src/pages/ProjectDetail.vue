@@ -40,7 +40,6 @@ const projectContribution = computed(() => {
   return current.contributionKey ? t(current.contributionKey) : current.contribution ?? '';
 });
 const architecture = computed(() => (project.value ? getProjectArchitecture(project.value.id) : []));
-const showcase = computed(() => projectFeatures.value.slice(0, 4));
 const adjacent = computed(() => getAdjacentItems(
   projects,
   String(route.params.id),
@@ -97,24 +96,6 @@ useSeo({
           {{ tag }}
         </NTag>
       </div>
-
-      <section v-if="showcase.length" class="mb-10">
-        <h2 class="mb-4 text-xl font-bold text-foreground">
-          {{ t('project.gallery') }}
-        </h2>
-        <div class="grid gap-4 sm:grid-cols-2">
-          <article
-            v-for="(item, index) in showcase"
-            :key="item"
-            class="overflow-hidden rounded-lg border border-border bg-surface"
-          >
-            <div class="flex h-28 items-center justify-center bg-gradient-to-br from-primary/15 to-accent/10">
-              <span class="text-xs font-medium text-primary">{{ t('project.screen') }} {{ index + 1 }}</span>
-            </div>
-            <p class="p-4 text-sm leading-6 text-muted">{{ item }}</p>
-          </article>
-        </div>
-      </section>
 
       <section v-if="architecture.length" class="mb-10">
         <h2 class="mb-4 text-xl font-bold text-foreground">

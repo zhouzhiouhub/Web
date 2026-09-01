@@ -111,8 +111,6 @@ export default {
   'project.source': '源码',
   'project.viewDetail': '查看详情',
   'project.architecture': '架构',
-  'project.gallery': '界面示意',
-  'project.screen': '界面',
   'project.architecture.ui': '界面层',
   'project.architecture.core': '核心层',
   'project.architecture.data': '数据层',

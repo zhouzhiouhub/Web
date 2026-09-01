@@ -111,8 +111,6 @@ export default {
   'project.source': 'Source Code',
   'project.viewDetail': 'View Details',
   'project.architecture': 'Architecture',
-  'project.gallery': 'Interface sketches',
-  'project.screen': 'Screen',
   'project.architecture.ui': 'UI',
   'project.architecture.core': 'Core',
   'project.architecture.data': 'Data',
