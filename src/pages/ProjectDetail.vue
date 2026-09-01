@@ -7,7 +7,6 @@ import { useSeo } from '@/hooks/useSeo';
 import { projects } from '@/data/projects';
 import { getProjectArchitecture } from '@/data/project-media';
 import { getAdjacentItems, toAbsoluteUrl } from '@/utils';
-import MediaCover from '@/components/common/MediaCover.vue';
 import ArchitectureDiagram from '@/components/business/ArchitectureDiagram.vue';
 import AdjacentNav from '@/components/business/AdjacentNav.vue';
 import PageContainer from '@/components/layout/PageContainer.vue';
@@ -71,15 +70,6 @@ useSeo({
       <RouterLink to="/projects" class="mb-6 inline-block text-sm text-muted hover:text-primary">
         ← {{ t('common.back') }}
       </RouterLink>
-
-      <div class="mb-8 w-full overflow-hidden rounded-xl border border-border">
-        <MediaCover
-          :title="projectTitle"
-          :src="project.cover || project.thumbnail"
-          :category-label="t(`project.category.${project.category}`)"
-          :year="project.year"
-        />
-      </div>
 
       <h1 class="mb-4 text-3xl font-bold text-foreground">
         {{ projectTitle }}
