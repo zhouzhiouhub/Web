@@ -82,7 +82,6 @@ function postExcerpt(post: BlogPost) {
 <template>
   <div>
     <section v-if="!useStaticHero" class="relative overflow-hidden">
-      <div class="grid-bg pointer-events-none absolute inset-0 -z-10 opacity-[0.03]" />
       <div class="py-20 text-center lg:py-32">
         <h1 class="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
           {{ t('home.role') }}

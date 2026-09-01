@@ -201,7 +201,6 @@ export function buildHomePrerenderShell(messages: Record<string, string> = loadH
     '<div class="flex min-h-screen flex-col bg-background text-foreground">',
     '    <header id="static-header" class="sticky top-0 z-50 h-16 border-b border-border bg-surface/95 backdrop-blur-lg"></header>',
     '    <section id="home-hero" class="relative overflow-hidden">',
-    '      <div class="grid-bg pointer-events-none absolute inset-0 -z-10 opacity-[0.03]"></div>',
     '      <div class="page-width py-20 text-center lg:py-32">',
     `        <h1 class="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl" data-i18n="home.role">${t('home.role')}</h1>`,
     `        <p class="mb-10 text-base text-muted sm:text-lg" data-i18n="home.intro">${t('home.intro')}</p>`,
