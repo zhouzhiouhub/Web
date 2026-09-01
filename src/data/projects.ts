@@ -3,6 +3,47 @@ import { sortProjectsByTime } from '@/utils';
 
 const projectItems: Project[] = [
   {
+    id: 'gold',
+    title: '金价查询',
+    titleKey: 'project.gold.title',
+    description: '国内现货金价、国际伦敦金与品牌金饰挂牌价查询工具，支持浅色/深色主题，可本地运行或部署到 Cloudflare Workers。',
+    descriptionKey: 'project.gold.description',
+    tags: ['HTML', 'JavaScript', 'Node.js', 'Express', 'Cloudflare Workers', 'GoldAPI', 'Python'],
+    category: 'tool',
+    featured: true,
+    year: 2026,
+    url: 'https://gold.kinolin.com/',
+    repo: 'https://github.com/zhouzhiouhub/gold',
+    features: [
+      '国内金价展示 GoldAPI XAU/CNY 人民币克价（现货口径，不是饰品零售价）',
+      '国际金价展示 GoldAPI XAU/USD 盎司价与克价，并与国内现货对照',
+      '国内金饰价覆盖周大福、周生生、老凤祥等品牌足金挂牌价',
+      '浅色 / 深色主题、手动刷新，Tab 状态写入 ?tab= 与本地存储',
+      '今开 / 最高 / 昨收 / 最低四项齐全才展示行情格子，缺数据时整块隐藏',
+    ],
+    featuresKey: [
+      'project.gold.features.1',
+      'project.gold.features.2',
+      'project.gold.features.3',
+      'project.gold.features.4',
+      'project.gold.features.5',
+    ],
+    highlights: [
+      '本地 Node/Express 聚合 GoldAPI 与多源饰品抓取，抓取失败时用现货克价加品牌固定加价保底',
+      '饰品源按 5huangjin → huangjinjiage 报价页 → 站点首页回退，规范化品牌别名并过滤回收价、港币价和工艺金',
+      'Cloudflare Workers 云上只调 GoldAPI、不抓饰品站，金饰 Tab 退回现货加价估算',
+      '/api/gold 缓存 60 秒；本地将各品牌当日展示价写入 last-prices.json，用于计算相对昨日涨跌',
+    ],
+    highlightsKey: [
+      'project.gold.highlights.1',
+      'project.gold.highlights.2',
+      'project.gold.highlights.3',
+      'project.gold.highlights.4',
+    ],
+    contribution: '独立完成金价看板页面、GoldAPI 聚合、饰品多源抓取、主题与 Tab 状态、Express 本地服务以及 Cloudflare Workers 部署。',
+    contributionKey: 'project.gold.contribution',
+  },
+  {
     id: 'kinolin-tool',
     title: 'Kinolin Tool',
     titleKey: 'project.kinolinTool.title',

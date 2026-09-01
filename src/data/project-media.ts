@@ -1,6 +1,12 @@
 import type { ArchitectureLayer } from '@/types';
 
 export const projectArchitectures: Record<string, ArchitectureLayer[]> = {
+  gold: [
+    { id: 'ui', labelKey: 'project.architecture.ui', items: ['Static HTML / CSS / JS', 'Light / dark theme', 'Tab state'] },
+    { id: 'core', labelKey: 'project.architecture.core', items: ['GoldAPI XAU/CNY & XAU/USD', 'Jewelry HTML scrape', 'Spot markup fallback'] },
+    { id: 'data', labelKey: 'project.architecture.data', items: ['60s API cache', 'last-prices.json'] },
+    { id: 'platform', labelKey: 'project.architecture.platform', items: ['Express local', 'Cloudflare Workers', 'Wrangler'] },
+  ],
   'kinolin-tool': [
     { id: 'ui', labelKey: 'project.architecture.ui', items: ['Vue 3', 'Vite', 'Element Plus', 'i18n / Theme'] },
     { id: 'core', labelKey: 'project.architecture.core', items: ['imagetracerjs', 'esm-potrace-wasm', 'Canvas / File APIs'] },

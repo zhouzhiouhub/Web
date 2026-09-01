@@ -31,7 +31,7 @@ export const homeServices: ServiceItem[] = [
 export const homeStats: StatItem[] = [
   {
     id: 'projects',
-    value: '12',
+    value: '13',
     labelKey: 'home.stats.projects',
   },
   {

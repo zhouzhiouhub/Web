@@ -17,6 +17,7 @@
 
 ## Projects
 
+- [金价查询](https://web.zhiou9588.workers.dev/projects/gold): 国内现货、伦敦金与品牌金饰挂牌价查询。
 - [Kinolin Tool](https://web.zhiou9588.workers.dev/projects/kinolin-tool): 浏览器本地图片工具：转 SVG、裁剪改尺寸、转格式与压缩。
 - [VideoBrowser](https://web.zhiou9588.workers.dev/projects/videobrowser): Android 视频浏览器：广告过滤、Media3 播放与下载管理。
 - [Sokoban](https://web.zhiou9588.workers.dev/projects/sokoban): Flutter 推箱子：自定义关卡、死局检测与提示求解。
