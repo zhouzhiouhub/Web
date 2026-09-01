@@ -40,25 +40,24 @@ const titleId = computed(() => `project-card-title-${props.project.id}`);
           {{ projectDescription }}
         </p>
 
-        <div class="mt-auto flex flex-wrap gap-1.5">
-          <NTag
-            v-for="tag in project.tags"
-            :key="tag"
-            size="small"
-            :bordered="false"
-            type="primary"
-            round
-          >
-            {{ tag }}
-          </NTag>
+        <div class="mt-auto">
+          <div class="flex flex-wrap gap-1.5">
+            <NTag
+              v-for="tag in project.tags"
+              :key="tag"
+              size="small"
+              :bordered="false"
+              type="primary"
+              round
+            >
+              {{ tag }}
+            </NTag>
+          </div>
+          <span class="mt-3 block text-xs font-medium text-primary">
+            {{ t('project.viewDetail') }}
+          </span>
         </div>
       </div>
-
-      <template #action>
-        <span class="text-xs font-medium text-primary" aria-hidden="true">
-          {{ t('project.viewDetail') }}
-        </span>
-      </template>
     </NCard>
   </article>
 </template>
@@ -71,7 +70,9 @@ const titleId = computed(() => `project-card-title-${props.project.id}`);
 }
 
 :deep(.n-card__content) {
+  display: flex;
   flex: 1 1 auto;
+  flex-direction: column;
   min-height: 0;
 }
 
