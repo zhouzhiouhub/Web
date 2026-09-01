@@ -16,7 +16,7 @@ const SEO_STATIC_PATHS = [
 ];
 
 const SEO_PROJECTS = [
-  { id: 'gold', title: '金价查询', note: '国内现货、伦敦金与品牌金饰挂牌价查询。' },
+  { id: 'gold', title: '金价查询助手', note: '国内现货、伦敦金与品牌金饰挂牌价查询。' },
   { id: 'kinolin-tool', title: 'Kinolin Tool', note: '浏览器本地图片工具：转 SVG、裁剪改尺寸、转格式与压缩。' },
   { id: 'videobrowser', title: 'VideoBrowser', note: 'Android 视频浏览器：广告过滤、Media3 播放与下载管理。' },
   { id: 'sokoban', title: 'Sokoban', note: 'Flutter 推箱子：自定义关卡、死局检测与提示求解。' },

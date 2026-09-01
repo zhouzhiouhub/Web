@@ -191,7 +191,7 @@ export default {
   'project.kinolinTool.highlights.3': 'Deploys as a Cloudflare Workers static site with per-route SEO HTML, avoiding SPA fallback redirect loops.',
   'project.kinolinTool.highlights.4': 'Source is public so the processing path can be audited for the absence of network uploads.',
   'project.kinolinTool.contribution': 'Independently built the product features, image-processing pipeline, local history storage, i18n / theme, SEO, and Cloudflare deployment.',
-  'project.gold.title': 'Gold Price',
+  'project.gold.title': 'Gold Price Assistant',
   'project.gold.description': 'A lookup tool for China spot gold, London gold, and branded jewelry list prices, with light / dark themes. It runs locally or deploys to Cloudflare Workers.',
   'project.gold.features.1': 'The domestic tab shows GoldAPI XAU/CNY gram prices (spot, not jewelry retail).',
   'project.gold.features.2': 'The international tab shows GoldAPI XAU/USD ounce and gram prices, compared with China spot.',

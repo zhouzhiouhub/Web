@@ -12,23 +12,30 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <nav v-if="prev || next" class="mt-12 grid gap-4 border-t border-border pt-8 sm:grid-cols-2">
+  <nav
+    v-if="prev || next"
+    class="mt-12 flex flex-wrap items-start gap-3 border-t border-border pt-8"
+    :class="prev && next ? 'justify-between' : next ? 'justify-end' : 'justify-start'"
+  >
     <RouterLink
       v-if="prev"
       :to="prev.to"
-      class="rounded-lg border border-border bg-surface p-4 transition-colors hover:border-primary/50"
+      class="group inline-flex w-fit max-w-full flex-col rounded-xl border border-border bg-surface px-4 py-3 transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:bg-surface-raised hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
     >
-      <p class="mb-1 text-xs text-muted">{{ t('common.prev') }}</p>
-      <p class="font-medium text-foreground">{{ prev.title }}</p>
+      <span class="text-xs text-muted">{{ t('common.prev') }}</span>
+      <span class="mt-1 w-fit max-w-full font-medium text-foreground transition-colors group-hover:text-primary">
+        {{ prev.title }}
+      </span>
     </RouterLink>
-    <div v-else class="hidden sm:block" />
     <RouterLink
       v-if="next"
       :to="next.to"
-      class="rounded-lg border border-border bg-surface p-4 text-right transition-colors hover:border-primary/50"
+      class="group inline-flex w-fit max-w-full flex-col items-end rounded-xl border border-border bg-surface px-4 py-3 text-right transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:bg-surface-raised hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
     >
-      <p class="mb-1 text-xs text-muted">{{ t('common.next') }}</p>
-      <p class="font-medium text-foreground">{{ next.title }}</p>
+      <span class="text-xs text-muted">{{ t('common.next') }}</span>
+      <span class="mt-1 w-fit max-w-full font-medium text-foreground transition-colors group-hover:text-primary">
+        {{ next.title }}
+      </span>
     </RouterLink>
   </nav>
 </template>

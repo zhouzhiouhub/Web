@@ -174,12 +174,16 @@ useSeo({
         </p>
       </section>
 
-      <div v-if="project.url || project.repo" class="flex flex-wrap gap-4">
+      <div v-if="project.url || project.repo" class="flex flex-wrap items-center gap-3">
         <a v-if="project.url" :href="project.url" target="_blank" rel="noopener">
-          <NButton type="primary" round>{{ t('common.live') }}</NButton>
+          <NButton type="primary" round class="!h-9 !w-auto !min-w-0 px-4">
+            {{ t('common.live') }}
+          </NButton>
         </a>
         <a v-if="project.repo" :href="project.repo" target="_blank" rel="noopener">
-          <NButton secondary round>{{ t('common.source') }}</NButton>
+          <NButton secondary round class="!h-9 !w-auto !min-w-0 px-4">
+            {{ t('common.source') }}
+          </NButton>
         </a>
       </div>
 

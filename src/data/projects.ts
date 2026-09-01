@@ -4,7 +4,7 @@ import { sortProjectsByTime } from '@/utils';
 const projectItems: Project[] = [
   {
     id: 'gold',
-    title: '金价查询',
+    title: '金价查询助手',
     titleKey: 'project.gold.title',
     description: '国内现货金价、国际伦敦金与品牌金饰挂牌价查询工具，支持浅色/深色主题，可本地运行或部署到 Cloudflare Workers。',
     descriptionKey: 'project.gold.description',

@@ -191,7 +191,7 @@ export default {
   'project.kinolinTool.highlights.3': '静态站点部署到 Cloudflare Workers，按路由生成带 SEO 的 HTML，避免 SPA fallback 重定向环',
   'project.kinolinTool.highlights.4': '公开源码便于核对处理链路不包含网络上传',
   'project.kinolinTool.contribution': '独立完成产品功能、图片处理链路、本地历史存储、多语言 / 主题、SEO 与 Cloudflare 部署。',
-  'project.gold.title': '金价查询',
+  'project.gold.title': '金价查询助手',
   'project.gold.description': '国内现货金价、国际伦敦金与品牌金饰挂牌价查询工具，支持浅色/深色主题，可本地运行或部署到 Cloudflare Workers。',
   'project.gold.features.1': '国内金价展示 GoldAPI XAU/CNY 人民币克价（现货口径，不是饰品零售价）',
   'project.gold.features.2': '国际金价展示 GoldAPI XAU/USD 盎司价与克价，并与国内现货对照',
