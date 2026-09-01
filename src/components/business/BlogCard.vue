@@ -4,7 +4,6 @@ import { RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { NCard, NTag } from 'naive-ui';
 import type { BlogPost } from '@/types';
-import MediaCover from '@/components/common/MediaCover.vue';
 
 const props = defineProps<{
   post: BlogPost;
@@ -25,15 +24,9 @@ const titleId = computed(() => `blog-card-title-${props.post.id}`);
       class="h-full overflow-hidden"
       :bordered="true"
     >
-      <template #cover>
-        <MediaCover
-          compact
-          :title="title"
-          :src="post.cover"
-          :category-label="t(`blog.category.${post.category}`)"
-        />
-      </template>
-
+      <div class="mb-3 flex items-center justify-between gap-3 text-xs text-muted">
+        <span>{{ t(`blog.category.${post.category}`) }}</span>
+      </div>
       <h3 :id="titleId" class="mb-3 text-lg font-semibold text-foreground">
         <RouterLink
           :to="`/blog/${post.slug}`"

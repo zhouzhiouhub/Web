@@ -7,7 +7,6 @@ import { homeServices, homeStats } from '@/data/home';
 import { SITE_OG_IMAGE } from '@/data/site';
 import type { BlogPost, Project, Skill } from '@/types';
 import ServiceCard from '@/components/business/ServiceCard.vue';
-import MediaCover from '@/components/common/MediaCover.vue';
 import { hasStaticHomeHero, syncHomeHeroText } from '@/utils/home-shell';
 
 const { t, locale } = useI18n();
@@ -219,13 +218,10 @@ function postExcerpt(post: BlogPost) {
           :key="post.id"
           class="overflow-hidden rounded-lg border border-border bg-surface transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
         >
-          <MediaCover
-            compact
-            :title="postTitle(post)"
-            :src="post.cover"
-            :category-label="t(`blog.category.${post.category}`)"
-          />
           <div class="p-4">
+            <div class="mb-3 flex items-center justify-between gap-3 text-xs text-muted">
+              <span>{{ t(`blog.category.${post.category}`) }}</span>
+            </div>
             <h3 class="mb-2 text-lg font-semibold text-foreground">
               <RouterLink :to="`/blog/${post.slug}`" class="transition-colors hover:text-primary">
                 {{ postTitle(post) }}

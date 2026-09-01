@@ -7,7 +7,6 @@ import { useSeo } from '@/hooks/useSeo';
 import { publishedPosts } from '@/data/blog';
 import { getAdjacentItems, toAbsoluteUrl } from '@/utils';
 import type { BlogContentBlock, BlogPost } from '@/types';
-import MediaCover from '@/components/common/MediaCover.vue';
 import AdjacentNav from '@/components/business/AdjacentNav.vue';
 import PageContainer from '@/components/layout/PageContainer.vue';
 
@@ -64,14 +63,6 @@ useSeo({
       <RouterLink to="/blog" class="mb-6 inline-block text-sm text-muted hover:text-primary">
         {{ t('common.back') }}
       </RouterLink>
-
-      <div class="mb-8 w-full overflow-hidden rounded-xl border border-border">
-        <MediaCover
-          :title="postTitle"
-          :src="post.cover"
-          :category-label="t(`blog.category.${post.category}`)"
-        />
-      </div>
 
       <h1 class="mb-4 text-3xl font-bold leading-tight text-foreground">
         {{ postTitle }}
