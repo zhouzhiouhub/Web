@@ -192,7 +192,7 @@ function handleGreetingDismiss() {
     >
       <div
         v-if="greetingVisible && !open"
-        class="flex max-w-[16rem] items-start gap-2 rounded-2xl rounded-br-md border border-border bg-surface px-3 py-2 text-sm leading-6 text-foreground shadow-md"
+        class="flex max-w-64 items-start gap-2 rounded-2xl rounded-br-md border border-border bg-surface px-3 py-2 text-sm leading-6 text-foreground shadow-md"
       >
         <button
           type="button"
