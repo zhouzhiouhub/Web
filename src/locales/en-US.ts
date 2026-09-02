@@ -479,7 +479,7 @@ export default {
   'assistant.error': 'I could not reach the assistant just now. Please try again in a moment.',
   'assistant.suggest.who': 'Who are you?',
   'assistant.suggest.projects': 'What have you been working on lately?',
-  'assistant.suggest.contact': 'How can I contact Zhou Zhenyun?',
+  'assistant.suggest.contact': 'How can I get in touch?',
 
   /* ===== Common ===== */
   'common.viewAll': 'View All',

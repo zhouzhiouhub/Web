@@ -479,7 +479,7 @@ export default {
   'assistant.error': '刚才没连上，请稍后再问一次。',
   'assistant.suggest.who': '你是谁？',
   'assistant.suggest.projects': '最近在做什么项目？',
-  'assistant.suggest.contact': '怎么联系周珍运？',
+  'assistant.suggest.contact': '怎么联系？',
 
   /* ===== Common ===== */
   'common.viewAll': '查看全部',
