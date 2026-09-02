@@ -103,7 +103,10 @@ src/
 ```bash
 VITE_SITE_URL=https://web.zhiou9588.workers.dev
 VITE_BASE_PUBLIC_PATH=/
+VITE_RAG_URL=https://rag.kinolin.com
 ```
+
+右下角助手气泡会把问题发到 `rag-worker`（默认 `https://rag.kinolin.com/?text=`）。本地开发未设置 `VITE_RAG_URL` 时，经 Vite 代理 `/__rag` 转发，避免浏览器跨域。生产环境需该 Worker 返回 CORS 头。
 
 ## 开发规范
 

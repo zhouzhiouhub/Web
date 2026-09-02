@@ -56,6 +56,14 @@ export default ({ mode }: { mode: string }) => {
   const isDev = mode === 'development';
   const siteUrl = (process.env.VITE_SITE_URL || SITE_DEFAULT_URL).replace(/\/$/, '');
 
+  const ragProxy = {
+    '/__rag': {
+      target: 'https://rag.kinolin.com',
+      changeOrigin: true,
+      rewrite: (path: string) => path.replace(/^\/__rag/, '') || '/',
+    },
+  };
+
   return defineConfig({
     base: process.env.VITE_BASE_PUBLIC_PATH,
     plugins: [
@@ -86,6 +94,12 @@ export default ({ mode }: { mode: string }) => {
       alias: {
         '@': resolve(__dirname, 'src'),
       },
+    },
+    server: {
+      proxy: ragProxy,
+    },
+    preview: {
+      proxy: ragProxy,
     },
     build: {
       target: 'es2022',

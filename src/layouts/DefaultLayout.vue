@@ -16,6 +16,7 @@ watch(() => route.name, (name) => {
 }, { immediate: true });
 
 const NaiveAppProvider = defineAsyncComponent(() => import('@/components/common/NaiveAppProvider.vue'));
+const AssistantBubble = defineAsyncComponent(() => import('@/components/common/AssistantBubble.vue'));
 const BackToTop = defineAsyncComponent(() => import('@/components/common/BackToTop.vue'));
 const showBackToTop = ref(false);
 
@@ -47,6 +48,7 @@ onMounted(() => {
       </RouterView>
     </main>
     <AppFooter />
+    <AssistantBubble />
     <BackToTop v-if="showBackToTop" />
   </div>
 </template>

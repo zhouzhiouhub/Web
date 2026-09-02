@@ -302,6 +302,26 @@ export interface ContactIntent {
   labelKey: string;
 }
 
+/* ===== Assistant ===== */
+
+export type AssistantRole = 'user' | 'assistant';
+
+export interface AssistantMessage {
+  id: string;
+  role: AssistantRole;
+  content: string;
+}
+
+export interface AssistantQueryResult {
+  answer: string;
+  error?: string;
+}
+
+export interface AssistantSuggestion {
+  id: string;
+  questionKey: string;
+}
+
 /* ===== Adjacent nav ===== */
 
 export interface AdjacentLink {

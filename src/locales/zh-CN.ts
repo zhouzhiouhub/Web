@@ -463,6 +463,24 @@ export default {
   'category.ai': 'AI',
   'category.open-source': '开源',
 
+  /* ===== Assistant ===== */
+  'assistant.name': 'kilin',
+  'assistant.title': 'kilin',
+  'assistant.subtitle': '站点智能助手',
+  'assistant.open': '打开智能助手',
+  'assistant.close': '关闭对话',
+  'assistant.dismissGreeting': '关闭提示',
+  'assistant.greeting': '你好，我是 kilin。想了解项目、经历或怎么联系，可以直接问我。',
+  'assistant.welcome': '你好，我是 kilin。可以问我项目、技能、经历或联系方式。',
+  'assistant.placeholder': '问问项目、经历或联系方式…',
+  'assistant.send': '发送',
+  'assistant.sending': '正在思考',
+  'assistant.emptyAnswer': '这一题我还不太确定，换个问法试试，或去联系页留言。',
+  'assistant.error': '刚才没连上，请稍后再问一次。',
+  'assistant.suggest.who': '你是谁？',
+  'assistant.suggest.projects': '最近在做什么项目？',
+  'assistant.suggest.contact': '怎么联系周珍运？',
+
   /* ===== Common ===== */
   'common.viewAll': '查看全部',
   'common.back': '返回',

@@ -15,6 +15,7 @@ declare module '*.svg' {
 interface ImportMetaEnv {
   readonly VITE_BASE_PUBLIC_PATH: string;
   readonly VITE_SITE_URL?: string;
+  readonly VITE_RAG_URL?: string;
 }
 
 interface ImportMeta {

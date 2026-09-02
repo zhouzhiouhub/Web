@@ -463,6 +463,24 @@ export default {
   'category.ai': 'AI',
   'category.open-source': 'Open Source',
 
+  /* ===== Assistant ===== */
+  'assistant.name': 'kilin',
+  'assistant.title': 'kilin',
+  'assistant.subtitle': 'Site assistant',
+  'assistant.open': 'Open the assistant',
+  'assistant.close': 'Close the chat',
+  'assistant.dismissGreeting': 'Dismiss greeting',
+  'assistant.greeting': 'Hi, I am kilin. Ask me about projects, experience, or how to get in touch.',
+  'assistant.welcome': 'Hi, I am kilin. You can ask about projects, skills, experience, or contact details.',
+  'assistant.placeholder': 'Ask about projects, experience, or contact…',
+  'assistant.send': 'Send',
+  'assistant.sending': 'Thinking',
+  'assistant.emptyAnswer': 'I am not sure about that one. Try another question, or leave a note on the contact page.',
+  'assistant.error': 'I could not reach the assistant just now. Please try again in a moment.',
+  'assistant.suggest.who': 'Who are you?',
+  'assistant.suggest.projects': 'What have you been working on lately?',
+  'assistant.suggest.contact': 'How can I contact Zhou Zhenyun?',
+
   /* ===== Common ===== */
   'common.viewAll': 'View All',
   'common.back': 'Back',

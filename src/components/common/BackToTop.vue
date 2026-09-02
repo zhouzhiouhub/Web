@@ -22,7 +22,7 @@ function scrollToTop() {
     leave-from-class="opacity-100 translate-y-0"
     leave-to-class="translate-y-2 opacity-0"
   >
-    <div v-if="visible" class="fixed bottom-6 right-6 z-40">
+    <div v-if="visible" class="fixed bottom-6 right-24 z-40">
       <IconButton
         variant="primary"
         :aria-label="t('common.backToTop')"
