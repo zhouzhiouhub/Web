@@ -40,7 +40,7 @@ watch(open, async (isOpen) => {
   scrollToEnd();
 });
 
-watch([messages, sending], () => {
+watch(() => [messages.value.length, sending.value], () => {
   scrollToEnd();
 });
 
