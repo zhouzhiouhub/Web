@@ -90,8 +90,12 @@ export function useAssistantChat() {
     const controller = new AbortController();
     const timeoutId = window.setTimeout(() => controller.abort(), ASSISTANT_TIMEOUT_MS);
 
+    const history = messages.value
+      .filter((message) => message.id !== 'welcome')
+      .slice(0, -1);
+
     try {
-      const result = await queryAssistant(question, controller.signal);
+      const result = await queryAssistant(question, history, controller.signal);
       const content = result.answer.trim()
         || (result.error ? t('assistant.error') : t('assistant.emptyAnswer'));
       messages.value.push({

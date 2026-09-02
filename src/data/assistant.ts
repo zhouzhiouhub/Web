@@ -3,6 +3,8 @@ import type { AssistantSuggestion } from '@/types';
 export const DEFAULT_RAG_URL = 'https://rag.kinolin.com';
 export const DEV_RAG_PROXY_PATH = '/__rag';
 export const ASSISTANT_QUESTION_MAX = 200;
+export const ASSISTANT_HISTORY_MAX = 8;
+export const ASSISTANT_HISTORY_TURN_MAX = 400;
 export const ASSISTANT_GREETING_DELAY_MS = 1200;
 export const ASSISTANT_TIMEOUT_MS = 60_000;
 export const ASSISTANT_GREETING_STORAGE_KEY = 'kinolin.assistant.greetingDismissed';
