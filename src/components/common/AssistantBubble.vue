@@ -72,7 +72,7 @@ function handleGreetingDismiss() {
   <Teleport to="body">
     <div
       ref="rootRef"
-      class="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-[60] flex flex-col items-end gap-3"
+      class="fixed bottom-[max(2.5rem,calc(env(safe-area-inset-bottom)+1.5rem))] right-[max(1rem,env(safe-area-inset-right))] z-[60] flex flex-col items-end gap-3"
     >
     <Transition
       enter-active-class="transition duration-200 ease-out"

@@ -24,7 +24,7 @@ function scrollToTop() {
   >
     <div
       v-if="visible"
-      class="fixed bottom-[max(1.25rem,calc(env(safe-area-inset-bottom)+0.25rem))] right-[max(4.75rem,calc(env(safe-area-inset-right)+3.75rem))] z-40"
+      class="fixed bottom-[max(2.75rem,calc(env(safe-area-inset-bottom)+1.75rem))] right-[max(4.75rem,calc(env(safe-area-inset-right)+3.75rem))] z-40"
     >
       <IconButton
         variant="primary"
