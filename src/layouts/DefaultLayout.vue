@@ -16,11 +16,19 @@ watch(() => route.name, (name) => {
 }, { immediate: true });
 
 const NaiveAppProvider = defineAsyncComponent(() => import('@/components/common/NaiveAppProvider.vue'));
-const AssistantBubble = defineAsyncComponent(() => import('@/components/common/AssistantBubble.vue'));
-const BackToTop = defineAsyncComponent(() => import('@/components/common/BackToTop.vue'));
+const AssistantBubble = defineAsyncComponent({
+  loader: () => import('@/components/common/AssistantBubble.vue'),
+  suspensible: false,
+});
+const BackToTop = defineAsyncComponent({
+  loader: () => import('@/components/common/BackToTop.vue'),
+  suspensible: false,
+});
+const showAssistant = ref(false);
 const showBackToTop = ref(false);
 
 onMounted(() => {
+  showAssistant.value = true;
   const enable = () => {
     showBackToTop.value = true;
   };
@@ -36,19 +44,21 @@ onMounted(() => {
     <AppHeader />
     <main class="page-width min-w-0 flex-1">
       <RouterView v-slot="{ Component }">
-        <Suspense>
-          <NaiveAppProvider v-if="needsNaive">
-            <component :is="Component" />
-          </NaiveAppProvider>
+        <template v-if="Component">
+          <Suspense v-if="needsNaive">
+            <NaiveAppProvider>
+              <component :is="Component" />
+            </NaiveAppProvider>
+            <template #fallback>
+              <PageSkeleton />
+            </template>
+          </Suspense>
           <component :is="Component" v-else />
-          <template #fallback>
-            <PageSkeleton />
-          </template>
-        </Suspense>
+        </template>
       </RouterView>
     </main>
     <AppFooter />
-    <AssistantBubble />
+    <AssistantBubble v-if="showAssistant" />
     <BackToTop v-if="showBackToTop" />
   </div>
 </template>

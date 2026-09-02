@@ -12,14 +12,21 @@ const localeStore = useLocaleStore();
 const naiveTheme = shallowRef<GlobalTheme | null>(null);
 const naiveLocale = shallowRef<typeof import('naive-ui')['zhCN'] | undefined>(undefined);
 const themeOverrides = computed(() => (themeStore.isDark ? darkThemeOverrides : lightThemeOverrides));
+let cachedDarkTheme: GlobalTheme | null = null;
+
+async function ensureDarkTheme(): Promise<GlobalTheme> {
+  if (cachedDarkTheme) return cachedDarkTheme;
+  const { darkTheme } = await import('naive-ui');
+  cachedDarkTheme = darkTheme;
+  return darkTheme;
+}
 
 watch(() => themeStore.isDark, async (isDark) => {
   if (!isDark) {
     naiveTheme.value = null;
     return;
   }
-  const { darkTheme } = await import('naive-ui');
-  naiveTheme.value = darkTheme;
+  naiveTheme.value = await ensureDarkTheme();
 }, { immediate: true });
 
 async function loadNaiveLocale(code: string) {
@@ -33,6 +40,9 @@ async function loadNaiveLocale(code: string) {
 
 onMounted(() => {
   loadNaiveLocale(localeStore.locale);
+  if (!themeStore.isDark) {
+    ensureDarkTheme();
+  }
 });
 
 watch(() => localeStore.locale, (code) => {

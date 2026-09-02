@@ -43,10 +43,6 @@ html {
   background-color: rgb(var(--color-background));
 }
 
-html.theme-ready {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
 html.not-home #home-hero {
   display: none;
 }
@@ -59,6 +55,15 @@ html.not-home #home-hero {
 .defer-paint {
   content-visibility: auto;
   contain-intrinsic-size: auto 24rem;
+}
+
+html.theme-switching,
+html.theme-switching * {
+  transition: none !important;
+}
+
+html.theme-switching .defer-paint {
+  content-visibility: visible;
 }
 
 .cta-btn {

@@ -144,7 +144,7 @@ function postExcerpt(post: BlogPost) {
         <article
           v-for="project in homeProjects"
           :key="project.id"
-          class="overflow-hidden rounded-lg border border-border bg-surface transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          class="overflow-hidden rounded-lg border border-border bg-surface transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg"
         >
           <div class="p-4">
             <div class="mb-3 flex items-center justify-between gap-3 text-xs text-muted">
@@ -194,7 +194,7 @@ function postExcerpt(post: BlogPost) {
               :href="skill.url"
               target="_blank"
               rel="noopener noreferrer"
-              class="rounded-lg border border-border bg-surface px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary/50"
+              class="rounded-lg border border-border bg-surface px-4 py-2 text-sm font-medium text-foreground hover:border-primary/50"
             >
               {{ skill.name }}
             </a>
@@ -216,7 +216,7 @@ function postExcerpt(post: BlogPost) {
         <article
           v-for="post in latestPosts"
           :key="post.id"
-          class="overflow-hidden rounded-lg border border-border bg-surface transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          class="overflow-hidden rounded-lg border border-border bg-surface transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg"
         >
           <div class="p-4">
             <div class="mb-3 flex items-center justify-between gap-3 text-xs text-muted">

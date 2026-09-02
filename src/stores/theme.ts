@@ -22,21 +22,21 @@ export const useThemeStore = defineStore('theme', () => {
 
   function applyTheme() {
     const root = document.documentElement;
+    root.classList.add('theme-switching');
     if (isDark.value) {
       root.classList.add('dark');
     } else {
       root.classList.remove('dark');
     }
     root.setAttribute('data-theme', resolvedMode.value);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        root.classList.remove('theme-switching');
+      });
+    });
   }
 
   watch(isDark, () => applyTheme(), { immediate: true });
-
-  if (typeof window !== 'undefined') {
-    requestAnimationFrame(() => {
-      document.documentElement.classList.add('theme-ready');
-    });
-  }
 
   return {
     mode: storedMode,
