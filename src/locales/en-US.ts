@@ -444,7 +444,7 @@ export default {
   'social.csdn': 'CSDN',
   'social.email': 'Email',
   'social.phone': 'Phone',
-  'social.cv': 'Online CV',
+  'social.cv': 'CV',
 
   /* ===== Skills ===== */
   'skill.frontend': 'Frontend',

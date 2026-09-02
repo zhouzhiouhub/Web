@@ -444,7 +444,7 @@ export default {
   'social.csdn': 'CSDN',
   'social.email': '邮箱',
   'social.phone': '电话',
-  'social.cv': '在线简历',
+  'social.cv': '简历',
 
   /* ===== Skills ===== */
   'skill.frontend': '前端',
