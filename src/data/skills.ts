@@ -44,6 +44,12 @@ export const skills: Skill[] = [
   { id: 'git', name: 'Git', category: 'devops', url: 'https://git-scm.com/' },
   { id: 'ci-cd', name: 'CI/CD', category: 'devops', url: 'https://docs.github.com/en/actions' },
 
+  // AI
+  { id: 'workers-ai', name: 'Workers AI', category: 'ai', url: 'https://developers.cloudflare.com/workers-ai/' },
+  { id: 'vectorize', name: 'Vectorize', category: 'ai', url: 'https://developers.cloudflare.com/vectorize/' },
+  { id: 'gemini', name: 'Gemini', category: 'ai', url: 'https://ai.google.dev/' },
+  { id: 'd1', name: 'D1', category: 'backend', url: 'https://developers.cloudflare.com/d1/' },
+
   // Language
   { id: 'javascript', name: 'JavaScript', category: 'language', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript' },
   { id: 'python', name: 'Python', category: 'language', url: 'https://www.python.org/' },

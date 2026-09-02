@@ -18,6 +18,8 @@
 ## Projects
 
 - [金价查询助手](https://web.zhiou9588.workers.dev/projects/gold): 国内现货、伦敦金与品牌金饰挂牌价查询。
+- [rag-worker](https://web.zhiou9588.workers.dev/projects/rag-worker): Cloudflare Workers RAG：分片入库、召回重排与在线问答。
+- [React 企业官网 Demo](https://web.zhiou9588.workers.dev/projects/react-web): React 企业官网：产品、新闻、主题切换与 SPA 路由。
 - [Kinolin Tool](https://web.zhiou9588.workers.dev/projects/kinolin-tool): 浏览器本地图片工具：转 SVG、裁剪改尺寸、转格式与压缩。
 - [VideoBrowser](https://web.zhiou9588.workers.dev/projects/videobrowser): Android 视频浏览器：广告过滤、Media3 播放与下载管理。
 - [Sokoban](https://web.zhiou9588.workers.dev/projects/sokoban): Flutter 推箱子：自定义关卡、死局检测与提示求解。
@@ -25,7 +27,7 @@
 - [Budget](https://web.zhiou9588.workers.dev/projects/budget): 微信小程序预算：月度预算、记账、筛选与本地持久化。
 - [Sphere](https://web.zhiou9588.workers.dev/projects/sphere): Three.js 3D 轨道冲刺小游戏。
 - [Game-Web](https://web.zhiou9588.workers.dev/projects/game-web): Next.js 15 游戏资源站，多语言响应式门户。
-- [Astro_Two](https://web.zhiou9588.workers.dev/projects/astro-two): Astro 4 多语言静态站点模板。
+- [Astro_Two](https://web.zhiou9588.workers.dev/projects/astro-two): Astro 4 多语言静态站点，在线体验 https://language.kinolin.com/。
 - [Kinolin Portfolio](https://web.zhiou9588.workers.dev/projects/portfolio-website): 本站：个人开发者门户、项目、博客与简历。
 - [客户端软件构建与发布链路](https://web.zhiou9588.workers.dev/projects/client-build-pipeline): 桌面端从编译到商店上架与下载校验。
 - [官网、后台与订阅支付系统维护](https://web.zhiou9588.workers.dev/projects/website-payment-system): 多产品官网、后台与订阅支付链路。

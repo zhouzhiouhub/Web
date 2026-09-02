@@ -17,6 +17,8 @@ const SEO_STATIC_PATHS = [
 
 const SEO_PROJECTS = [
   { id: 'gold', title: '金价查询助手', note: '国内现货、伦敦金与品牌金饰挂牌价查询。' },
+  { id: 'rag-worker', title: 'rag-worker', note: 'Cloudflare Workers RAG：分片入库、召回重排与在线问答。' },
+  { id: 'react-web', title: 'React 企业官网 Demo', note: 'React 企业官网：产品、新闻、主题切换与 SPA 路由。' },
   { id: 'kinolin-tool', title: 'Kinolin Tool', note: '浏览器本地图片工具：转 SVG、裁剪改尺寸、转格式与压缩。' },
   { id: 'videobrowser', title: 'VideoBrowser', note: 'Android 视频浏览器：广告过滤、Media3 播放与下载管理。' },
   { id: 'sokoban', title: 'Sokoban', note: 'Flutter 推箱子：自定义关卡、死局检测与提示求解。' },
@@ -24,7 +26,7 @@ const SEO_PROJECTS = [
   { id: 'budget', title: 'Budget', note: '微信小程序预算：月度预算、记账、筛选与本地持久化。' },
   { id: 'sphere', title: 'Sphere', note: 'Three.js 3D 轨道冲刺小游戏。' },
   { id: 'game-web', title: 'Game-Web', note: 'Next.js 15 游戏资源站，多语言响应式门户。' },
-  { id: 'astro-two', title: 'Astro_Two', note: 'Astro 4 多语言静态站点模板。' },
+  { id: 'astro-two', title: 'Astro_Two', note: 'Astro 4 多语言静态站点，在线体验 language.kinolin.com。' },
   { id: 'portfolio-website', title: 'Kinolin Portfolio', note: '本站：个人开发者门户、项目、博客与简历。' },
   { id: 'client-build-pipeline', title: '客户端软件构建与发布链路', note: '桌面端从编译到商店上架与下载校验。' },
   { id: 'website-payment-system', title: '官网、后台与订阅支付系统维护', note: '多产品官网、后台与订阅支付链路。' },
