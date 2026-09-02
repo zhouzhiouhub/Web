@@ -3,8 +3,13 @@ import { nextTick, ref, watch } from 'vue';
 import { onClickOutside, onKeyStroke } from '@vueuse/core';
 import { useI18n } from 'vue-i18n';
 import { ASSISTANT_QUESTION_MAX, assistantSuggestions } from '@/data/assistant';
-import { SITE_AVATAR } from '@/data/site';
+import { ASSISTANT_AVATAR } from '@/data/site';
 import { useAssistantChat } from '@/hooks/useAssistantChat';
+
+const robotIconStyle = [
+  `--svg-icon-url: url("${ASSISTANT_AVATAR}")`,
+  '--svg-icon-opacity: 1',
+];
 
 const { t } = useI18n();
 const rootRef = ref<HTMLElement | null>(null);
@@ -87,13 +92,12 @@ function handleGreetingDismiss() {
         :aria-label="t('assistant.title')"
       >
         <header class="flex items-center gap-3 border-b border-border px-4 py-3">
-          <img
-            :src="SITE_AVATAR"
-            :alt="t('assistant.name')"
-            width="36"
-            height="36"
-            class="size-9 rounded-full border border-border object-cover"
-          />
+          <span
+            class="inline-flex size-9 items-center justify-center rounded-full bg-primary/10"
+            aria-hidden="true"
+          >
+            <span class="themed-svg-icon size-5 text-primary" :style="robotIconStyle" />
+          </span>
           <div class="min-w-0 flex-1">
             <p class="text-sm font-semibold text-foreground">{{ t('assistant.title') }}</p>
             <p class="text-xs text-muted">{{ t('assistant.subtitle') }}</p>
@@ -222,12 +226,10 @@ function handleGreetingDismiss() {
       :aria-expanded="open"
       @click="togglePanel"
     >
-      <img
-        :src="SITE_AVATAR"
-        :alt="t('assistant.name')"
-        width="56"
-        height="56"
-        class="size-14 rounded-full object-cover"
+      <span
+        class="themed-svg-icon size-8 text-primary"
+        :style="robotIconStyle"
+        aria-hidden="true"
       />
       <span class="absolute bottom-0.5 right-0.5 size-3 rounded-full border-2 border-surface bg-primary" />
     </button>

@@ -12,6 +12,7 @@ const baseUrl = import.meta.env.BASE_URL || '/';
 
 export const SITE_OG_IMAGE = `${baseUrl}og.svg`;
 export const SITE_AVATAR = `${baseUrl}avatar.svg`;
+export const ASSISTANT_AVATAR = `${baseUrl}robot.svg`;
 export const SITE_RSS_PATH = `${baseUrl}rss.xml`;
 /** Full lockup for dark surfaces: gradient K + white wordmark. */
 export const SITE_LOGO_WORDMARK_DARK = `${baseUrl}logo.svg`;
