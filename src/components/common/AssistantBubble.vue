@@ -3,13 +3,7 @@ import { nextTick, ref, watch } from 'vue';
 import { onClickOutside, onKeyStroke } from '@vueuse/core';
 import { useI18n } from 'vue-i18n';
 import { ASSISTANT_QUESTION_MAX, assistantSuggestions } from '@/data/assistant';
-import { ASSISTANT_AVATAR } from '@/data/site';
 import { useAssistantChat } from '@/hooks/useAssistantChat';
-
-const robotIconStyle = [
-  `--svg-icon-url: url("${ASSISTANT_AVATAR}")`,
-  '--svg-icon-opacity: 1',
-];
 
 const { t } = useI18n();
 const rootRef = ref<HTMLElement | null>(null);
@@ -72,10 +66,14 @@ function handleGreetingClick() {
 function handleGreetingDismiss() {
   dismissGreeting();
 }
+
+const robotPath = 'M12 2a2 2 0 0 1 1 3.73V6h3a4 4 0 0 1 4 4v.05a2.501 2.501 0 0 1 0 4.9V16a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-1.05a2.5 2.5 0 0 1 0-4.9V10a4 4 0 0 1 4-4h3v-.27A2 2 0 0 1 12 2m-3 9a1 1 0 0 0-1 1v2a1 1 0 1 0 2 0v-2a1 1 0 0 0-1-1m6 0a1 1 0 0 0-1 1v2a1 1 0 1 0 2 0v-2a1 1 0 0 0-1-1';
+
 </script>
 
 <template>
-  <div ref="rootRef" class="fixed bottom-6 right-4 z-40 flex flex-col items-end gap-3 sm:right-6">
+  <Teleport to="body">
+  <div ref="rootRef" class="fixed bottom-6 right-4 z-50 flex flex-col items-end gap-3 sm:right-6">
     <Transition
       enter-active-class="transition duration-200 ease-out"
       enter-from-class="translate-y-2 opacity-0"
@@ -96,7 +94,9 @@ function handleGreetingDismiss() {
             class="inline-flex size-9 items-center justify-center rounded-full bg-primary/10"
             aria-hidden="true"
           >
-            <span class="themed-svg-icon size-5 text-primary" :style="robotIconStyle" />
+            <svg class="size-5 text-primary" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" :d="robotPath" />
+            </svg>
           </span>
           <div class="min-w-0 flex-1">
             <p class="text-sm font-semibold text-foreground">{{ t('assistant.title') }}</p>
@@ -226,12 +226,11 @@ function handleGreetingDismiss() {
       :aria-expanded="open"
       @click="togglePanel"
     >
-      <span
-        class="themed-svg-icon size-8 text-primary"
-        :style="robotIconStyle"
-        aria-hidden="true"
-      />
+      <svg class="size-8 text-primary" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" :d="robotPath" />
+      </svg>
       <span class="absolute bottom-0.5 right-0.5 size-3 rounded-full border-2 border-surface bg-primary" />
     </button>
   </div>
+  </Teleport>
 </template>

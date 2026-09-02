@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router';
 import AppHeader from '@/components/layout/AppHeader.vue';
 import AppFooter from '@/components/layout/AppFooter.vue';
 import PageSkeleton from '@/components/common/PageSkeleton.vue';
+import AssistantBubble from '@/components/common/AssistantBubble.vue';
 import { hasStaticHeader, setNotHomeClass } from '@/utils/home-shell';
 
 const route = useRoute();
@@ -16,19 +17,13 @@ watch(() => route.name, (name) => {
 }, { immediate: true });
 
 const NaiveAppProvider = defineAsyncComponent(() => import('@/components/common/NaiveAppProvider.vue'));
-const AssistantBubble = defineAsyncComponent({
-  loader: () => import('@/components/common/AssistantBubble.vue'),
-  suspensible: false,
-});
 const BackToTop = defineAsyncComponent({
   loader: () => import('@/components/common/BackToTop.vue'),
   suspensible: false,
 });
-const showAssistant = ref(false);
 const showBackToTop = ref(false);
 
 onMounted(() => {
-  showAssistant.value = true;
   const enable = () => {
     showBackToTop.value = true;
   };
@@ -58,7 +53,7 @@ onMounted(() => {
       </RouterView>
     </main>
     <AppFooter />
-    <AssistantBubble v-if="showAssistant" />
+    <AssistantBubble />
     <BackToTop v-if="showBackToTop" />
   </div>
 </template>
