@@ -158,20 +158,6 @@ a:hover .themed-svg-icon {
   animation: fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-@keyframes assistant-pulse-ring {
-  0% {
-    box-shadow: 0 0 0 0 rgb(var(--color-primary) / 35%);
-  }
-
-  70% {
-    box-shadow: 0 0 0 10px rgb(var(--color-primary) / 0%);
-  }
-
-  100% {
-    box-shadow: 0 0 0 0 rgb(var(--color-primary) / 0%);
-  }
-}
-
 @keyframes assistant-dot {
   0%,
   80%,
@@ -184,10 +170,6 @@ a:hover .themed-svg-icon {
     opacity: 1;
     transform: translateY(-2px);
   }
-}
-
-.assistant-pulse {
-  animation: assistant-pulse-ring 2.4s ease-out infinite;
 }
 
 .assistant-dot {
@@ -208,7 +190,6 @@ a:hover .themed-svg-icon {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .assistant-pulse,
   .assistant-dot {
     animation: none;
   }

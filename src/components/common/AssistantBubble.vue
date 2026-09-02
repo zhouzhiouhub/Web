@@ -66,14 +66,14 @@ function handleGreetingClick() {
 function handleGreetingDismiss() {
   dismissGreeting();
 }
-
-const robotPath = 'M12 2a2 2 0 0 1 1 3.73V6h3a4 4 0 0 1 4 4v.05a2.501 2.501 0 0 1 0 4.9V16a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-1.05a2.5 2.5 0 0 1 0-4.9V10a4 4 0 0 1 4-4h3v-.27A2 2 0 0 1 12 2m-3 9a1 1 0 0 0-1 1v2a1 1 0 1 0 2 0v-2a1 1 0 0 0-1-1m6 0a1 1 0 0 0-1 1v2a1 1 0 1 0 2 0v-2a1 1 0 0 0-1-1';
-
 </script>
 
 <template>
   <Teleport to="body">
-  <div ref="rootRef" class="fixed bottom-6 right-4 z-50 flex flex-col items-end gap-3 sm:right-6">
+    <div
+      ref="rootRef"
+      class="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-[60] flex flex-col items-end gap-3"
+    >
     <Transition
       enter-active-class="transition duration-200 ease-out"
       enter-from-class="translate-y-2 opacity-0"
@@ -94,8 +94,19 @@ const robotPath = 'M12 2a2 2 0 0 1 1 3.73V6h3a4 4 0 0 1 4 4v.05a2.501 2.501 0 0 
             class="inline-flex size-9 items-center justify-center rounded-full bg-primary/10"
             aria-hidden="true"
           >
-            <svg class="size-5 text-primary" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" :d="robotPath" />
+            <svg
+              class="size-5 text-primary"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M12 8V4H8" />
+              <rect width="16" height="12" x="4" y="8" rx="2" />
+              <path d="M2 14h2M20 14h2M15 13v2M9 13v2" />
             </svg>
           </span>
           <div class="min-w-0 flex-1">
@@ -221,16 +232,39 @@ const robotPath = 'M12 2a2 2 0 0 1 1 3.73V6h3a4 4 0 0 1 4 4v.05a2.501 2.501 0 0 
 
     <button
       type="button"
-      class="assistant-pulse relative inline-flex size-14 items-center justify-center rounded-full border border-border bg-surface shadow-lg transition-transform hover:scale-105"
+      class="inline-flex size-12 items-center justify-center rounded-full bg-primary text-white shadow-lg transition-transform hover:scale-105 hover:bg-primary-hover dark:text-background"
       :aria-label="open ? t('assistant.close') : t('assistant.open')"
       :aria-expanded="open"
       @click="togglePanel"
     >
-      <svg class="size-8 text-primary" viewBox="0 0 24 24" aria-hidden="true">
-        <path fill="currentColor" :d="robotPath" />
+      <svg
+        v-if="open"
+        class="size-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        aria-hidden="true"
+      >
+        <path d="M6 18L18 6M6 6l12 12" />
       </svg>
-      <span class="absolute bottom-0.5 right-0.5 size-3 rounded-full border-2 border-surface bg-primary" />
+      <svg
+        v-else
+        class="size-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M12 8V4H8" />
+        <rect width="16" height="12" x="4" y="8" rx="2" />
+        <path d="M2 14h2M20 14h2M15 13v2M9 13v2" />
+      </svg>
     </button>
-  </div>
+    </div>
   </Teleport>
 </template>
