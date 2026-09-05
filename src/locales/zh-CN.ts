@@ -109,6 +109,7 @@ export default {
   'project.tech': '技术栈',
   'project.live': '在线体验',
   'project.source': '源码',
+  'project.download': '下载',
   'project.viewDetail': '查看详情',
   'project.architecture': '架构',
   'project.architecture.ui': '界面层',
@@ -125,6 +126,19 @@ export default {
   'project.category.open-source': '开源',
 
   /* ===== Project Content ===== */
+  'project.kinolincopy.title': 'Kinolincopy',
+  'project.kinolincopy.description': '本机 Windows 剪贴板历史看板，使用 WPF 与 .NET Framework 4.8 构建，记录文本、图片和资源管理器复制的媒体文件。',
+  'project.kinolincopy.features.1': '自动记录最近 48 小时内复制过的文本、剪贴板图片，以及从资源管理器复制的视频/图片文件',
+  'project.kinolincopy.features.2': '按具体时间点展示单列时间轴，文本、图片和视频预览直接嵌入条目',
+  'project.kinolincopy.features.3': '窗口可停靠屏幕左侧或右侧，收起后在同侧唤醒，拖动位置后记住自定义高度',
+  'project.kinolincopy.features.4': '启动后常驻托盘，默认开机自启；单实例运行，重复打开会唤起已有进程',
+  'project.kinolincopy.features.5': '支持暂停记录、隐藏内容、固定展开、锁定保留、清空未锁定历史，以及粘贴并隐藏',
+  'project.kinolincopy.highlights.1': '基于 .NET Framework 4.8 与 WPF 构建轻量桌面应用，避免附带 Chromium，单文件包体小',
+  'project.kinolincopy.highlights.2': '剪贴板监听覆盖文本、图片、文件路径等多类型数据，并按 48 小时保留窗口自动清理',
+  'project.kinolincopy.highlights.3': '侧边停靠、自动收起、托盘驻留、开机自启和单实例唤醒组成贴近日常使用的 Windows 桌面体验',
+  'project.kinolincopy.highlights.4': 'build.ps1 生成便携版 release/Kinolincopy.exe，同时通过 manifest、图标和版本生成脚本补齐发布信息',
+  'project.kinolincopy.contribution': '独立完成 WPF 桌面端界面、剪贴板采集与历史管理、侧边停靠交互、托盘 / 自启 / 单实例集成，以及便携版打包脚本。',
+
   'project.videobrowser.title': 'VideoBrowser',
   'project.videobrowser.description': 'Android 视频浏览器，支持 WebView 浏览、广告过滤、Media3 视频播放、下载管理与站点级配置。',
   'project.videobrowser.features.1': '网页浏览、地址栏搜索、搜索建议、收藏/历史、下载记录、站点配置、无痕模式和功能中心',

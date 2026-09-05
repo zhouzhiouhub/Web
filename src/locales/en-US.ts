@@ -109,6 +109,7 @@ export default {
   'project.tech': 'Tech Stack',
   'project.live': 'Live Demo',
   'project.source': 'Source Code',
+  'project.download': 'Download',
   'project.viewDetail': 'View Details',
   'project.architecture': 'Architecture',
   'project.architecture.ui': 'UI',
@@ -125,6 +126,19 @@ export default {
   'project.category.open-source': 'Open Source',
 
   /* ===== Project Content ===== */
+  'project.kinolincopy.title': 'Kinolincopy',
+  'project.kinolincopy.description': 'A local Windows clipboard history dashboard built with WPF and .NET Framework 4.8, recording text, clipboard images, and media files copied from File Explorer.',
+  'project.kinolincopy.features.1': 'Automatically records text, clipboard images, and video/image files copied from File Explorer within the last 48 hours.',
+  'project.kinolincopy.features.2': 'Displays a single-column timeline by exact copy time, with text, image, and video previews embedded in each entry.',
+  'project.kinolincopy.features.3': 'Docks to the left or right edge of the screen, wakes from the same side area, and remembers a custom vertical position after dragging.',
+  'project.kinolincopy.features.4': 'Runs in the system tray after launch, enables startup by default, and uses single-instance wake-up for repeated opens.',
+  'project.kinolincopy.features.5': 'Supports pause recording, hide content, pin expanded state, lock entries, clear unlocked history, and paste-then-hide.',
+  'project.kinolincopy.highlights.1': 'Built as a lightweight WPF desktop app on .NET Framework 4.8, avoiding bundled Chromium and keeping the single-file package small.',
+  'project.kinolincopy.highlights.2': 'Clipboard listening covers text, images, and file paths, with automatic cleanup inside a 48-hour retention window.',
+  'project.kinolincopy.highlights.3': 'Side docking, auto-collapse, tray residency, startup registration, and single-instance wake-up create a practical Windows desktop workflow.',
+  'project.kinolincopy.highlights.4': 'build.ps1 produces the portable release/Kinolincopy.exe while manifest, icon, and version-generation scripts complete release metadata.',
+  'project.kinolincopy.contribution': 'Independently built the WPF desktop UI, clipboard capture and history management, side-dock interaction, tray / startup / single-instance integration, and portable packaging script.',
+
   'project.videobrowser.title': 'VideoBrowser',
   'project.videobrowser.description': 'An Android video browser with WebView browsing, ad filtering, Media3 playback, download management, and per-site settings.',
   'project.videobrowser.features.1': 'Web browsing, address search, suggestions, bookmarks/history, download records, site settings, incognito mode, and a function center.',

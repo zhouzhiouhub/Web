@@ -145,7 +145,12 @@ useSeo({
         </p>
       </section>
 
-      <div v-if="project.url || project.repo" class="flex flex-wrap items-center gap-3">
+      <div v-if="project.download || project.url || project.repo" class="flex flex-wrap items-center gap-3">
+        <a v-if="project.download" :href="project.download" target="_blank" rel="noopener">
+          <NButton type="primary" round class="!h-9 !w-auto !min-w-0 px-4">
+            {{ t('project.download') }}
+          </NButton>
+        </a>
         <a v-if="project.url" :href="project.url" target="_blank" rel="noopener">
           <NButton type="primary" round class="!h-9 !w-auto !min-w-0 px-4">
             {{ t('common.live') }}

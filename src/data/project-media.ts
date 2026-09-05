@@ -1,6 +1,12 @@
 import type { ArchitectureLayer } from '@/types';
 
 export const projectArchitectures: Record<string, ArchitectureLayer[]> = {
+  kinolincopy: [
+    { id: 'ui', labelKey: 'project.architecture.ui', items: ['WPF', 'Side dock panel', 'Timeline previews'] },
+    { id: 'core', labelKey: 'project.architecture.core', items: ['Clipboard listener', '48h cleanup', 'Pinned items'] },
+    { id: 'data', labelKey: 'project.architecture.data', items: ['Local history', 'Window settings', 'Startup preference'] },
+    { id: 'platform', labelKey: 'project.architecture.platform', items: ['.NET Framework 4.8', 'System tray', 'Single instance'] },
+  ],
   gold: [
     { id: 'ui', labelKey: 'project.architecture.ui', items: ['Static HTML / CSS / JS', 'Light / dark theme', 'Tab state'] },
     { id: 'core', labelKey: 'project.architecture.core', items: ['GoldAPI XAU/CNY & XAU/USD', 'Jewelry HTML scrape', 'Spot markup fallback'] },

@@ -43,6 +43,7 @@ export interface Project {
   category: ProjectCategory;
   thumbnail?: string;
   url?: string;
+  download?: string;
   repo?: string;
   featured: boolean;
   year: number;

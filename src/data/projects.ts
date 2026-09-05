@@ -3,6 +3,47 @@ import { sortProjectsByTime } from '@/utils';
 
 const projectItems: Project[] = [
   {
+    id: 'kinolincopy',
+    title: 'Kinolincopy',
+    titleKey: 'project.kinolincopy.title',
+    description: '本机 Windows 剪贴板历史看板，使用 WPF 与 .NET Framework 4.8 构建，记录文本、图片和资源管理器复制的媒体文件。',
+    descriptionKey: 'project.kinolincopy.description',
+    tags: ['C#', 'WPF', '.NET Framework 4.8', 'Windows Forms', 'Windows Clipboard', 'System Tray', 'PowerShell'],
+    category: 'desktop',
+    featured: true,
+    year: 2026,
+    download: 'https://download.kinolin.com/app/Kinolincopy.exe',
+    repo: 'https://github.com/zhouzhiouhub/copy',
+    features: [
+      '自动记录最近 48 小时内复制过的文本、剪贴板图片，以及从资源管理器复制的视频/图片文件',
+      '按具体时间点展示单列时间轴，文本、图片和视频预览直接嵌入条目',
+      '窗口可停靠屏幕左侧或右侧，收起后在同侧唤醒，拖动位置后记住自定义高度',
+      '启动后常驻托盘，默认开机自启；单实例运行，重复打开会唤起已有进程',
+      '支持暂停记录、隐藏内容、固定展开、锁定保留、清空未锁定历史，以及粘贴并隐藏',
+    ],
+    featuresKey: [
+      'project.kinolincopy.features.1',
+      'project.kinolincopy.features.2',
+      'project.kinolincopy.features.3',
+      'project.kinolincopy.features.4',
+      'project.kinolincopy.features.5',
+    ],
+    highlights: [
+      '基于 .NET Framework 4.8 与 WPF 构建轻量桌面应用，避免附带 Chromium，单文件包体小',
+      '剪贴板监听覆盖文本、图片、文件路径等多类型数据，并按 48 小时保留窗口自动清理',
+      '侧边停靠、自动收起、托盘驻留、开机自启和单实例唤醒组成贴近日常使用的 Windows 桌面体验',
+      'build.ps1 生成便携版 release/Kinolincopy.exe，同时通过 manifest、图标和版本生成脚本补齐发布信息',
+    ],
+    highlightsKey: [
+      'project.kinolincopy.highlights.1',
+      'project.kinolincopy.highlights.2',
+      'project.kinolincopy.highlights.3',
+      'project.kinolincopy.highlights.4',
+    ],
+    contribution: '独立完成 WPF 桌面端界面、剪贴板采集与历史管理、侧边停靠交互、托盘 / 自启 / 单实例集成，以及便携版打包脚本。',
+    contributionKey: 'project.kinolincopy.contribution',
+  },
+  {
     id: 'rag-worker',
     title: 'rag-worker',
     titleKey: 'project.ragWorker.title',
