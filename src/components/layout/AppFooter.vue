@@ -89,9 +89,10 @@ const accessLinks = computed<FooterAccessLink[]>(() => [
       </nav>
     </div>
     <div class="border-t border-border">
-      <p class="page-width py-6 text-sm text-muted">
-        &copy; {{ year }} Kinolin · {{ t('footer.rights') }}
-      </p>
+      <div class="page-width space-y-2 py-6 text-sm text-muted">
+        <p>&copy; {{ year }} Kinolin · {{ t('footer.rights') }}</p>
+        <p>{{ t('footer.analytics') }}</p>
+      </div>
     </div>
   </footer>
 </template>

@@ -2,6 +2,7 @@ import type { AdjacentLink, Project, Skill, SkillCategory } from '@/types';
 
 export { maskContact, maskEmail, maskPhone } from './contact';
 export { getSiteUrl, toAbsoluteUrl } from '@/data/site';
+export { GA_MEASUREMENT_ID, trackPageView } from './analytics';
 
 /**
  * Newest year first. Same-year items keep their given order so newly prepended projects stay first.

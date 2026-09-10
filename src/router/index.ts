@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 import Home from '@/pages/Home.vue';
+import { trackPageView } from '@/utils/analytics';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -100,6 +101,10 @@ const router = createRouter({
     if (savedPosition) return savedPosition;
     return { top: 0 };
   },
+});
+
+router.afterEach((to) => {
+  trackPageView(to.fullPath);
 });
 
 export default router;

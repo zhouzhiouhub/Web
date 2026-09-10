@@ -535,6 +535,7 @@ export default {
   'footer.social': 'Social',
   'footer.rss': 'RSS',
   'footer.tagline': 'Keep Learning, Keep Growing.',
+  'footer.analytics': 'This site uses Google Analytics (GA4) to collect visit statistics so we can understand page views and improve the site experience.',
 
   /* ===== 404 ===== */
   'notfound.title': 'Page Not Found',

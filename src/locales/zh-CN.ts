@@ -535,6 +535,7 @@ export default {
   'footer.social': '社交',
   'footer.rss': 'RSS',
   'footer.tagline': '持续学习，持续成长。',
+  'footer.analytics': '本站使用 Google Analytics（GA4）统计访问数据，用于了解页面浏览情况并改进网站体验。',
 
   /* ===== 404 ===== */
   'notfound.title': '页面未找到',
