@@ -535,7 +535,17 @@ export default {
   'footer.social': '社交',
   'footer.rss': 'RSS',
   'footer.tagline': '持续学习，持续成长。',
-  'footer.analytics': '本站使用 Google Tag Manager、Google Analytics（GA4）与 Microsoft Clarity 统计访问数据，用于了解页面浏览与使用情况并改进网站体验。',
+  'footer.analytics': '本站可使用 Google Tag Manager、Google Analytics（GA4）与 Microsoft Clarity 统计访问数据，用于了解页面浏览与使用情况并改进网站体验。',
+  'cookie.title': 'Cookie 与统计偏好',
+  'cookie.message': '我们使用 Cookie 和同类技术保障网站功能，并在你同意后使用 Google Tag Manager、Google Analytics（GA4）与 Microsoft Clarity 了解访问与交互情况。你可以随时管理偏好。',
+  'cookie.settings': 'Cookie 设置',
+  'cookie.reject': '全部拒绝',
+  'cookie.accept': '接受所有',
+  'cookie.save': '保存设置',
+  'cookie.manage': '管理 Cookie',
+  'cookie.analytics.title': '访问统计',
+  'cookie.analytics.description': '启用后加载 Google Tag Manager、Google Analytics（GA4）与 Microsoft Clarity，用于统计页面浏览与交互。',
+  'cookie.necessary.note': '主题、语言与 Cookie 偏好属于必要本地存储，始终启用，不用于广告追踪。',
 
   /* ===== 404 ===== */
   'notfound.title': '页面未找到',

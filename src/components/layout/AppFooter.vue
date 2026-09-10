@@ -6,6 +6,7 @@ import { navItems } from '@/data/navigation';
 import { footerSocialLinks } from '@/data/social';
 import { SITE_RSS_PATH } from '@/data/site';
 import BrandLogo from '@/components/common/BrandLogo.vue';
+import { useCookieConsentStore } from '@/stores/cookieConsent';
 
 interface FooterAccessLink {
   id: string;
@@ -16,6 +17,7 @@ interface FooterAccessLink {
 }
 
 const { t } = useI18n();
+const cookieConsent = useCookieConsentStore();
 
 const year = computed(() => new Date().getFullYear());
 const brandLabel = computed(() => t('project.portfolio.title'));
@@ -91,7 +93,16 @@ const accessLinks = computed<FooterAccessLink[]>(() => [
     <div class="border-t border-border">
       <div class="page-width space-y-2 py-6 text-sm text-muted">
         <p>&copy; {{ year }} Kinolin · {{ t('footer.rights') }}</p>
-        <p>{{ t('footer.analytics') }}</p>
+        <p>
+          {{ t('footer.analytics') }}
+          <button
+            type="button"
+            class="ml-1 text-primary underline-offset-2 hover:underline"
+            @click="cookieConsent.openSettings()"
+          >
+            {{ t('cookie.manage') }}
+          </button>
+        </p>
       </div>
     </div>
   </footer>

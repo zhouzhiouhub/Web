@@ -5,11 +5,14 @@ import AppHeader from '@/components/layout/AppHeader.vue';
 import AppFooter from '@/components/layout/AppFooter.vue';
 import PageSkeleton from '@/components/common/PageSkeleton.vue';
 import AssistantBubble from '@/components/common/AssistantBubble.vue';
+import CookieConsentBanner from '@/components/common/CookieConsentBanner.vue';
 import { hasStaticHeader, setNotHomeClass } from '@/utils/home-shell';
+import { useCookieConsentStore } from '@/stores/cookieConsent';
 
 const route = useRoute();
 const staticShell = hasStaticHeader();
 const needsNaive = computed(() => route.name != null && route.name !== 'home');
+useCookieConsentStore();
 
 watch(() => route.name, (name) => {
   if (name == null) return;
@@ -55,5 +58,6 @@ onMounted(() => {
     <AppFooter />
     <AssistantBubble />
     <BackToTop v-if="showBackToTop" />
+    <CookieConsentBanner />
   </div>
 </template>

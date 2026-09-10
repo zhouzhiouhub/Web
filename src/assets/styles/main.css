@@ -66,6 +66,10 @@ html.theme-switching .defer-paint {
   content-visibility: visible;
 }
 
+html.cookie-banner-open .cookie-float {
+  bottom: max(11rem, calc(env(safe-area-inset-bottom) + 9.5rem));
+}
+
 .cta-btn {
   @apply inline-flex min-h-10 items-center justify-center rounded-full px-5 text-base font-medium transition-colors;
 }

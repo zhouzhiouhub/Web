@@ -535,7 +535,17 @@ export default {
   'footer.social': 'Social',
   'footer.rss': 'RSS',
   'footer.tagline': 'Keep Learning, Keep Growing.',
-  'footer.analytics': 'This site uses Google Tag Manager, Google Analytics (GA4), and Microsoft Clarity to collect visit statistics so we can understand page views and interactions and improve the site experience.',
+  'footer.analytics': 'This site may use Google Tag Manager, Google Analytics (GA4), and Microsoft Clarity to collect visit statistics so we can understand page views and interactions and improve the site experience.',
+  'cookie.title': 'Cookie and analytics preferences',
+  'cookie.message': 'We use cookies and similar technologies to keep the site working, and — with your consent — Google Tag Manager, Google Analytics (GA4), and Microsoft Clarity to understand visits and interactions. You can manage your preferences anytime.',
+  'cookie.settings': 'Cookie settings',
+  'cookie.reject': 'Reject all',
+  'cookie.accept': 'Accept all',
+  'cookie.save': 'Save settings',
+  'cookie.manage': 'Manage cookies',
+  'cookie.analytics.title': 'Analytics',
+  'cookie.analytics.description': 'When enabled, loads Google Tag Manager, Google Analytics (GA4), and Microsoft Clarity to measure page views and interactions.',
+  'cookie.necessary.note': 'Theme, language, and cookie preferences are necessary local storage and stay enabled. They are not used for advertising.',
 
   /* ===== 404 ===== */
   'notfound.title': 'Page Not Found',
