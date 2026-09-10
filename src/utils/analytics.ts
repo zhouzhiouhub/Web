@@ -1,4 +1,5 @@
 export const GA_MEASUREMENT_ID = 'G-BCBW1E4YTG';
+export const CLARITY_PROJECT_ID = 'yfzac77p3a';
 
 type GtagCommand = 'config' | 'event' | 'js' | 'set';
 
@@ -6,6 +7,7 @@ declare global {
   interface Window {
     dataLayer?: unknown[];
     gtag?: (...args: [GtagCommand, ...unknown[]]) => void;
+    clarity?: (...args: unknown[]) => void;
   }
 }
 
