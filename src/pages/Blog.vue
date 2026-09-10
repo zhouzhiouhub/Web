@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { NEmpty } from 'naive-ui';
-import { useSeo } from '@/hooks/useSeo';
+import { useSeo, buildBreadcrumbJsonLd, buildItemListJsonLd } from '@/hooks/useSeo';
 import { blogCategories, publishedPosts } from '@/data/blog';
 import { SITE_RSS_PATH } from '@/data/site';
 import type { BlogCategory } from '@/types';
@@ -14,6 +14,20 @@ const { t } = useI18n();
 useSeo({
   title: () => t('blog.title'),
   description: () => t('blog.seoDescription'),
+  jsonLd: () => [
+    buildBreadcrumbJsonLd([
+      { name: t('nav.home'), path: '/' },
+      { name: t('blog.title'), path: '/blog' },
+    ]),
+    buildItemListJsonLd(
+      t('blog.title'),
+      publishedPosts.map((post) => ({
+        name: post.titleKey ? t(post.titleKey) : post.title,
+        path: `/blog/${post.slug}`,
+        description: post.excerptKey ? t(post.excerptKey) : post.excerpt,
+      })),
+    ),
+  ],
 });
 
 const activeCategory = ref<BlogCategory | 'all'>('all');

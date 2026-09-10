@@ -1,5 +1,15 @@
 import { onUnmounted, watchEffect } from 'vue';
-import { getSiteUrl, SITE_NAME, SITE_OG_IMAGE, toAbsoluteUrl } from '@/data/site';
+import {
+  getSiteUrl,
+  SITE_AUTHOR,
+  SITE_AUTHOR_EN,
+  SITE_CITY,
+  SITE_CSDN,
+  SITE_GITHUB,
+  SITE_NAME,
+  SITE_OG_IMAGE,
+  toAbsoluteUrl,
+} from '@/data/site';
 
 type MaybeGetter<T> = T | (() => T);
 
@@ -16,6 +26,33 @@ export interface SeoOptions {
   image?: MaybeGetter<string>;
   canonical?: MaybeGetter<string>;
   jsonLd?: MaybeGetter<Record<string, unknown> | Record<string, unknown>[] | null | undefined>;
+}
+
+export interface BreadcrumbItem {
+  name: string;
+  path: string;
+}
+
+export interface FaqJsonLdItem {
+  question: string;
+  answer: string;
+}
+
+export interface ItemListJsonLdItem {
+  name: string;
+  path: string;
+  description?: string;
+}
+
+export interface CreativeWorkJsonLdInput {
+  name: string;
+  description: string;
+  path: string;
+  dateCreated?: string | number;
+  keywords?: string[];
+  url?: string;
+  codeRepository?: string;
+  applicationCategory?: string;
 }
 
 function setMeta(name: string, content: string, attr: 'name' | 'property' = 'name') {
@@ -126,14 +163,40 @@ export function buildPersonJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: '周珍运',
-    alternateName: ['Kinolin', 'Zhou Zhenyun'],
+    '@id': `${getSiteUrl()}/#person`,
+    name: SITE_AUTHOR,
+    alternateName: ['Kinolin', SITE_AUTHOR_EN],
     url: getSiteUrl(),
-    jobTitle: 'Mobile / Full Stack Developer',
-    sameAs: [
-      'https://github.com/zhouzhiouhub',
-      'https://blog.csdn.net/qq_59002866',
+    image: toAbsoluteUrl('/avatar.svg'),
+    jobTitle: '移动端 / 全栈开发工程师',
+    description: '具备 Web 前端与全栈、客户端构建发布、Python 自动化、云平台部署经验，近期持续完成 Android、Flutter、微信小程序等移动端项目。',
+    knowsAbout: [
+      'Android',
+      'Flutter',
+      '微信小程序',
+      'Vue 3',
+      'React',
+      'TypeScript',
+      'Cloudflare Workers',
+      'Python',
+      'Microsoft Store',
+      'Steam',
+      'RAG',
     ],
+    homeLocation: {
+      '@type': 'Place',
+      name: SITE_CITY,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: SITE_CITY,
+        addressCountry: 'CN',
+      },
+    },
+    alumniOf: {
+      '@type': 'CollegeOrUniversity',
+      name: '贵州师范学院',
+    },
+    sameAs: [SITE_GITHUB, SITE_CSDN],
   };
 }
 
@@ -141,12 +204,84 @@ export function buildWebSiteJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
+    '@id': `${getSiteUrl()}/#website`,
     name: SITE_NAME,
+    alternateName: ['Kinolin Portfolio', '周珍运个人站'],
     url: getSiteUrl(),
+    description: '周珍运（Kinolin）的个人开发者门户：移动端、全栈、客户端发布、自动化项目、技术博客和开源贡献。',
     inLanguage: ['zh-CN', 'en-US'],
-    author: {
-      '@type': 'Person',
-      name: '周珍运',
-    },
+    publisher: { '@id': `${getSiteUrl()}/#person` },
+    author: { '@id': `${getSiteUrl()}/#person` },
+  };
+}
+
+export function buildBreadcrumbJsonLd(items: BreadcrumbItem[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: toAbsoluteUrl(item.path),
+    })),
+  };
+}
+
+export function buildFaqPageJsonLd(faqs: FaqJsonLdItem[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
+export function buildItemListJsonLd(name: string, items: ItemListJsonLdItem[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name,
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      url: toAbsoluteUrl(item.path),
+      description: item.description,
+    })),
+  };
+}
+
+export function buildCreativeWorkJsonLd(input: CreativeWorkJsonLdInput) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: input.name,
+    description: input.description,
+    url: toAbsoluteUrl(input.path),
+    dateCreated: input.dateCreated ? String(input.dateCreated) : undefined,
+    keywords: input.keywords?.join(', '),
+    applicationCategory: input.applicationCategory ?? 'DeveloperApplication',
+    author: { '@id': `${getSiteUrl()}/#person` },
+    creator: { '@id': `${getSiteUrl()}/#person` },
+    ...(input.url ? { sameAs: [input.url] } : {}),
+    ...(input.codeRepository ? { codeRepository: input.codeRepository } : {}),
+  };
+}
+
+export function buildProfilePageJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    url: toAbsoluteUrl('/about'),
+    mainEntity: { '@id': `${getSiteUrl()}/#person` },
+    about: { '@id': `${getSiteUrl()}/#person` },
   };
 }

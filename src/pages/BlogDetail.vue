@@ -3,9 +3,9 @@ import { computed } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { NButton, NEmpty, NTag } from 'naive-ui';
-import { useSeo } from '@/hooks/useSeo';
+import { useSeo, buildBreadcrumbJsonLd } from '@/hooks/useSeo';
 import { publishedPosts } from '@/data/blog';
-import { getAdjacentItems, toAbsoluteUrl } from '@/utils';
+import { getAdjacentItems, getSiteUrl, toAbsoluteUrl } from '@/utils';
 import type { BlogContentBlock, BlogPost } from '@/types';
 import AdjacentNav from '@/components/business/AdjacentNav.vue';
 import PageContainer from '@/components/layout/PageContainer.vue';
@@ -44,16 +44,24 @@ useSeo({
   title: () => postTitle.value,
   description: () => postExcerpt.value,
   type: 'article',
-  jsonLd: () => (post.value ? {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: postTitle.value,
-    description: postExcerpt.value,
-    datePublished: post.value.date,
-    author: { '@type': 'Person', name: '周珍运' },
-    url: toAbsoluteUrl(`/blog/${post.value.slug}`),
-    keywords: post.value.tags.join(', '),
-  } : null),
+  jsonLd: () => (post.value ? [
+    buildBreadcrumbJsonLd([
+      { name: t('nav.home'), path: '/' },
+      { name: t('blog.title'), path: '/blog' },
+      { name: postTitle.value, path: `/blog/${post.value.slug}` },
+    ]),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: postTitle.value,
+      description: postExcerpt.value,
+      datePublished: post.value.date,
+      author: { '@id': `${getSiteUrl()}/#person` },
+      url: toAbsoluteUrl(`/blog/${post.value.slug}`),
+      keywords: post.value.tags.join(', '),
+      inLanguage: 'zh-CN',
+    },
+  ] : null),
 });
 </script>
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 import { NCard, NCollapse, NCollapseItem, NMessageProvider } from 'naive-ui';
-import { useSeo } from '@/hooks/useSeo';
+import { useSeo, buildBreadcrumbJsonLd, buildFaqPageJsonLd } from '@/hooks/useSeo';
 import { contactSocialLinks } from '@/data/social';
 import { contactFaqs } from '@/data/contact';
 import { SITE_EMAIL, SITE_PHONE } from '@/data/site';
@@ -14,6 +14,18 @@ const { t } = useI18n();
 useSeo({
   title: () => t('contact.title'),
   description: () => t('contact.seoDescription'),
+  jsonLd: () => [
+    buildBreadcrumbJsonLd([
+      { name: t('nav.home'), path: '/' },
+      { name: t('contact.title'), path: '/contact' },
+    ]),
+    buildFaqPageJsonLd(
+      contactFaqs.map((faq) => ({
+        question: t(faq.questionKey),
+        answer: t(faq.answerKey),
+      })),
+    ),
+  ],
 });
 
 const getIconStyle = (src?: string, scale = 1) => [

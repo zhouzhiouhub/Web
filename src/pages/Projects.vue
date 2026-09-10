@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { NEmpty } from 'naive-ui';
-import { useSeo } from '@/hooks/useSeo';
+import { useSeo, buildBreadcrumbJsonLd, buildItemListJsonLd } from '@/hooks/useSeo';
 import { projects } from '@/data/projects';
 import type { ProjectCategory } from '@/types';
 import ProjectCard from '@/components/business/ProjectCard.vue';
@@ -13,6 +13,20 @@ const { t } = useI18n();
 useSeo({
   title: () => t('projects.title'),
   description: () => t('projects.seoDescription'),
+  jsonLd: () => [
+    buildBreadcrumbJsonLd([
+      { name: t('nav.home'), path: '/' },
+      { name: t('projects.title'), path: '/projects' },
+    ]),
+    buildItemListJsonLd(
+      t('projects.title'),
+      projects.map((project) => ({
+        name: project.titleKey ? t(project.titleKey) : project.title,
+        path: `/projects/${project.id}`,
+        description: project.descriptionKey ? t(project.descriptionKey) : project.description,
+      })),
+    ),
+  ],
 });
 
 const activeCategory = ref<ProjectCategory | 'all'>('all');

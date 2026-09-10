@@ -1,5 +1,33 @@
 User-agent: *
 Allow: /
 
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://web.zhiou9588.workers.dev/sitemap.xml
 # AI agents: https://web.zhiou9588.workers.dev/llms.txt
+# Full AI context: https://web.zhiou9588.workers.dev/llms-full.txt

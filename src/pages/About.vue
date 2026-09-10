@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
-import { useSeo } from '@/hooks/useSeo';
+import { useSeo, buildBreadcrumbJsonLd, buildPersonJsonLd, buildProfilePageJsonLd } from '@/hooks/useSeo';
 import { SITE_AVATAR } from '@/data/site';
 import { aboutDirections, growthTimeline, techValues } from '@/data/about';
 import PageContainer from '@/components/layout/PageContainer.vue';
@@ -11,6 +11,14 @@ useSeo({
   title: () => t('about.title'),
   description: () => t('about.seoDescription'),
   type: 'profile',
+  jsonLd: () => [
+    buildBreadcrumbJsonLd([
+      { name: t('nav.home'), path: '/' },
+      { name: t('about.title'), path: '/about' },
+    ]),
+    buildProfilePageJsonLd(),
+    buildPersonJsonLd(),
+  ],
 });
 </script>
 

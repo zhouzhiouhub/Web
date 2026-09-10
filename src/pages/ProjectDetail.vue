@@ -3,10 +3,10 @@ import { computed } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { NButton, NTag, NEmpty } from 'naive-ui';
-import { useSeo } from '@/hooks/useSeo';
+import { useSeo, buildBreadcrumbJsonLd, buildCreativeWorkJsonLd } from '@/hooks/useSeo';
 import { projects } from '@/data/projects';
 import { getProjectArchitecture } from '@/data/project-media';
-import { getAdjacentItems, toAbsoluteUrl } from '@/utils';
+import { getAdjacentItems } from '@/utils';
 import ArchitectureDiagram from '@/components/business/ArchitectureDiagram.vue';
 import AdjacentNav from '@/components/business/AdjacentNav.vue';
 import PageContainer from '@/components/layout/PageContainer.vue';
@@ -51,15 +51,30 @@ useSeo({
   title: () => projectTitle.value,
   description: () => projectDescription.value,
   type: 'article',
-  jsonLd: () => (project.value ? {
-    '@context': 'https://schema.org',
-    '@type': 'CreativeWork',
-    name: projectTitle.value,
-    description: projectDescription.value,
-    url: toAbsoluteUrl(`/projects/${project.value.id}`),
-    dateCreated: String(project.value.year),
-    keywords: project.value.tags.join(', '),
-  } : null),
+  jsonLd: () => (project.value ? [
+    buildBreadcrumbJsonLd([
+      { name: t('nav.home'), path: '/' },
+      { name: t('projects.title'), path: '/projects' },
+      { name: projectTitle.value, path: `/projects/${project.value.id}` },
+    ]),
+    buildCreativeWorkJsonLd({
+      name: projectTitle.value,
+      description: projectDescription.value,
+      path: `/projects/${project.value.id}`,
+      dateCreated: project.value.year,
+      keywords: project.value.tags,
+      url: project.value.url,
+      codeRepository: project.value.repo,
+      applicationCategory: ({
+        web: 'WebApplication',
+        mobile: 'MobileApplication',
+        desktop: 'DesktopApplication',
+        tool: 'UtilitiesApplication',
+        ai: 'DeveloperApplication',
+        'open-source': 'DeveloperApplication',
+      } as Record<string, string>)[project.value.category] ?? 'DeveloperApplication',
+    }),
+  ] : null),
 });
 </script>
 

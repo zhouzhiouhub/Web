@@ -92,10 +92,12 @@ src/
 
 默认语言为 `zh-CN`，预留 `en-US` 和 `ja-JP`。所有用户可见文案通过 `src/locales/` 管理。
 
-## SEO 与订阅
+## SEO / GEO 与订阅
 
 - 每个页面通过 `useSeo` 设置 title、description、Open Graph、Twitter Card、canonical 和 JSON-LD。
-- 构建时生成 `sitemap.xml`、`rss.xml` 与符合 llms.txt 规范的 `/llms.txt`（含 H1 与 Markdown 链接，供 AI 智能体浏览）。
+- 项目列表提供 `ItemList`，项目详情提供 `SoftwareApplication`，联系页提供 `FAQPage`，关于页提供 `ProfilePage`，详情页含 `BreadcrumbList`。
+- 构建时生成 `sitemap.xml`、`rss.xml`、符合 llms.txt 规范的 `/llms.txt`，以及供 AI 引用的 `/llms-full.txt`（含身份事实、FAQ 与项目摘要）。
+- `robots.txt` 允许主流 AI 爬虫，并声明 sitemap / llms 入口。
 - 联系方式在简历页和联系页默认脱敏，邮箱统一为 `zhouzhiou9588@163.com`。
 
 站点地址可用环境变量覆盖：

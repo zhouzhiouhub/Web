@@ -272,7 +272,7 @@
 - 键盘焦点状态可见。
 - 移动端点击区域足够大。
 
-## SEO 规范
+## SEO / GEO 规范
 
 每个页面应具备：
 
@@ -280,13 +280,15 @@
 - 独立 description。
 - Open Graph 信息。
 - 语义化结构。
+- 适合页面类型的 JSON-LD（如 WebSite、Person、ItemList、SoftwareApplication、FAQPage、Article、BreadcrumbList）。
 
 新增页面时必须同步考虑：
 
 - 路由 meta。
 - 页面标题国际化。
 - 分享摘要。
-- sitemap 或静态部署兼容性。
+- sitemap、llms.txt / llms-full.txt 或静态部署兼容性。
+- AI 可引用的事实表述（避免空泛营销话术，优先可核验信息）。
 
 ## 性能规范
 
