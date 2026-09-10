@@ -1,4 +1,5 @@
 export const GA_MEASUREMENT_ID = 'G-BCBW1E4YTG';
+export const GTM_CONTAINER_ID = 'GTM-5PP3RSCH';
 export const CLARITY_PROJECT_ID = 'yfzac77p3a';
 
 type GtagCommand = 'config' | 'event' | 'js' | 'set';

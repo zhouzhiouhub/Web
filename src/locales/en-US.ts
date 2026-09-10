@@ -535,7 +535,7 @@ export default {
   'footer.social': 'Social',
   'footer.rss': 'RSS',
   'footer.tagline': 'Keep Learning, Keep Growing.',
-  'footer.analytics': 'This site uses Google Analytics (GA4) and Microsoft Clarity to collect visit statistics so we can understand page views and interactions and improve the site experience.',
+  'footer.analytics': 'This site uses Google Tag Manager, Google Analytics (GA4), and Microsoft Clarity to collect visit statistics so we can understand page views and interactions and improve the site experience.',
 
   /* ===== 404 ===== */
   'notfound.title': 'Page Not Found',
